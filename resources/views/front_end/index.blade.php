@@ -19,7 +19,7 @@
                                     <!-- SLIDE  -->
                                     <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
                                         <!-- MAIN IMAGE -->
-                                        <img src="images/slider-img-1.jpg"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                        <img src="{{asset('front_end/images/slider-img-1.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
 
                                         <!-- LAYER NR. 1 -->
                                         <div class="tp-caption sfl tp-resizeme"
@@ -94,7 +94,7 @@
                                     <!-- SLIDE  -->
                                     <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
                                         <!-- MAIN IMAGE -->
-                                        <img src="images/slider-img-2.jpg"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                        <img src="{{asset('front_end/images/slider-img-2.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
 
                                         <!-- LAYER NR. 1 -->
                                         <div class="tp-caption sfl tp-resizeme"
@@ -169,7 +169,7 @@
                                     <!-- SLIDE  -->
                                     <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
                                         <!-- MAIN IMAGE -->
-                                        <img src="images/slider-img-3.jpg"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                        <img src="{{asset('front_end/images/slider-img-3.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
 
                                         <!-- LAYER NR. 1 -->
                                         <div class="tp-caption sfl tp-resizeme"
@@ -329,7 +329,7 @@
                         <div class="item-slide-5 with-nav">
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
+                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-1.jpg') }}" alt="" >
                                     <!-- Content -->
                                     <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
                                     <!-- Reviews -->
@@ -339,7 +339,7 @@
                             </div>
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-2.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-2.jpg') }}" alt="" > <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
                                     <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
@@ -351,7 +351,7 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-3.jpg" alt="" >
+                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-3.jpg') }}" alt="" >
                                     <!-- Content -->
                                     <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
@@ -362,7 +362,7 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-4.jpg" alt="" > <span class="new-tag">New</span>
+                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-4.jpg') }}" alt="" > <span class="new-tag">New</span>
 
                                     <!-- Content -->
                                     <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
@@ -374,7 +374,7 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-5.jpg" alt="" >
+                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-5.jpg') }}" alt="" >
                                     <!-- Content -->
                                     <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
                                     <!-- Reviews -->
@@ -385,7 +385,7 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-6.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-6.jpg')}}" alt="" > <span class="sale-tag">-25%</span>
 
                                     <!-- Content -->
                                     <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
@@ -397,7 +397,7 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-7.jpg" alt="" >
+                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-7.jpg') }}" alt="" >
                                     <!-- Content -->
                                     <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
                                     <!-- Reviews -->
@@ -408,7 +408,7 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-8.jpg" alt="" > <span class="new-tag">New</span>
+                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-8.jpg') }}" alt="" > <span class="new-tag">New</span>
 
                                     <!-- Content -->
                                     <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
@@ -427,7 +427,7 @@
 
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-11.jpg" alt="" >
+                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-11.jpg') }}" alt="" >
                                     <!-- Content -->
                                     <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
                                     <!-- Reviews -->
