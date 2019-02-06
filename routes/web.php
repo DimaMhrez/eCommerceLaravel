@@ -35,10 +35,6 @@ Route::get('/admin',function (){
 });
 
 
-Route::get('/admin/users',function (){
-    return view('back_end.users');
-});
-
-
+Route::get('/admin/users', 'BackendController@users');
 
 
