@@ -21,7 +21,7 @@ class CreateShippingAddressesTable extends Migration
             $table->string('street',45);
             $table->string('number',10);
             $table->string('city',45);
-            $table->int('zipcode');
+            $table->String('zipcode');
             $table->string('phoneNumber',15);
             $table->string('surname',45);
             $table->unsignedInteger('user_id');
