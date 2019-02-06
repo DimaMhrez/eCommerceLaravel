@@ -30,3 +30,11 @@ Route::get('/log' , function (){
 Route::get('/reg' , function (){
     return view('front_end.register');
 });
+
+
+
+Route::get('/prova' , function (){
+    return view('front_end.prova');
+});
+
+

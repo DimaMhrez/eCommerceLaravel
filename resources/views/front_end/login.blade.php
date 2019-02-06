@@ -49,7 +49,7 @@
                                 </li>
                                 <li class="col-sm-6">
                                     <div class="checkbox checkbox-primary">
-                                        <input id="cate1" class="styled" type="checkbox" >
+                                        <input class="styled" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
                                         <label for="cate1"> Keep me logged in </label>
                                     </div>
                                 </li>

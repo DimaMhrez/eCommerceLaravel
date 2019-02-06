@@ -47,26 +47,22 @@
       <p>Welcome to SmartTech center!</p>
       <div class="right-sec">
         <ul>
-          <li><a href="#.">Login/Register </a></li>
           <li><a href="#.">Store Location </a></li>
           <li><a href="#.">FAQ </a></li>
           <li><a href="#.">Newsletter </a></li>
-          <li>
-            <select class="selectpicker">
-              <option>French</option>
-              <option>German</option>
-              <option>Italian</option>
-              <option>Japanese</option>
-            </select>
-          </li>
-          <li>
-            <select class="selectpicker">
-              <option>(USD)Dollar</option>
-              <option>GBP</option>
-              <option>Euro</option>
-              <option>JPY</option>
-            </select>
-          </li>
+          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            @csrf
+          </form>
+          @guest
+            <li><a href="{{ url('log') }}">Login</a></li>  <!-- vanno aggiornate quando si sistema il routing -->
+            <li><a href="{{url('reg')}}">Register</a></li> <!-- IDEM -->
+          @else
+            <li><a href="#.">My Profile</a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">Logout</a></li>
+            <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+              {{ csrf_field() }}
+            </form>
+          @endauth
         </ul>
         <div class="social-top"> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> <a href="#."><i class="fa fa-dribbble"></i></a> <a href="#."><i class="fa fa-pinterest"></i></a> </div>
       </div>
@@ -76,7 +72,7 @@
   <!-- Header -->
   <header>
     <div class="container">
-      <div class="logo"> <a href="index.html"><img src="{{ asset('front_end/images/logo.png') }}" alt="" ></a> </div>
+      <div class="logo"> <a href="{{ url('/') }}"><img src="{{ asset('front_end/images/logo.png') }}" alt="" ></a> </div>
       <div class="search-cate">
         <select class="selectpicker">
           <option> All Categories</option>
@@ -396,7 +392,7 @@
   <!-- End Footer --> 
   
   <!-- GO TO TOP  --> 
-  <a href="#" class="cd-top"><i class="fa fa-angle-up"></i></a> 
+  <a href="#" class="cd-top" id="pippo"><i class="fa fa-angle-up"></i></a>
   <!-- GO TO TOP End --> 
 </div>
 <!-- End Page Wrapper --> 
@@ -415,5 +411,12 @@
 <script src="{{asset('front_end/js/main.js') }}"></script>
 <script src="{{ asset('front_end/js/vendors/jquery.nouislider.min.js') }}"></script>
 @yield('otherScript')
+
+<!-- invocazione logout -->
+<script>
+  function prova() {
+    alert("ciao");
+  }
+</script>
 </body>
 </html>
