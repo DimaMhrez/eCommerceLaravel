@@ -54,8 +54,8 @@
             @csrf
           </form>
           @guest
-            <li><a href="{{ url('log') }}">Login</a></li>  <!-- vanno aggiornate quando si sistema il routing -->
-            <li><a href="{{url('reg')}}">Register</a></li> <!-- IDEM -->
+            <li><a href="{{ route('login') }}">Login</a></li>  <!-- vanno aggiornate quando si sistema il routing -->
+            <li><a href="{{url('register')}}">Register</a></li> <!-- IDEM -->
           @else
             <li><a href="#.">My Profile</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('frm-logout').submit();">Logout</a></li>

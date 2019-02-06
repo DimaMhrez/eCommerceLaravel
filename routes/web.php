@@ -17,24 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+/*
+Route::get('/home', 'HomeController@index')->name('home');*/
 
 
-
-
-// andranno poi messe nello standar sostituendo Auth::routes(); che di default crea le '/login' e non me le fa usare
-Route::get('/log' , function (){
-   return view('front_end.login');
-});
-
-Route::get('/reg' , function (){
-    return view('front_end.register');
-});
-
-
-
-Route::get('/prova' , function (){
-    return view('front_end.prova');
-});
 
 
