@@ -1,4 +1,4 @@
-@extends('back_end.main')
+php @extends('back_end.main')
 
 @section('content')
     <div class="content">
