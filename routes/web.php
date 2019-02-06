@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('front_end.index');
 });
 
+
+
 Auth::routes();
 
 
@@ -22,5 +24,14 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');*/
 
 
+/* rotte di prova */
+
+Route::get('/admin',function (){
+    return view('back_end.index');
+});
+
+Route::get('/admin',function (){
+    return view('back_end.dashboard');
+});
 
 
