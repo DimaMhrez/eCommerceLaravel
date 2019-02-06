@@ -35,5 +35,10 @@ Route::get('/admin',function (){
 });
 
 
+Route::get('/admin/users',function (){
+    return view('back_end.users');
+});
+
+
 
 
