@@ -90,56 +90,33 @@ php @extends('back_end.main')
                                     </div>
                                     {{ $users->links() }}
                                     <div class="row">
-                                        <div class="col-sm-12 col-md-5">
-                                            <div class="dataTables_info" id="datatables_info" role="status"
-                                                 aria-live="polite">Showing 1 to 10 of 40 entries
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-12 col-md-7">
+
+                                        <!--     <ul class="pagination" role="navigation">
+
+                                               <li class="page-item">
+                                                <a class="page-link" href="http://127.0.0.1:8000/admin/users?page=1" rel="prev">&laquo; Previous</a>
+                                            </li>
+
+
+                                                    <li class="page-item">
+                                                <a class="page-link" href="http://127.0.0.1:8000/admin/users?page=3" rel="next">Next &raquo;</a>
+                                            </li>
+                                            </ul>-->
+
+                                     <!--   <div class="col-sm-12 col-md-7">
                                             <div class="dataTables_paginate paging_full_numbers"
                                                  id="datatables_paginate">
                                                 <ul class="pagination">
-                                                    <li class="paginate_button page-item first disabled"
-                                                        id="datatables_first"><a href="#" aria-controls="datatables"
-                                                                                 data-dt-idx="0" tabindex="0"
-                                                                                 class="page-link">First</a></li>
                                                     <li class="paginate_button page-item previous disabled"
                                                         id="datatables_previous"><a href="#" aria-controls="datatables"
                                                                                     data-dt-idx="1" tabindex="0"
                                                                                     class="page-link">Prev</a></li>
-                                                    <li class="paginate_button page-item active"><a href="#"
-                                                                                                    aria-controls="datatables"
-                                                                                                    data-dt-idx="2"
-                                                                                                    tabindex="0"
-                                                                                                    class="page-link">1</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item "><a href="#"
-                                                                                              aria-controls="datatables"
-                                                                                              data-dt-idx="3"
-                                                                                              tabindex="0"
-                                                                                              class="page-link">2</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item "><a href="#"
-                                                                                              aria-controls="datatables"
-                                                                                              data-dt-idx="4"
-                                                                                              tabindex="0"
-                                                                                              class="page-link">3</a>
-                                                    </li>
-                                                    <li class="paginate_button page-item "><a href="#"
-                                                                                              aria-controls="datatables"
-                                                                                              data-dt-idx="5"
-                                                                                              tabindex="0"
-                                                                                              class="page-link">4</a>
-                                                    </li>
                                                     <li class="paginate_button page-item next" id="datatables_next"><a
                                                                 href="#" aria-controls="datatables" data-dt-idx="6"
                                                                 tabindex="0" class="page-link">Next</a></li>
-                                                    <li class="paginate_button page-item last" id="datatables_last"><a
-                                                                href="#" aria-controls="datatables" data-dt-idx="7"
-                                                                tabindex="0" class="page-link">Last</a></li>
                                                 </ul>
                                             </div>
-                                        </div>
+                                        </div>-->
                                     </div>
                                 </div>
                             </div>

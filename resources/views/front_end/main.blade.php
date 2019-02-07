@@ -5,7 +5,7 @@
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="author" content="M_Adnan" />
 <!-- Document Title -->
-<title>Smart Tech - Ecommerce HTML5 Template</title>
+<title>Smart Tech eCommerce</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" href="{{ asset('front_end/images/favicon.ico') }}" type="image/x-icon">
