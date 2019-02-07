@@ -76,16 +76,9 @@
       <div class="search-cate">
         <select class="selectpicker">
           <option> All Categories</option>
-          <option> Home Audio & Theater</option>
-          <option> TV & Video</option>
-          <option> Camera, Photo & Video</option>
-          <option> Cell Phones & Accessories</option>
-          <option> Headphones</option>
-          <option> Video Games</option>
-          <option> Bluetooth & Wireless </option>
-          <option> Gaming Console</option>
-          <option> Computers & Tablets</option>
-          <option> Monitors </option>
+          @foreach ($categories as $category)
+            <option>{{$category->name}}</option>
+          @endforeach
         </select>
         <input type="search" placeholder="Search entire store here...">
         <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
@@ -119,37 +112,19 @@
           <div class="cate-bar-in">
             <div id="cater" class="collapse">
               <ul>
-                  <li><a href="#."> Home Audio & Theater</a></li>
-                  <li><a href="#."> TV & Video</a></li>
-                  <li><a href="#."> Camera, Photo & Video</a></li>
-                  <li class="sub-menu"><a href="#."> Cell Phones & Accessories</a>
+                @foreach($categories as $category)
+                <li><a href="{{$category->href}}">{{$category->name}}</a></li>
+                @endforeach
+
+                  <!-- Qui ci sono i sottomenu -->
+                  <!-- <li class="sub-menu"><a href="#."> Cell Phones & Accessories</a>
                     <ul>
                       <li><a href="#."> TV & Video</a></li>
                       <li><a href="#."> Camera, Photo & Video</a></li>
                       <li><a href="#."> Cell Phones & Accessories</a>
                     </ul>
-                  </li>
-                  <li><a href="#."> Headphones</a></li>
-                  <li><a href="#."> Video Games</a></li>
-                  <li class="sub-menu"><a href="#."> Bluetooth & Wireless Speakers</a>
-                    <ul>
-                      <li><a href="#."> TV & Video</a></li>
-                      <li><a href="#."> Camera, Photo & Video</a></li>
-                      <li><a href="#."> Cell Phones & Accessories</a>
-                    </ul>
-                  </li>
-                  <li class="sub-menu"><a href="#."> Gaming Console</a>
-                    <ul>
-                      <li><a href="#."> TV & Video</a></li>
-                      <li><a href="#."> Camera, Photo & Video</a></li>
-                      <li><a href="#."> Cell Phones & Accessories</a>
-                    </ul>
-                  </li>
-                  <li><a href="#."> Computers & Tablets</a></li>
-                  <li><a href="#."> Monitors</a></li>
-                  <li><a href="#."> Home Appliances</a></li>
-                  <li><a href="#."> Office Supplies</a></li>
-                </ul>
+
+                </ul> -->
             </div>
           </div>
         </div>
@@ -161,55 +136,11 @@
         <!-- NAV -->
         <div class="collapse navbar-collapse" id="nav-open-btn">
           <ul class="nav">
-            <li class="dropdown megamenu active"> <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Home </a>
-              <div class="dropdown-menu animated-2s fadeInUpHalf">
-                <div class="mega-inside scrn">
-                  <ul class="home-links">
-                    <li><a href="index.html"><img class="img-responsive" src="{{ asset('front_end/images/home-1.jpg') }}" alt="" > <span>Home Version 1</span></a></li>
-                    <li><a href="index-2.html"><img class="img-responsive" src="{{ asset('front_end/images/home-2.jpg') }}" alt="" > <span>Home Version 2</span></a> </li>
-                    <li><a href="index-3.html"><img class="img-responsive" src="{{ asset('front_end/images/home-3.jpg') }}" alt="" > <span>Home Version 3</span></a></li>
-                    <li><a href="index-4.html"><img class="img-responsive" src="{{ asset('front_end/images/home-4.jpg') }}" alt="" > <span>Home Version 4</span></a></li>
-                    <li><a href="index-5.html"><img class="img-responsive" src="{{ asset('front_end/images/home-5.jpg') }}" alt="" > <span>Home Version 5</span></a></li>
-                    <li><a href="index-6.html"><img class="img-responsive" src="{{ asset('front_end/images/home-6.jpg') }}" alt="" > <span>Home Version 6</span></a></li>
-                    <li><a href="index-7.html"><img class="img-responsive" src="{{ asset('front_end/images/home-7.jpg') }}" alt="" > <span>Home Version 7</span></a></li>
-                    <li><a href="index-8.html"><img class="img-responsive" src="{{ asset('front_end/images/home-8.jpg') }}" alt="" > <span>Home Version 8</span></a></li>
-                    <li><a href="index-9.html"><img class="img-responsive" src="{{ asset('front_end/images/home-9.jpg') }}" alt="" > <span>Home Version 9</span></a></li>
-                    <li><a href="index-10.html"><img class="img-responsive" src="{{ asset('front_end/images/home-10.jpg') }}" alt="" > <span>Home Version 10</span></a></li>
-                    <li><a href="index-11.html"><img class="img-responsive" src="{{ asset('front_end/images/home-11.jpg') }}" alt="" > <span>Home Version 11</span></a></li>
-                    <li><a href="index-12.html"><img class="img-responsive" src="{{ asset('front_end/images/home-12.jpg') }}" alt="" > <span>Home Version 12</span></a></li>
-                    <li><a href="index-13.html"><img class="img-responsive" src="{{ asset('front_end/images/home-13.jpg') }}" alt="" > <span>Home Version 13</span></a></li>
-                    <li><a href="index-14.html"><img class="img-responsive" src="{{ asset('front_end/images/home-14.jpg') }}" alt="" > <span>Home Version 14</span></a></li>
-                    <li><a href="index-15.html"><img class="img-responsive" src="{{ asset('front_end/images/home-15.jpg') }}" alt="" > <span>Home Version 15</span></a></li>
-                    <li><a href="index-16.html"><img class="img-responsive" src="{{ asset('front_end/images/home-16.jpg') }}" alt="" > <span>Home Version 16</span></a></li>
-                    <li><a href="index-17.html"><img class="img-responsive" src="{{ asset('front_end/images/home-17.jpg') }}" alt="" > <span>Home Version 17</span></a></li>
-                  </ul>
-                </div>
-              </div>
-            </li>
-            <li class="dropdown"> <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Pages </a>
-              <ul class="dropdown-menu multi-level animated-2s fadeInUpHalf">
-                <li><a href="About.html"> About </a></li>
-                <li><a href="LoginForm.html"> Login Form </a></li>
-                <li><a href="GridProducts_3Columns.html"> Products 3 Columns </a></li>
-                <li><a href="GridProducts_4Columns.html"> Products 4 Columns </a></li>
-                <li><a href="ListProducts.html"> List Products </a></li>
-                <li><a href="Product-Details"> Product Details </a></li>
-                <li><a href="ShoppingCart.html"> Shopping Cart</a></li>
-                <li><a href="PaymentMethods.html"> Payment Methods </a></li>
-                <li><a href="DeliveryMethods.html"> Delivery Methods</a></li>
-                <li><a href="Confirmation.html"> Confirmation </a></li>
-                <li><a href="CheckoutSuccessful.html"> Checkout Successful </a></li>
-                <li><a href="Error404.html"> Error404 </a></li>
-                <li><a href="contact.html"> Contact </a></li>
-                <li class="dropdown-submenu"><a href="#."> Dropdown Level </a>
-                  <ul class="dropdown-menu animated-2s fadeInRight">
-                    <li><a href="#.">Level 1</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
+
+
+
             <!-- Mega Menu Nav -->
-            <li class="dropdown megamenu"> <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Mega menu </a>
+           <!-- <li class="dropdown megamenu"> <a href="index.html" class="dropdown-toggle" data-toggle="dropdown">Mega menu </a>
               <div class="dropdown-menu animated-2s fadeInUpHalf">
                 <div class="mega-inside">
                   <div class="top-lins">
@@ -274,8 +205,10 @@
                 <li><a href="Blog.html">Blog </a></li>
                 <li><a href="Blog_details.html">Blog Single </a></li>
               </ul>
-            </li>
-            <li> <a href="shop.html">Buy theme! </a></li>
+            </li> -->
+              @foreach($main_menus as $menu)
+            <li> <a href="{{$menu->URL}}">{{$menu->name}} </a></li>
+              @endforeach
           </ul>
         </div>
         
@@ -339,13 +272,9 @@
         <div class="col-md-3">
           <h4>Categories</h4>
           <ul class="links-footer">
-            <li><a href="#.">Home Audio & Theater</a></li>
-            <li><a href="#."> TV & Video</a></li>
-            <li><a href="#."> Camera, Photo & Video</a></li>
-            <li><a href="#."> Cell Phones & Accessories</a></li>
-            <li><a href="#."> Headphones</a></li>
-            <li><a href="#."> Video Games</a></li>
-            <li><a href="#."> Bluetooth & Wireless</a></li>
+            @foreach($categories as $category)
+              <li><a=href="{{$category->href}}">{{$category->name}}</li>
+            @endforeach
           </ul>
         </div>
         
