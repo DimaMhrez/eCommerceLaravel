@@ -12,7 +12,7 @@
 */
 
 Route::get('/', 'FrontEndController@index');
-
+Route::get('/about','FrontEndController@about');
 
 
 Auth::routes();
@@ -22,6 +22,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');*/
 
 
+
+/* BACKEND /*
 /* rotte di prova */
 
 Route::get('/admin',function (){
@@ -34,6 +36,7 @@ Route::get('/admin',function (){
 
 
 Route::get('/admin/users', 'BackendController@users');
+
 
 
 

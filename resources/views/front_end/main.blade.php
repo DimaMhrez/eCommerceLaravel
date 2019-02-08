@@ -76,7 +76,7 @@
       <div class="search-cate">
         <select class="selectpicker">
           <option> All Categories</option>
-          @foreach ($categories as $category)
+          @foreach ($data['categories'] as $category)
             <option>{{$category->name}}</option>
           @endforeach
         </select>
@@ -106,13 +106,13 @@
     <!-- Nav -->
     <nav class="navbar ownmenu">
       <div class="container"> 
-        
+
         <!-- Categories -->
         <div class="cate-lst"> <a  data-toggle="collapse" class="cate-style" href="#cater"><i class="fa fa-list-ul"></i> Our Categories </a>
           <div class="cate-bar-in">
             <div id="cater" class="collapse">
               <ul>
-                @foreach($categories as $category)
+                @foreach($data['categories'] as $category)
                 <li><a href="{{$category->href}}">{{$category->name}}</a></li>
                 @endforeach
 
@@ -206,14 +206,14 @@
                 <li><a href="Blog_details.html">Blog Single </a></li>
               </ul>
             </li> -->
-              @foreach($main_menus as $menu)
+              @foreach($data['main_menus'] as $menu)
             <li> <a href="{{$menu->URL}}">{{$menu->name}} </a></li>
               @endforeach
           </ul>
         </div>
         
         <!-- NAV RIGHT -->
-        <div class="nav-right"> <span class="call-mun"><i class="fa fa-phone"></i> <strong>Hotline:</strong> (+100) 123 456 7890</span> </div>
+        <div class="nav-right"> <span class="call-mun"><i class="fa fa-phone"></i> <strong>Supporto:</strong> (123) 4567</span> </div>
       </div>
     </nav>
   </header>
@@ -261,10 +261,9 @@
         <!-- Contact -->
         <div class="col-md-4">
           <h4>Contact SmartTech!</h4>
-          <p>Address: 45 Grand Central Terminal New York, NY 1017
-            United State USA</p>
-          <p>Phone: (+100) 123 456 7890</p>
-          <p>Email: Support@smarttech.com</p>
+          <p>Address: {{$data['ourbrand']->location}}</p>
+          <p>Phone: {{$data['ourbrand']->phoneNumber}}</p>
+          <p>Email: {{$data['ourbrand']->email}}</p>
           <div class="social-links"> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> <a href="#."><i class="fa fa-pinterest"></i></a> <a href="#."><i class="fa fa-instagram"></i></a> <a href="#."><i class="fa fa-google"></i></a> </div>
         </div>
         
@@ -272,7 +271,7 @@
         <div class="col-md-3">
           <h4>Categories</h4>
           <ul class="links-footer">
-            @foreach($categories as $category)
+            @foreach($data['categories'] as $category)
               <li><a=href="{{$category->href}}">{{$category->name}}</li>
             @endforeach
           </ul>
