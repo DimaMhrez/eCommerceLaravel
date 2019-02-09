@@ -17,16 +17,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot() {
 
-        $menu = MainMenu::OrderBy('Order', 'asc')->get();
-        $cat = Category::OrderBy('sortOrder', 'asc')->get();
-        $brand = Brand::find(1);
-
-        $data = array(
-            'main_menus' => $menu,
-            'categories' => $cat,
-            'ourbrand' => $brand,
-        );
-
 
 
         View::share('data', $data);

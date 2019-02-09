@@ -47,8 +47,8 @@
       <p>Welcome to SmartTech center!</p>
       <div class="right-sec">
         <ul>
-          <li><a href="#.">Store Location </a></li>
-          <li><a href="#.">FAQ </a></li>
+          <li><a href="/about">Store Location </a></li>
+          <li><a href="/about">FAQ </a></li>
           <li><a href="#.">Newsletter </a></li>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
@@ -64,8 +64,6 @@
             </form>
           @endauth
         </ul>
-        <div class="social-top"> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> <a href="#."><i class="fa fa-dribbble"></i></a> <a href="#."><i class="fa fa-pinterest"></i></a> </div>
-      </div>
     </div>
   </div>
   
@@ -86,18 +84,15 @@
       
       <!-- Cart Part -->
       <ul class="nav navbar-right cart-pop">
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">3</span> <i class="flaticon-shopping-bag"></i> <strong>My Cart</strong> <br>
-          <span>3 item(s) - $500.00</span></a>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">{{$data['cartnumber']}}</span> <i class="flaticon-shopping-bag"></i> <strong>My Cart</strong> <br>
+          <span>{{$data['cartnumber']}} items - {{$data['totalprice']}}</span></a>
           <ul class="dropdown-menu">
             <li>
-              <div class="media-left"> <a href="#." class="thumb"> <img src="{{ asset('front_end/images/item-img-1-1.jpg') }}" class="img-responsive" alt="" > </a> </div>
-              <div class="media-body"> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> <span>250 x 1</span> </div>
+              @foreach($data['cartproducts'] as $cartitem)
+              <div class="media-left"> <a href="#." class="thumb"> <img src="{{ $cartitem->name }}" class="img-responsive" alt="" > </a> </div>
+              <div class="media-body"> <a href="#." class="tittle">{{ $cartitem->name }}</a> <span>€{{$cartitem->normalPrice}}</span> </div>
             </li>
-            <li>
-              <div class="media-left"> <a href="#." class="thumb"> <img src="{{ asset('front_end/images/item-img-1-2.jpg') }}" class="img-responsive" alt="" > </a> </div>
-              <div class="media-body"> <a href="#." class="tittle">Funda Para Ebook 7" full HD</a> <span>250 x 1</span> </div>
-            </li>
-            <li class="btn-cart"> <a href="#." class="btn-round">View Cart</a> </li>
+              @endforeach
           </ul>
         </li>
       </ul>
