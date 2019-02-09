@@ -15,16 +15,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-
     public function boot() {
 
-            View::share('menus', MainMenu::OrderBy('Order', 'asc')->get());
-
-            View::share('categories', Category::OrderBy('sortOrder', 'asc')->get());
-
     }
-
-
 
     /**
      * Register any application services.

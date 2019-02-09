@@ -1,5 +1,4 @@
 @extends('front_end.main')
-
 @section('content')
 
     <!-- Content -->
@@ -57,15 +56,15 @@
                                 <!-- Conatct Infomation -->
                                 <div class="col-md-4">
                                     <div class="contact-info">
-                                        <h5>nome}</h5>
-                                        <p>descrizione}</p>
+                                        <h5>{{$data['ourbrand']->name}}</h5>
+                                        <p>{{$data['ourbrand']->description}}</p>
                                         <hr>
                                         <h6> Indirizzo:</h6>
-                                        <p>indirizzo</p>
+                                        <p>{{$data['ourbrand']->location}}</p>
                                         <h6>Numero di Telefono:</h6>
-                                        <p>numero</p>
+                                        <p>{{$data['ourbrand']->phoneNumber}}</p>
                                         <h6>Email:</h6>
-                                        <p>email</p>
+                                        <p>{{$data['ourbrand']->email}}</p>
                                     </div>
                                 </div>
                             </div>
