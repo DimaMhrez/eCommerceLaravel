@@ -47,8 +47,8 @@
       <p>Welcome to SmartTech center!</p>
       <div class="right-sec">
         <ul>
-          <li><a href="/about">Store Location </a></li>
-          <li><a href="/about">FAQ </a></li>
+          <li><a href="#.">Store Location </a></li>
+          <li><a href="#.">FAQ </a></li>
           <li><a href="#.">Newsletter </a></li>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
@@ -64,6 +64,8 @@
             </form>
           @endauth
         </ul>
+        <div class="social-top"> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> <a href="#."><i class="fa fa-dribbble"></i></a> <a href="#."><i class="fa fa-pinterest"></i></a> </div>
+      </div>
     </div>
   </div>
   
@@ -84,15 +86,7 @@
       
       <!-- Cart Part -->
       <ul class="nav navbar-right cart-pop">
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">numero items</span> <i class="flaticon-shopping-bag"></i> <strong>My Cart</strong> <br>
-          <span>0 items - 0 euro</span></a>
-          <ul class="dropdown-menu">
-            <li>
-             <!--
-              <div class="media-left"> <a href="#." class="thumb"> <img src="file" class="img-responsive" alt="" > </a> </div>
-              <div class="media-body"> <a href="#." class="tittle">Nome</a> <span>€Prezzo</span> </div>
-            </li>
-             -->
+
           </ul>
         </li>
       </ul>
