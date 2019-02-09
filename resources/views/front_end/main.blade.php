@@ -74,7 +74,7 @@
       <div class="search-cate">
         <select class="selectpicker">
           <option> All Categories</option>
-          @foreach ($data['categories'] as $category)
+          @foreach ($categories as $category)
             <option>{{$category->name}}</option>
           @endforeach
         </select>
@@ -84,15 +84,15 @@
       
       <!-- Cart Part -->
       <ul class="nav navbar-right cart-pop">
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">{{$data['cartnumber']}}</span> <i class="flaticon-shopping-bag"></i> <strong>My Cart</strong> <br>
-          <span>{{$data['cartnumber']}} items - {{$data['totalprice']}}</span></a>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">numero items</span> <i class="flaticon-shopping-bag"></i> <strong>My Cart</strong> <br>
+          <span>0 items - 0 euro</span></a>
           <ul class="dropdown-menu">
             <li>
-              @foreach($data['cartproducts'] as $cartitem)
-              <div class="media-left"> <a href="#." class="thumb"> <img src="{{ $cartitem->name }}" class="img-responsive" alt="" > </a> </div>
-              <div class="media-body"> <a href="#." class="tittle">{{ $cartitem->name }}</a> <span>€{{$cartitem->normalPrice}}</span> </div>
+             <!--
+              <div class="media-left"> <a href="#." class="thumb"> <img src="file" class="img-responsive" alt="" > </a> </div>
+              <div class="media-body"> <a href="#." class="tittle">Nome</a> <span>€Prezzo</span> </div>
             </li>
-              @endforeach
+             -->
           </ul>
         </li>
       </ul>
@@ -107,7 +107,7 @@
           <div class="cate-bar-in">
             <div id="cater" class="collapse">
               <ul>
-                @foreach($data['categories'] as $category)
+                @foreach($categories as $category)
                 <li><a href="{{$category->href}}">{{$category->name}}</a></li>
                 @endforeach
 
@@ -201,7 +201,7 @@
                 <li><a href="Blog_details.html">Blog Single </a></li>
               </ul>
             </li> -->
-              @foreach($data['main_menus'] as $menu)
+              @foreach($menus as $menu)
             <li> <a href="{{$menu->URL}}">{{$menu->name}} </a></li>
               @endforeach
           </ul>
@@ -256,9 +256,9 @@
         <!-- Contact -->
         <div class="col-md-4">
           <h4>Contact SmartTech!</h4>
-          <p>Address: {{$data['ourbrand']->location}}</p>
-          <p>Phone: {{$data['ourbrand']->phoneNumber}}</p>
-          <p>Email: {{$data['ourbrand']->email}}</p>
+          <p>Address: Luogo</p>
+          <p>Phone: Numero</p>
+          <p>Email: Email</p>
           <div class="social-links"> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> <a href="#."><i class="fa fa-pinterest"></i></a> <a href="#."><i class="fa fa-instagram"></i></a> <a href="#."><i class="fa fa-google"></i></a> </div>
         </div>
         
@@ -266,7 +266,7 @@
         <div class="col-md-3">
           <h4>Categories</h4>
           <ul class="links-footer">
-            @foreach($data['categories'] as $category)
+            @foreach($categories as $category)
               <li><a=href="{{$category->href}}">{{$category->name}}</li>
             @endforeach
           </ul>
