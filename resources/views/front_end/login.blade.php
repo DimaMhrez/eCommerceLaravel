@@ -41,9 +41,9 @@
                                         <input id="password" type="password" class="form-control{{ $errors->has('password1') ? ' is-invalid' : '' }}" name="password" required>
                                     </label>
                                     @if ($errors->has('password'))
-                                         <div class="alert alert-danger">
-                                             <strong>{{ $errors->first('password1') }}</strong>
-                                         </div>
+                                        <div class="alert alert-danger">
+                                            <strong>{{ $errors->first('password1') }}</strong>
+                                        </div>
                                     @endif
                                 </li>
                                 <li class="col-sm-6">
@@ -62,4 +62,5 @@
                 </div>
             </div>
         </section>
+    </div>
 @endsection
