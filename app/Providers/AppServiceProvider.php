@@ -20,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot() {
 
+        //Questo crea la composizione del carrello.
+        View::composer('*', 'App\Http\View\Composers\CartComposer');
+
         View::share('main_menus', MainMenu::OrderBy('Order', 'asc')->get());
 
         View::share('categories', Category::OrderBy('sortOrder', 'asc')->get());

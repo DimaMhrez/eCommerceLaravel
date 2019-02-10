@@ -213,7 +213,7 @@
         </div>
 
         <!-- NAV RIGHT -->
-        <div class="nav-right"> <span class="call-mun"><i class="fa fa-phone"></i> <strong>Hotline:</strong> {{$ourbrand->phoneNumber}}</span> </div>
+        <div class="nav-right"> <span class="call-mun"><i class="fa fa-phone"></i> <strong>Supporto:</strong> {{$ourbrand->phoneNumber}}</span> </div>
       </div>
     </nav>
   </header>
@@ -225,12 +225,12 @@
     <div class="container">
       <div class="row">
         <div class="col-md-6">
-          <h3>Subscribe our Newsletter <span>Get <strong>25% Off</strong> first purchase!</span></h3>
+          <h3>Iscriviti alla Newsletter <span>Get <strong>25% di sconto</strong> sul primo acquisto!</span></h3>
         </div>
         <div class="col-md-6">
           <form>
             <input type="email" placeholder="Your email address here...">
-            <button type="submit">Subscribe!</button>
+            <button type="submit">Iscriviti!</button>
           </form>
         </div>
       </div>
@@ -246,9 +246,9 @@
     <!-- Footer Upside Links -->
     <div class="foot-link">
       <ul>
-        <li><a href="/about"> About us </a></li>
-        <li><a href="/about"> Customer Service </a></li>
-        <li><a href="/about"> Contact Us</a></li>
+        <li><a href="/about"> Chi Siamo </a></li>
+        <li><a href="/about"> Servizio Clienti </a></li>
+        <li><a href="/about"> Contattaci</a></li>
       </ul>
     </div>
     <div class="row">
@@ -273,22 +273,22 @@
 
       <!-- Categories -->
       <div class="col-md-3">
-        <h4>Customer Services</h4>
+        <h4>Servizi per il cliente</h4>
         <ul class="links-footer">
-          <li><a href="#.">Shipping & Returns</a></li>
-          <li><a href="#."> Secure Shopping</a></li>
-          <li><a href="#."> International Shipping</a></li>
-          <li><a href="#."> Affiliates</a></li>
-          <li><a href="#."> Contact </a></li>
+          <li><a href="#.">Spedizioni</a></li>
+          <li><a href="#."> Shopping sicuro</a></li>
+          <li><a href="#."> Spedizioni internazionali</a></li>
+          <li><a href="#."> Affiliati</a></li>
+          <li><a href="#."> Contatti </a></li>
         </ul>
       </div>
 
       <!-- Categories -->
       <div class="col-md-2">
-        <h4>Information</h4>
+        <h4>Informazioni</h4>
         <ul class="links-footer">
-          <li><a href="#.">Our Blog</a></li>
-          <li><a href="/about"> About Our Shop</a></li>
+          <li><a href="#.">Il nostro blog</a></li>
+          <li><a href="/about"> Chi Siamo</a></li>
           <li><a href="/about"> FAQs</a></li>
         </ul>
       </div>

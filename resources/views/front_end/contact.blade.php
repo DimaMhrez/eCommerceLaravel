@@ -9,8 +9,8 @@
         <div class="linking">
             <div class="container">
                 <ol class="breadcrumb">
-                    <li><a href="#">Home</a></li>
-                    <li class="active">Contact</li>
+                    <li><a href="/">Home</a></li>
+                    <li class="active">Contattaci</li>
                 </ol>
             </div>
         </div>
@@ -34,17 +34,17 @@
                                     </div>
                                     <ul class="row">
                                         <li class="col-sm-6">
-                                            <label>First Name
+                                            <label>Nome
                                                 <input type="text" class="form-control" name="name" id="name" placeholder="">
                                             </label>
                                         </li>
                                         <li class="col-sm-6">
-                                            <label>Last Name
+                                            <label>Cognome
                                                 <input type="text" class="form-control" name="email" id="email" placeholder="">
                                             </label>
                                         </li>
                                         <li class="col-sm-12">
-                                            <label>Message
+                                            <label>Messaggio
                                                 <textarea class="form-control" name="message" id="message" rows="5" placeholder=""></textarea>
                                             </label>
                                         </li>
@@ -57,15 +57,15 @@
                                 <!-- Conatct Infomation -->
                                 <div class="col-md-4">
                                     <div class="contact-info">
-                                        <h5>nome}</h5>
-                                        <p>descrizione}</p>
+                                        <h5>{{$ourbrand->name}}</h5>
+                                        <p>{{$ourbrand->description}}</p>
                                         <hr>
                                         <h6> Indirizzo:</h6>
-                                        <p>indirizzo</p>
+                                        <p>{{$ourbrand->location}}</p>
                                         <h6>Numero di Telefono:</h6>
-                                        <p>numero</p>
+                                        <p>{{$ourbrand->phoneNumber}}</p>
                                         <h6>Email:</h6>
-                                        <p>email</p>
+                                        <p>{{$ourbrand->email}}</p>
                                     </div>
                                 </div>
                             </div>
