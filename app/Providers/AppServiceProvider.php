@@ -2,11 +2,13 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use App\MainMenu;
 use App\Category;
-use Illuminate\Support\Facades\View;
 use App\Brand;
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\DB;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
         View::share('main_menus', MainMenu::OrderBy('Order', 'asc')->get());
 
         View::share('categories', Category::OrderBy('sortOrder', 'asc')->get());
+
+        View::share('ourbrand', Brand::find(1));
+
+        //Otteniamo l'ID dell'utente loggato, e di conseguenza il suo carrello. Non so se questo deve stare qui, magari si sposta.
+
 
     }
 

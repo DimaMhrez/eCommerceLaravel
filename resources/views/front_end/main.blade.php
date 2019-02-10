@@ -5,7 +5,7 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="author" content="M_Adnan" />
   <!-- Document Title -->
-  <title>Smart Tech eCommerce</title>
+  <title>{{$ourbrand->name}}</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" href="{{ asset('front_end/images/favicon.ico') }}" type="image/x-icon">
@@ -47,9 +47,9 @@
       <p>Welcome to SmartTech center!</p>
       <div class="right-sec">
         <ul>
-          <li><a href="#.">Store Location </a></li>
-          <li><a href="#.">FAQ </a></li>
-          <li><a href="#.">Newsletter </a></li>
+          <li><a href="/about">Store Location </a></li>
+          <li><a href="/about">FAQ </a></li>
+          <li><a href="/about">Newsletter </a></li>
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
           </form>
@@ -85,20 +85,21 @@
       </div>
 
       <!-- Cart Part -->
+        @if(!Auth::guest())
       <ul class="nav navbar-right cart-pop">
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">3</span> <i class="flaticon-shopping-bag"></i> <strong>My Cart</strong> <br>
-            <span>3 item(s) - $500.00</span></a>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">{{$cartnumber}}</span> <i class="flaticon-shopping-bag"></i> <strong>Il mio carrello</strong> <br>
+            <span>{{$cartnumber}} item(s)</span></a>
+            @if($cartnumber!=0)
           <ul class="dropdown-menu">
+           @foreach($cartitems as $item)
             <li>
               <div class="media-left"> <a href="#." class="thumb"> <img src="{{ asset('front_end/images/item-img-1-1.jpg') }}" class="img-responsive" alt="" > </a> </div>
-              <div class="media-body"> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a> <span>250 x 1</span> </div>
+              <div class="media-body"> <a href="#." class="tittle">{{$item->name}}</a> <span>{{$item->normalPrice}}</span> </div>
             </li>
-            <li>
-              <div class="media-left"> <a href="#." class="thumb"> <img src="{{ asset('front_end/images/item-img-1-2.jpg') }}" class="img-responsive" alt="" > </a> </div>
-              <div class="media-body"> <a href="#." class="tittle">Funda Para Ebook 7" full HD</a> <span>250 x 1</span> </div>
-            </li>
-            <li class="btn-cart"> <a href="#." class="btn-round">View Cart</a> </li>
+           @endforeach
+           @endif
           </ul>
+        @endif
         </li>
       </ul>
     </div>
@@ -108,7 +109,7 @@
       <div class="container">
 
         <!-- Categories -->
-        <div class="cate-lst"> <a  data-toggle="collapse" class="cate-style" href="#cater"><i class="fa fa-list-ul"></i> Our Categories </a>
+        <div class="cate-lst"> <a  data-toggle="collapse" class="cate-style" href="#cater"><i class="fa fa-list-ul"></i> Le nostre categorie </a>
           <div class="cate-bar-in">
             <div id="cater" class="collapse">
               <ul>
@@ -212,7 +213,7 @@
         </div>
 
         <!-- NAV RIGHT -->
-        <div class="nav-right"> <span class="call-mun"><i class="fa fa-phone"></i> <strong>Hotline:</strong> (+100) 123 456 7890</span> </div>
+        <div class="nav-right"> <span class="call-mun"><i class="fa fa-phone"></i> <strong>Hotline:</strong> {{$ourbrand->phoneNumber}}</span> </div>
       </div>
     </nav>
   </header>
@@ -245,31 +246,24 @@
     <!-- Footer Upside Links -->
     <div class="foot-link">
       <ul>
-        <li><a href="#."> About us </a></li>
-        <li><a href="#."> Customer Service </a></li>
-        <li><a href="#."> Privacy Policy </a></li>
-        <li><a href="#."> Site Map </a></li>
-        <li><a href="#."> Search Terms </a></li>
-        <li><a href="#."> Advanced Search </a></li>
-        <li><a href="#."> Orders and Returns </a></li>
-        <li><a href="#."> Contact Us</a></li>
+        <li><a href="/about"> About us </a></li>
+        <li><a href="/about"> Customer Service </a></li>
+        <li><a href="/about"> Contact Us</a></li>
       </ul>
     </div>
     <div class="row">
 
       <!-- Contact -->
       <div class="col-md-4">
-        <h4>Contact SmartTech!</h4>
-        <p>Address: 45 Grand Central Terminal New York, NY 1017
-          United State USA</p>
-        <p>Phone: (+100) 123 456 7890</p>
-        <p>Email: Support@smarttech.com</p>
-        <div class="social-links"> <a href="#."><i class="fa fa-facebook"></i></a> <a href="#."><i class="fa fa-twitter"></i></a> <a href="#."><i class="fa fa-linkedin"></i></a> <a href="#."><i class="fa fa-pinterest"></i></a> <a href="#."><i class="fa fa-instagram"></i></a> <a href="#."><i class="fa fa-google"></i></a> </div>
+        <h4>Contattaci!</h4>
+        <p>Address: {{$ourbrand->location}}</p>
+        <p>Phone: {{$ourbrand->phoneNumber}}</p>
+        <p>Email: {{$ourbrand->email}}</p>
       </div>
 
       <!-- Categories -->
       <div class="col-md-3">
-        <h4>Categories</h4>
+        <h4>Categorie</h4>
         <ul class="links-footer">
           @foreach($categories as $category)
             <li><a href="{{$category->href}}">{{$category->name}}</a></li>
@@ -294,11 +288,8 @@
         <h4>Information</h4>
         <ul class="links-footer">
           <li><a href="#.">Our Blog</a></li>
-          <li><a href="#."> About Our Shop</a></li>
-          <li><a href="#."> Secure Shopping</a></li>
-          <li><a href="#."> Delivery infomation</a></li>
-          <li><a href="#."> Store Locations</a></li>
-          <li><a href="#."> FAQs</a></li>
+          <li><a href="/about"> About Our Shop</a></li>
+          <li><a href="/about"> FAQs</a></li>
         </ul>
       </div>
     </div>
