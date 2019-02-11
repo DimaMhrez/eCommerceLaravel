@@ -13,10 +13,10 @@
 
 Route::get('/', 'FrontEndController@index');
 Route::get('/about','FrontEndController@about');
+Route::get('/store','MessageController@store');
 
 
 Auth::routes();
-
 
 /*
 Route::get('/home', 'HomeController@index')->name('home');*/
@@ -36,6 +36,10 @@ Route::get('/admin',function (){
 
 
 Route::get('/admin/users', 'BackendController@users');
+Route::resource('message','MessageController');
+
+
+
 
 
 

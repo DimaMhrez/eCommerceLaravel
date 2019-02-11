@@ -24,37 +24,33 @@
                 <div class="contact">
                     <div class="contact-form">
                         <!-- FORM  -->
-                        <form role="form" id="contact_form" class="contact-form" method="post" onSubmit="return false">
+                        {!!  Form::open(['action'=>'MessageController@store','method'=>'POST', 'id' => 'contact_form', 'class'=>'contact-form']) !!}
                             <div class="row">
                                 <div class="col-md-8">
-
-                                    <!-- Payment information -->
                                     <div class="heading">
                                         <h2>Hai una domanda per noi?</h2>
                                     </div>
                                     <ul class="row">
                                         <li class="col-sm-6">
-                                            <label>Nome
-                                                <input type="text" class="form-control" name="name" id="name" placeholder="">
-                                            </label>
+                                            <label>{{Form::label('nome','Nome')}}</label>
+                                                {{Form::text('nome', '', ['class' => 'form-control'])}}
                                         </li>
                                         <li class="col-sm-6">
-                                            <label>Cognome
-                                                <input type="text" class="form-control" name="email" id="email" placeholder="">
-                                            </label>
+                                            <label>{{Form::label('email','Email')}}</label>
+                                                {{Form::text('email', '', ['class' => 'form-control', 'placeholder' => 'La tua email'])}}
                                         </li>
                                         <li class="col-sm-12">
-                                            <label>Messaggio
-                                                <textarea class="form-control" name="message" id="message" rows="5" placeholder=""></textarea>
-                                            </label>
+                                            <label>{{Form::label('messaggio','Messaggio')}}</label>
+                                                {{Form::textarea('messaggio','', ['class' => 'form-control'])}}
                                         </li>
-                                        <li class="col-sm-12 no-margin">
-                                            <button type="submit" value="submit" class="btn-round" id="btn_submit" onClick="proceed();">Send Message</button>
-                                        </li>
+                                        {{Form::submit('Invia Messaggio', ['class' => 'btn-round'])}}
+
                                     </ul>
+                                    {!! Form::close() !!}
+
                                 </div>
 
-                                <!-- Conatct Infomation -->
+                                <!-- Contact Infomation -->
                                 <div class="col-md-4">
                                     <div class="contact-info">
                                         <h5>{{$ourbrand->name}}</h5>
