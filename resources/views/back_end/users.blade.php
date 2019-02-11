@@ -12,7 +12,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h4 class="card-title">DataTables.net</h4>
+                            <h4 class="card-title">Users</h4>
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
@@ -23,7 +23,7 @@
                                     <table class="table table-bordered" id="users-table">
                                         <thead>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>Id num</th>
                                             <th>Name</th>
                                             <th>Email</th>
                                             <th>Created At</th>
@@ -47,6 +47,10 @@
     <script>
         $(function() {
             $('#users-table').DataTable({
+                lengthMenu: [
+                    [10, 25, 50, 100, -1],
+                    [10, 25, 50, 100, "All"]
+                ],
                 processing: true,
                 serverSide: true,
                 ajax: '{!! route('datatables.data') !!}',
@@ -55,9 +59,32 @@
                     { data: 'name', name: 'name' },
                     { data: 'email', name: 'email' },
                     { data: 'created_at', name: 'created_at' },
-                    { data: 'updated_at', name: 'updated_at' }
-                ]
+                    { data: 'updated_at', name: 'updated_at' },
+                ],
+
             });
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+            var table = $('#users-table').DataTable();
+
+            $('#users-table tbody').on( 'click', 'tr', function () {
+
+                //deselezione riga
+                if ( $(this).hasClass('selected') ) {
+                    $(this).removeClass('selected');
+                }
+
+                //selzione riga
+                else {
+                    table.$('tr.selected').removeClass('selected');
+                    $(this).addClass('selected');
+
+                }
+            } );
+
+        } );
+
     </script>
 @endpush
