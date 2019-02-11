@@ -38,6 +38,9 @@ Route::get('/admin',function (){
 Route::get('/admin/users', 'BackendController@users');
 Route::resource('message','MessageController');
 
+Route::get('/datatable','DatatablesController@getIndex');
+Route::get('/anyData','DatatablesController@anyData')->name('datatables.data');
+
 
 
 
