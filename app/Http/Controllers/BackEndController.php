@@ -36,6 +36,9 @@ class BackEndController extends Controller
 
     public function anyData()
     {
-        return Datatables::of(User::query())->make(true);
+        return Datatables::of(User::query()->select('id','name','email'))->make(true);
+        //return Datatables::of(User::)
+
+        //return Datatables::eloquent(User::query())->make(true);
     }
 }
