@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 
-
+use Illuminate\Support\Facades\DB;
 use App\Product;
+
 
 class FrontEndController extends Controller
 {
@@ -13,16 +14,15 @@ class FrontEndController extends Controller
     {
         //Prepara i prodotti da mostrare.
         $ShowcaseItems=Product::where('showcase','1')->take(3)->get();
-        $FeaturedItems=Product::where('featured','1')->take(5)->get();
+        $FeaturedItems=Product::where('featured','1')->take(15)->get();
         $SpecialItems=Product::where('special','1')->take(5)->get();
         $onSaleItems=Product::whereNotNull('sale_id');
-
 
         $data=array(
             'Showcase' => $ShowcaseItems,
             'Featured' => $FeaturedItems,
             'Special' => $SpecialItems,
-            'Sale' => $onSaleItems
+            'Sale' => $onSaleItems,
         );
 
 

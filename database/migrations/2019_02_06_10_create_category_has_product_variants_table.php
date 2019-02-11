@@ -18,10 +18,10 @@ class CreateCategoryHasProductVariantsTable extends Migration
             $table->timestamps();
 
             $table->unsignedInteger('category_id');
-            $table->unsignedInteger('product_variant_id');
+            $table->unsignedInteger('product_id');
 
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('product_variant_id')->references('id')->on('product_variants');
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

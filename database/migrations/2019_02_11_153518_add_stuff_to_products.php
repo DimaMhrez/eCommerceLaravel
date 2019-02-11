@@ -18,6 +18,8 @@ class AddStuffToProducts extends Migration
             $table->boolean('showcase')->default('1');
             $table->boolean('featured')->default('1');
             $table->boolean('special')->default('0');
+            $table->integer('reviewsnumber')->default('0');
+            $table->tinyInteger('rate')->nullable();
         });
     }
 
@@ -32,6 +34,7 @@ class AddStuffToProducts extends Migration
             $table->dropColumn('showcase');
             $table->dropColumn('featured');
             $table->dropColumn('special');
+
         });
     }
 }
