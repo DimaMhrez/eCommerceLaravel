@@ -332,10 +332,6 @@
 @yield('otherScript')
 
 <!-- invocazione logout -->
-<script>
-  function prova() {
-    alert("ciao");
-  }
-</script>
+
 </body>
 </html>

@@ -23,8 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');*/
 
 
 
-/* BACKEND /*
-/* rotte di prova */
 
 Route::get('/admin',function (){
     return view('back_end.index');
@@ -35,11 +33,12 @@ Route::get('/admin',function (){
 });
 
 
-Route::get('/admin/users', 'BackendController@users');
+Route::get('/admin/users','BackEndController@getUsers');
 Route::resource('message','MessageController');
 
-Route::get('/datatable','DatatablesController@getIndex');
-Route::get('/anyData','DatatablesController@anyData')->name('datatables.data');
+//rotta di prova serve a stampare in JSON tutti gli utenti che sono nel DB
+// che riempiono poi la tabella del back_end TIENIAMOLA COMMENTATA E' PERICOLOSA PERCHE' MOSTRA LE PASSWORD
+//Route::get('/anyData','BackEndController@anyData')->name('datatables.data');
 
 
 

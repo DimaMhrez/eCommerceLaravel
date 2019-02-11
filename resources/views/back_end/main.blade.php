@@ -18,6 +18,8 @@
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('back_end/demo/demo.css" rel="stylesheet') }}" />
 
+    @stack('css')
+
 </head>
 
 <body class="">
@@ -884,6 +886,8 @@
 
     });
 </script>
+
+@stack('scripts')
 </body>
 
 </html>
