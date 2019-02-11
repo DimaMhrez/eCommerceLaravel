@@ -38,7 +38,7 @@ Route::resource('message','MessageController');
 
 //rotta di prova serve a stampare in JSON tutti gli utenti che sono nel DB
 // che riempiono poi la tabella del back_end
-//DA VIETARE L'UTILIZZO DA PARTE DEGLI UTENTI 
+//DA VIETARE L'UTILIZZO DA PARTE DEGLI UTENTI
 Route::get('/anyData','BackEndController@anyData')->name('datatables.data');
 
 
