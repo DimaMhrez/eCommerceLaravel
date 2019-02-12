@@ -8,9 +8,9 @@
         <section>
             <div class="container">
                 <div class="order-success error-page"> <img src="images/error-img.jpg" alt="" >
-                    <h3>Error <span>404</span> Not Found</h3>
-                    <p>We’re sorry but the page you are looking for does nor exist.<br>
-                        You could return to <a href="#.">homepage</a> or using <a href="#.">search!</a></p>
+                    <h3>Errore <span>404</span> Pagina non trovata</h3>
+                    <p>Ci dispiace, ma la pagina che stai cercando non esiste.<br>
+                        Puoi tornare alla <a href="/">homepage</a> o usare la barra di ricerca.</p>
                 </div>
             </div>
         </section>

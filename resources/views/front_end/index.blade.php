@@ -238,7 +238,7 @@
                                              data-endelementdelay="0.1"
                                              data-endspeed="300"
                                              data-scrolloffset="0"
-                                             style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a> </div>
+                                             style="z-index: 8;"><a href="/products/1" class="btn-round big">Shop Now</a> </div>
                                     </li>
                                 </ul>
                             </div>
@@ -332,14 +332,14 @@
                             <div class="product">
                                 <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-1.jpg') }}" alt="" >
                                     <!-- Content -->
-                                    <span class="tag">Latop</span> <a href="#." class="tittle">{{$Fitem->name}}</a>
+                                    <span class="tag">Latop</span> <a href="/products/{{$Fitem->id}}" class="tittle">{{$Fitem->name}}</a>
                                     <!-- Reviews -->
                                     <p class="rev"><span class="margin-left-10">{{$Fitem->reviewsnumber}} Recensioni</span></p>
                                    @if (!empty($Fitem->rate))
                                     <p class="rev"><span class="margin-left-10">{{$Fitem->rate}} Voto Medio</span></p>
                                     @endif
                                     <div class="price">€{{$Fitem->normalPrice}}.00 </div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="/products/{{$Fitem->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                             </div>
                             @endforeach
                         </div>
@@ -354,14 +354,14 @@
                             <div class="product">
                                 <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-11.jpg') }}" alt="" >
                                     <!-- Content -->
-                                    <span class="tag">Latop</span> <a href="#." class="tittle">{{$Sitem->name}}</a>
+                                    <span class="tag">Latop</span> <a href="/products/{{$Sitem->id}}" class="tittle">{{$Sitem->name}}</a>
                                     <!-- Reviews -->
                                     <p class="rev"> <span class="margin-left-10">{{$Sitem->reviewsnumber}} Recensioni </span></p>
                                     @if (!empty($Sitem->rate))
                                         <p class="rev"><span class="margin-left-10">{{$Sitem->rate}} Voto Medio</span></p>
                                     @endif
                                     <div class="price">€{{$Sitem->normalPrice}}.00 </div>
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="/products/{{$Sitem->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                             </div>
                             @endforeach
                         </div>
@@ -376,14 +376,14 @@
                             <div class="product">
                                 <article> <img class="img-responsive" src="images/item-img-1-3.jpg" alt="" >
                                     <!-- Content -->
-                                    <span class="tag">Category </span> <a href="#." class="tittle">{{$onsaleitem->name}}</a>
+                                    <span class="tag">Category </span> <a href="/products/{{$onsalitem->id}}" class="tittle">{{$onsaleitem->name}}</a>
                                     <!-- Reviews -->
                                     <p class="rev"> <span class="margin-left-10">{{$onsaleitem->reviewsnumber}} Recensioni</span></p>
                                     <div class="price">€{{$onsaleitem->normalPrice}}.00 </div>
                                     @if (!empty($onsaleitem->rate))
                                         <p class="rev"><span class="margin-left-10">{{$onsaleitem->rate}} Voto Medio</span></p>
                                     @endif
-                                    <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                    <a href="/products/{{$onsaleitem->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                             </div>
                             @endforeach
                         </div>
@@ -425,7 +425,7 @@
                             <!-- Reviews -->
                             <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">{{$featured->reviewsnumber}} Recensioni</span></p>
                             <div class="price">{{$featured->normalPrice}} <span>{{$featured->normalPrice + 20}}</span></div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                            <a href="/products/{{$featured->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                     </div>
                     @endforeach
 
