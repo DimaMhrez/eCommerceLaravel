@@ -61,53 +61,11 @@
                             <h6>Valutazioni</h6>
                             <div class="rating">
                                 <ul>
-                                    <li><a href="#."><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i> <span>(218)</span></a></li>
-                                    <li><a href="#."><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span>(178)</span></a></li>
-                                    <li><a href="#."><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span>(79)</span></a></li>
-                                    <li><a href="#."><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span>(188)</span></a></li>
-                                </ul>
-                            </div>
-
-                            <!-- Colors -->
-                            <h6>Size</h6>
-                            <div class="sizes"> <a href="#.">S</a> <a href="#.">M</a> <a href="#.">L</a> <a href="#.">XL</a> </div>
-
-                            <!-- Colors -->
-                            <h6>Colors</h6>
-                            <div class="checkbox checkbox-primary">
-                                <ul>
-                                    <li>
-                                        <input id="colr1" class="styled" type="checkbox" >
-                                        <label for="colr1"> Red <span>(217)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input id="colr2" class="styled" type="checkbox" >
-                                        <label for="colr2"> Yellow <span> (179) </span> </label>
-                                    </li>
-                                    <li>
-                                        <input id="colr3" class="styled" type="checkbox" >
-                                        <label for="colr3"> Black <span>(79)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input id="colr4" class="styled" type="checkbox" >
-                                        <label for="colr4">Blue <span>(283) </span></label>
-                                    </li>
-                                    <li>
-                                        <input id="colr5" class="styled" type="checkbox" >
-                                        <label for="colr5"> Grey <span> (116)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input id="colr6" class="styled" type="checkbox" >
-                                        <label for="colr6"> Pink<span> (29) </span></label>
-                                    </li>
-                                    <li>
-                                        <input id="colr7" class="styled" type="checkbox" >
-                                        <label for="colr7"> White <span> (38)</span> </label>
-                                    </li>
-                                    <li>
-                                        <input id="colr8" class="styled" type="checkbox" >
-                                        <label for="colr8">Green <span>(205)</span></label>
-                                    </li>
+                                    <li><a href="#."><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><span>{{$productsdata['fivestars']->count()}}</span></a></li>
+                                    <li><a href="#."><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i> <span>{{$productsdata['fourstars']->count()}}</span></a></li>
+                                    <li><a href="#."><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span>{{$productsdata['threestars']->count()}}</span></a></li>
+                                    <li><a href="#."><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span>{{$productsdata['twostars']->count()}}</span></a></li>
+                                    <li><a href="#."><i class="fa fa-star"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i> <span>{{$productsdata['onestar']->count()}}</span></a></li>
                                 </ul>
                             </div>
                         </div>
@@ -134,7 +92,8 @@
                                     <div class="col-xs-7"> <span class="tags">{{$category->name}}</span>
 
                                         <h5>{{$productsdata['product']->name}}</h5>
-                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
+                                        <p class="rev">@for($i=0; $i<$productsdata['product']->rate && $i<5; ++$i)<i class="fa fa-star"></i></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor <span class="margin-left-10">{{$productsdata['product']->reviewsnumber}}
+                                                    Recensioni</span></p>
                                         <div class="row">
                                             <div class="col-sm-6"><span class="price">€{{$productsdata['product']->normalPrice}} </span></div>
                                             <div class="col-sm-6">
@@ -245,7 +204,36 @@
                                             </table>
                                         </div>
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="cus-rev"></div>
+                                    <div role="tabpanel" class="tab-pane fade" id="cus-rev">
+
+
+                                        <div class="table-responsive">
+                                            @foreach($productsdata['reviews'] as $review)
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th> <p class="rev">@for($i=0; $i<$review->rate && $i<5; ++$i)<i class="fa fa-star"></i></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor <span class="margin-left-10">
+                                                      {{$review->rate}} Stelle  </span></p>
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td><bold>{{$review->title}} - da {{$review->user}} </bold></td>
+
+                                                </tr>
+
+                                                <tr>
+                                                    <td>{{$review->description}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                                @endforeach
+
+                                        </div>
+
+
+                                    </div>
                                     <div role="tabpanel" class="tab-pane fade" id="ship"></div>
                                 </div>
                             </div>
@@ -269,7 +257,8 @@
                                         <!-- Reviews -->
                                         <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$related->reviewsnumber}} Recensioni</span></p>
                                         <div class="price">{{$related->normalPrice}} </div>
-                                        <a href="/products/{{$related->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                        <a href="/products/{{$related->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a>
+                                    </article>
                                 </div>
                                 @endforeach
 
