@@ -46,12 +46,62 @@ class FrontEndController extends Controller
             ->take(15)->get();
 
 
+            //Prendo i prodotti di diverse categorie.
+        $Tv=Product::select('products.*','categories.name as category')
+            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
+            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->where('categories.name','TV & Video')
+            ->select('products.*','categories.name as category')
+            ->take(5)->get();
+
+        $Smartphones=Product::select('products.*','categories.name as category')
+            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
+            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->where('categories.name','Smartphones')
+            ->select('products.*','categories.name as category')
+            ->take(5)->get();
+
+        $PC=Product::select('products.*','categories.name as category')
+            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
+            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->where('categories.name','PC')
+            ->select('products.*','categories.name as category')
+            ->take(5)->get();
+
+        $games=Product::select('products.*','categories.name as category')
+            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
+            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->where('categories.name','Video Games')
+            ->select('products.*','categories.name as category')
+            ->take(5)->get();
+
+
+        $watches=Product::select('products.*','categories.name as category')
+            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
+            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->where('categories.name','Watches')
+            ->select('products.*','categories.name as category')
+            ->take(5)->get();
+
+        $accessories=Product::select('products.*','categories.name as category')
+            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
+            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->where('categories.name','Accessories')
+            ->select('products.*','categories.name as category')
+            ->take(5)->get();
+
 
         $data=array(
             'Showcase' => $ShowcaseItems,
             'Featured' => $FeaturedItems,
             'Special' => $SpecialItems,
             'Sale' => $onSaleItems,
+            'tv' => $Tv,
+            'smartphones' => $Smartphones,
+            'pc' => $PC,
+            'games' => $games,
+            'watches' => $watches,
+            'accessories' => $accessories,
         );
 
 
@@ -103,7 +153,6 @@ class FrontEndController extends Controller
             $onestar=Review::where('product_id',$id)
                 ->where('rate',1)->take(5);
 
-
             $reviews=DB::select('select *,u.name as user from reviews,users u where reviews.user_id=u.id AND product_id='.$id);
             $messages=Message::find(3);
 
@@ -121,7 +170,7 @@ class FrontEndController extends Controller
                 'twostars' => $twostars,
                 'onestar' => $onestar,
                 'reviews' =>$reviews,
-                'message' =>$messages,
+
             );
 
             return view('front_end.productDetails')->with('productsdata',$productsdata);
