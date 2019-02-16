@@ -441,12 +441,12 @@
         <section class="main-tabs-sec padding-top-60 padding-bottom-0">
             <div class="container">
                 <ul class="nav margin-bottom-40" role="tablist">
-                    <li role="presentation" class="active"><a href="#tv-au" aria-controls="featur" role="tab" data-toggle="tab"> <i class="flaticon-computer"></i> TV & Audios <span>{{$data['tv']->count()}} Articoli</span></a></li>
-                    <li role="presentation"><a href="#smart" aria-controls="special" role="tab" data-toggle="tab"><i class="flaticon-smartphone"></i>Smartphones <span>{{$data['smartphones']->count()}} Articoli</span></a></li>
-                    <li role="presentation"><a href="#deks-lap" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-laptop"></i>Desk & Laptop <span>{{$data['pc']->count()}} Articoli</span></a></li>
-                    <li role="presentation"><a href="#game-com" aria-controls="special" role="tab" data-toggle="tab"><i class="flaticon-gamepad-1"></i>Game Console <span>{{$data['games']->count()}} Articoli</span></a></li>
-                    <li role="presentation"><a href="#watches" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-computer-1"></i>Watches <span>{{$data['watches']->count()}} Articoli</span></a></li>
-                    <li role="presentation"><a href="#access" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-keyboard"></i>Accessories <span>{{$data['accessories']->count()}} Articoli</span></a></li>
+                    <li role="presentation" class="active"><a href="#tv-au" aria-controls="featur" role="tab" data-toggle="tab"> <i class="flaticon-computer"></i> TV & Audio <span>{{$data['tv']->count()}} Articoli</span></a></li>
+                    <li role="presentation"><a href="#smart" aria-controls="special" role="tab" data-toggle="tab"><i class="flaticon-smartphone"></i>Smartphone <span>{{$data['smartphones']->count()}} Articoli</span></a></li>
+                    <li role="presentation"><a href="#deks-lap" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-laptop"></i>PC & Laptop <span>{{$data['pc']->count()}} Articoli</span></a></li>
+                    <li role="presentation"><a href="#game-com" aria-controls="special" role="tab" data-toggle="tab"><i class="flaticon-gamepad-1"></i>Game Consoles <span>{{$data['games']->count()}} Articoli</span></a></li>
+                    <li role="presentation"><a href="#watches" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-computer-1"></i> Orologi <span>{{$data['watches']->count()}} Articoli</span></a></li>
+                    <li role="presentation"><a href="#access" aria-controls="on-sal" role="tab" data-toggle="tab"><i class="flaticon-keyboard"></i>Accessori <span>{{$data['accessories']->count()}} Articoli</span></a></li>
                 </ul>
 
                 <!-- Tab panes -->
@@ -463,7 +463,7 @@
                                     <!-- Content -->
                                     <span class="tag">{{$tv->category}}</span> <a href="#." class="tittle">{{$tv->name}}</a>
                                     <!-- Reviews -->
-                                    <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$tv->reviewsnumber}} Review(s)</span></p>
+                                    <p class="rev">@for($i=0; $i<$tv->rate && $i<5; ++$i)<i class="fa fa-star"></i></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i>@endfor<span class="margin-left-10">{{$tv->reviewsnumber}} Recensioni</span></p>
                                     <div class="price">{{$tv->normalPrice}} </div>
                                     <a href="/products/{{$tv->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                             </div>
@@ -484,7 +484,7 @@
                                         <!-- Content -->
                                         <span class="tag">{{$smartphone->category}}</span> <a href="#." class="tittle">{{$smartphone->name}}</a>
                                         <!-- Reviews -->
-                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$smartphone->reviewsnumber}} Review(s)</span></p>
+                                        <p class="rev">@for($i=0; $i<$smartphone->rate && $i<5; ++$i)<i class="fa fa-star"></i></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i>@endfor<span class="margin-left-10">{{$smartphone->reviewsnumber}} Recensioni</span></p>
                                         <div class="price">{{$smartphone->normalPrice}} </div>
                                         <a href="/products/{{$smartphone->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                                 </div>
@@ -505,7 +505,7 @@
                                         <!-- Content -->
                                         <span class="tag">{{$pc->category}}</span> <a href="/products/{{$pc->id}}" class="tittle">{{$pc->name}}</a>
                                         <!-- Reviews -->
-                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$pc->reviewsnumber}} Recensioni</span></p>
+                                        <p class="rev">@for($i=0; $i<$pc->rate && $i<5; ++$i)<i class="fa fa-star"></i></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i>@endfor<span class="margin-left-10">{{$pc->reviewsnumber}} Recensioni</span></p>
                                         <div class="price">{{$pc->normalPrice}} </div>
                                         <a href="/products/{{$pc->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                                 </div>
@@ -526,7 +526,7 @@
                                         <!-- Content -->
                                         <span class="tag">{{$game->category}}</span> <a href="/products/{{$game->id}}" class="tittle">{{$game->name}}</a>
                                         <!-- Reviews -->
-                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$game->reviewsnumber}} Recensioni</span></p>
+                                        <p class="rev">@for($i=0; $i<$game->rate && $i<5; ++$i)<i class="fa fa-star"></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i>@endfor<span class="margin-left-10">{{$game->reviewsnumber}} Recensioni</span></p>
                                         <div class="price">{{$game->normalPrice}} </div>
                                         <a href="/products/{{$game->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a>
                                     </article>
@@ -547,7 +547,7 @@
                                         <!-- Content -->
                                         <span class="tag">{{$watch->category}}</span> <a href="/products/{{$watch->id}}" class="tittle">{{$watch->name}}</a>
                                         <!-- Reviews -->
-                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$watch->reviewsnumber}} Recensioni</span></p>
+                                        <p class="rev">@for($i=0; $i<$watch->rate && $i<5; ++$i)<i class="fa fa-star"></i></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i>@endfor<span class="margin-left-10">{{$watch->reviewsnumber}} Recensioni</span></p>
                                         <div class="price">{{$watch->normalPrice}} </div>
                                         <a href="/products/{{$watch->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                                 </div>
@@ -579,41 +579,6 @@
             </div>
         </section>
 
-        <!-- Top Selling Week -->
-        <section class="padding-top-60 padding-bottom-60">
-            <div class="container">
-
-                <!-- heading -->
-                <div class="heading">
-                    <h2>From our Blog</h2>
-                    <hr>
-                </div>
-                <div id="blog-slide" class="with-nav">
-
-                    <!-- Blog Post -->
-                    <div class="blog-post">
-                        <article> <img class="img-responsive" src="images/blog-img-1.jpg" alt="" > <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#." class="tittle">It’s why there’s nothing else like Mac. </a>
-                            <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                            <a href="#.">Readmore</a> </article>
-                    </div>
-
-                    <!-- Blog Post -->
-                    <div class="blog-post">
-                        <article> <img class="img-responsive" src="images/blog-img-2.jpg" alt="" > <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#." class="tittle">Get the power to take your business to the
-                                next level. </a>
-                            <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                            <a href="#.">Readmore</a> </article>
-                    </div>
-
-                    <!-- Blog Post -->
-                    <div class="blog-post">
-                        <article> <img class="img-responsive" src="images/blog-img-3.jpg" alt="" > <span><i class="fa fa-bookmark-o"></i> 25 Dec, 2017</span> <span><i class="fa fa-comment-o"></i> 86 Comments</span> <a href="#." class="tittle">It’s why there’s nothing else like Mac. </a>
-                            <p>Etiam porttitor ante non tellus pulvinar, non vehicula lorem fermentum. Nulla vitae efficitur mi [...] </p>
-                            <a href="#.">Readmore</a> </article>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Clients img -->
         <section class="light-gry-bg clients-img">

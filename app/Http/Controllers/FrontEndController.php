@@ -10,6 +10,7 @@ use App\Message;
 use App\Review;
 use Illuminate\Support\Facades\DB;
 use App\Product;
+use App\Shipper;
 
 
 class FrontEndController extends Controller
@@ -154,7 +155,8 @@ class FrontEndController extends Controller
                 ->where('rate',1)->take(5);
 
             $reviews=DB::select('select *,u.name as user from reviews,users u where reviews.user_id=u.id AND product_id='.$id);
-            $messages=Message::find(3);
+
+            $shippers=Shipper::take(5)->get();
 
             $productsdata= array(
                 'brands' => $brands,
@@ -170,7 +172,7 @@ class FrontEndController extends Controller
                 'twostars' => $twostars,
                 'onestar' => $onestar,
                 'reviews' =>$reviews,
-
+                'shippers' => $shippers
             );
 
             return view('front_end.productDetails')->with('productsdata',$productsdata);

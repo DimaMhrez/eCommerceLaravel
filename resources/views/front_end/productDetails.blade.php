@@ -234,38 +234,43 @@
 
 
                                     </div>
-                                    <div role="tabpanel" class="tab-pane fade" id="ship"></div>
+                                    <div role="tabpanel" class="tab-pane fade" id="ship">
+
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Corriere</th>
+                                                    <th>Informazioni </th>
+                                                    <th>Prezzo </th>
+                                                    <th>Disponibilità</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($productsdata['shippers'] as $shipper)
+                                                <tr>
+                                                    <td>{{$shipper->name}}</td>
+                                                    <td>{{$shipper->description}}</td>
+                                                    <td>€{{$shipper->price}}</td>
+                                                    @if($shipper->availability==1)
+                                                    <td class="text-center"><i class="fa fa-check"></i></td>
+                                                        @else
+                                                        <td></td>
+                                                        @endif
+                                                </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
-                        <!-- Related Products -->
-                        <section class="padding-top-30 padding-bottom-0">
-                            <!-- heading -->
-                            <div class="heading">
-                                <h2>Prodotti Correlati</h2>
-                                <hr>
-                            </div>
-                            <!-- Items Slider -->
-                            <div class="item-slide-4 with-nav">
-                                <!-- Product -->
-                                @foreach($productsdata['related'] as $related)
-                                <div class="product">
-                                    <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
-                                        <!-- Content -->
-                                        <span class="tag">{{$productsdata['category']->name}}</span> <a href="#." class="tittle">{{$related->name}}</a>
-                                        <!-- Reviews -->
-                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$related->reviewsnumber}} Recensioni</span></p>
-                                        <div class="price">{{$related->normalPrice}} </div>
-                                        <a href="/products/{{$related->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a>
-                                    </article>
-                                </div>
-                                @endforeach
 
-                            </div>
-                        </section>
                     </div>
                 </div>
+            </div>
             </div>
         </section>
 
@@ -275,101 +280,24 @@
 
                 <!-- heading -->
                 <div class="heading">
-                    <h2>Your Recently Viewed Items</h2>
+                    <h2>Altri prodotti in questa categoria</h2>
                     <hr>
                 </div>
                 <!-- Items Slider -->
                 <div class="item-slide-5 with-nav">
                     <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
-                            <!-- Content -->
-                            <span class="tag">Latop</span> <a href="#." class="tittle">Laptop Alienware 15 i7 Perfect For Playing Game</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00 </div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="images/item-img-1-2.jpg" alt="" > <span class="sale-tag">-25%</span>
-
-                            <!-- Content -->
-                            <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00 <span>$200.00</span></div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="images/item-img-1-3.jpg" alt="" >
-                            <!-- Content -->
-                            <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="images/item-img-1-4.jpg" alt="" > <span class="new-tag">New</span>
-
-                            <!-- Content -->
-                            <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="images/item-img-1-5.jpg" alt="" >
-                            <!-- Content -->
-                            <span class="tag">Appliances</span> <a href="#." class="tittle">Funda Para Ebook 7" 128GB full HD</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="images/item-img-1-6.jpg" alt="" > <span class="sale-tag">-25%</span>
-
-                            <!-- Content -->
-                            <span class="tag">Tablets</span> <a href="#." class="tittle">Mp3 Sumergible Deportivo Slim Con 8GB</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00 <span>$200.00</span></div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="images/item-img-1-7.jpg" alt="" >
-                            <!-- Content -->
-                            <span class="tag">Appliances</span> <a href="#." class="tittle">Reloj Inteligente Smart Watch M26 Touch Bluetooh </a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
-
-                    <!-- Product -->
-                    <div class="product">
-                        <article> <img class="img-responsive" src="images/item-img-1-8.jpg" alt="" > <span class="new-tag">New</span>
-
-                            <!-- Content -->
-                            <span class="tag">Accessories</span> <a href="#." class="tittle">Teclado Inalambrico Bluetooth Con Air Mouse</a>
-                            <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">5 Review(s)</span></p>
-                            <div class="price">$350.00</div>
-                            <a href="#." class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
-                    </div>
+                    @foreach($productsdata['related'] as $related)
+                        <div class="product">
+                            <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
+                                <!-- Content -->
+                                <span class="tag">{{$productsdata['category']->name}}</span> <a href="#." class="tittle">{{$related->name}}</a>
+                                <!-- Reviews -->
+                                <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$related->reviewsnumber}} Recensioni</span></p>
+                                <div class="price">{{$related->normalPrice}} </div>
+                                <a href="/products/{{$related->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a>
+                            </article>
+                        </div>
+                @endforeach
                 </div>
             </div>
         </section>
