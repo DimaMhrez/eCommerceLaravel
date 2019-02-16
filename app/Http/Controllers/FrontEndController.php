@@ -8,6 +8,8 @@ use App\BulletDescription;
 use App\Category;
 use App\Message;
 use App\Review;
+use App\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Product;
 use App\Shipper;
@@ -144,19 +146,32 @@ class FrontEndController extends Controller
 
             //Prendo le recensioni. Il numero 5 è da aggiustare, dovremmo prenderne di più. Era solo per testare.
             $fivestars=Review::where('product_id',$id)
-                ->where('rate',5)->take(5);
+                ->where('rate',5)->take(5)->get();
             $fourstars=Review::where('product_id',$id)
-                ->where('rate',4)->take(5);
+                ->where('rate',4)->take(5)->get();
             $threestars=Review::where('product_id',$id)
-                ->where('rate',3)->take(5);
+                ->where('rate',3)->take(5)->get();
             $twostars=Review::where('product_id',$id)
-                ->where('rate',2)->take(5);
+                ->where('rate',2)->take(5)->get();
             $onestar=Review::where('product_id',$id)
-                ->where('rate',1)->take(5);
+                ->where('rate',1)->take(5)->get();
 
             $reviews=DB::select('select *,u.name as user from reviews,users u where reviews.user_id=u.id AND product_id='.$id);
 
             $shippers=Shipper::take(5)->get();
+
+            $productid=$product->id;
+            $userid=Auth::user()->id;
+            $userreview=Review::where('user_id',$userid)
+               ->where('product_id',$productid)->first();
+
+
+            $arr = (array)$userreview;
+            if (empty($arr)) {
+                $usercanreview=true;
+            }
+            else $usercanreview=false;
+
 
             $productsdata= array(
                 'brands' => $brands,
@@ -172,7 +187,8 @@ class FrontEndController extends Controller
                 'twostars' => $twostars,
                 'onestar' => $onestar,
                 'reviews' =>$reviews,
-                'shippers' => $shippers
+                'shippers' => $shippers,
+                'usercanreview' => $usercanreview,
             );
 
             return view('front_end.productDetails')->with('productsdata',$productsdata);

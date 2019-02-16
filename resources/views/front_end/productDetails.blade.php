@@ -205,7 +205,29 @@
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="cus-rev">
+                                        @if(!Auth::guest() && $productsdata['usercanreview']==true )
 
+                                        <button type="button" class="btn-round" id="formButton">Scrivi una recensione!</button>
+
+                                        @endif
+
+                                        {!!  Form::open(['action'=>'ReviewController@store','method'=>'POST', 'id' => 'form1', 'class'=>'contact-form']) !!}
+
+                                        <label>{{Form::label('rate','Rate')}}</label>
+                                        {{Form::text('rate', '', ['class' => 'form-control', 'placeholder' => 'Il tuo voto'])}}
+
+                                            <label>{{Form::label('product_id','Product_id')}}</label>
+                                            {{Form::hidden('product_id',$productsdata['product']->id,['class'=>'form-control','readonly'=>'true'])}}
+
+                                        <label>{{Form::label('title','Title')}}</label>
+                                        {{Form::text('title', '', ['class' => 'form-control', 'placeholder' => 'Il titolo della tua recensione'])}}
+
+                                        <label>{{Form::label('review','Testo')}}</label>
+                                        {{Form::textarea('review','', ['class' => 'form-control', 'placeholder' => 'Il testo della tua recensione'])}}
+
+                                        {{  Form::submit('Invia Recensione', ['class' => 'btn-round'])  }}
+
+                                        {!! Form::close() !!}
 
                                         <div class="table-responsive">
                                             @foreach($productsdata['reviews'] as $review)
@@ -352,5 +374,11 @@
 
             </script>
 
+
+            <script>
+            $("#formButton").click(function(){
+            $("#form1").toggle();
+            });
+            </script>
 @endsection
 

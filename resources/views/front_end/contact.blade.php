@@ -43,7 +43,7 @@
                                             <label>{{Form::label('messaggio','Messaggio')}}</label>
                                                 {{Form::textarea('messaggio','', ['class' => 'form-control'])}}
                                         </li>
-                                        {{Form::submit('Invia Messaggio', ['class' => 'btn-round'])}}
+                                        {{  Form::submit('Invia Messaggio', ['class' => 'btn-round'])      }}
 
                                     </ul>
                                     {!! Form::close() !!}

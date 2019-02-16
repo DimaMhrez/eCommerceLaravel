@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Message;
 use App\Review;
-use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class MessageController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,9 +23,9 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request)
+    public function create()
     {
-
+        //
     }
 
     /**
@@ -38,34 +36,34 @@ class MessageController extends Controller
      */
     public function store(Request $request)
     {
+
         $this -> validate($request, [
-                'nome' => 'required',
-                'email' => 'required',
-                'messaggio' => 'required'
-            ]
-        );
+            'title' => 'required',
+            'review' => 'required',
+        ]);
 
-        $message = new Message();
-        $message -> name= $request -> input('nome');
-        $message -> email= $request -> input('email');
-        $message -> text= $request ->input('messaggio');
-        if(!Auth::guest()){
-        $message -> user_id = Auth::user()->id;}
+        $review= new Review();
+        $id=Auth::user()->id;
+
+        $review->title=$request->input('title');
+        $review->description=$request->input('review');
+        $review->rate=$request->input('rate');
+        $review->user_id=$id;
+        $review->product_id=$request->input('product_id');
+
+        $review->save();
+        return redirect('/products/'.$review->product_id);
 
 
-        $message->save();
-
-        return redirect('/');
     }
-
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Review $review)
     {
         //
     }
@@ -73,10 +71,10 @@ class MessageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Review $review)
     {
         //
     }
@@ -85,10 +83,10 @@ class MessageController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Review $review)
     {
         //
     }
@@ -96,10 +94,10 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Review  $review
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Review $review)
     {
         //
     }

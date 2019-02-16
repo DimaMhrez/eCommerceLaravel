@@ -19,6 +19,7 @@ Route::get('/store','MessageController@store');
 
 Auth::routes();
 Route::resource('message','MessageController');
+Route::resource('review','ReviewController');
 
 Route::get('products/{id}', 'FrontEndController@show');
 
