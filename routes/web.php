@@ -31,10 +31,21 @@ Route::get('/admin',function (){
 
 Route::get('/admin',function (){
     return view('back_end.dashboard');
-});
+})->name('admin');
 
 
 Route::get('/admin/users','BackEndController@getUsers');
+
+
+
+Route::get('admin/userProfile', function (){
+   return view('back_end.userProfile');
+});
+
+Route::get('admin/userProfile/{id}','BackEndController@getUser');
+
+
+
 
 //rotta di prova serve a stampare in JSON tutti gli utenti che sono nel DB
 // che riempiono poi la tabella del back_end
