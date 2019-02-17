@@ -20,13 +20,14 @@
                             </div>
                             <div class="material-datatables">
                                 <div class="dataTables_wrapper dt-bootstrap4" id="tables_wrapper">
-                                    <table class="table table-bordered" id="users-table">
+                                    <table class="table table-striped table-no-bordered table-hover"
+                                           id="users-table" cellspacing="0" width="100%" style="width:100%">
                                         <thead>
                                         <tr>
                                             <th>Id num</th>
                                             <th>Name</th>
                                             <th>Email</th>
-                                          <!--  <th>Actions</th> -->
+                                            <th>Actions</th>
                                             <!-- <th>Created At</th>
                                             <th>Updated At</th> -->
                                         </tr>
@@ -60,9 +61,13 @@
                     { data: 'id', name: 'id' },
                     { data: 'name', name: 'name' },
                     { data: 'email', name: 'email' },
+                    {defaultContent: 'ciao'},
                     /*{ data: 'created_at', name: 'created_at' },
                     { data: 'updated_at', name: 'updated_at' },*/
-                ]
+                ],
+
+
+
 
             });
         });
