@@ -7,6 +7,7 @@ use App\Brand;
 use App\BulletDescription;
 use App\Category;
 use App\Message;
+use App\ProductVariant;
 use App\Review;
 use App\User;
 use Illuminate\Support\Facades\Auth;
@@ -161,6 +162,8 @@ class FrontEndController extends Controller
             $shippers=Shipper::take(5)->get();
 
             $productid=$product->id;
+
+            if(!Auth::guest()){
             $userid=Auth::user()->id;
             $userreview=Review::where('user_id',$userid)
                ->where('product_id',$productid)->first();
@@ -170,6 +173,7 @@ class FrontEndController extends Controller
             if (empty($arr)) {
                 $usercanreview=true;
             }
+            else $usercanreview=false;}
             else $usercanreview=false;
 
 

@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->string('description',45);
             $table->double('normalPrice');
             $table->tinyInteger('new');
-            $table->string('mediumSale',45);
+            $table->tinyInteger('Rate')->default('0');
 
             //Chiavi esterne
             $table->unsignedInteger('brand_id');

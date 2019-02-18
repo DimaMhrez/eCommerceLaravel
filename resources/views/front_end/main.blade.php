@@ -1,9 +1,11 @@
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="author" content="M_Adnan" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <!-- Document Title -->
   <title>{{$ourbrand->name}}</title>
 
@@ -29,6 +31,7 @@
 
   <!-- JavaScripts -->
   <script src="{{asset('front_end/js/vendors/modernizr.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -332,6 +335,14 @@
 @yield('otherScript')
 
 <!-- invocazione logout -->
+
+<script>
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+</script>
 
 </body>
 </html>

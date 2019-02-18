@@ -23,6 +23,8 @@ Route::resource('review','ReviewController');
 
 Route::get('products/{id}', 'FrontEndController@show');
 
+Route::post('/addtocart', 'CartController@add');
+
 /* BACKEND ROUTES */
 
 Route::get('/admin',function (){

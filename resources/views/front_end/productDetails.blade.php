@@ -1,7 +1,7 @@
 @extends('front_end.main')
 
 @section('content')
-
+<p>prova</p>
     <!-- Linking -->
     <div class="linking">
         <div class="container">
@@ -125,9 +125,12 @@
 
                                         <!-- Quinty -->
                                         <div class="quinty">
-                                            <input type="number" value="01">
+                                            <input id="number" type="number" value="01">
                                         </div>
-                                        <a href="#." class="btn-round"><i class="icon-basket-loaded margin-right-5"></i>Aggiungi al carrello</a> </div>
+
+                                        <button id="cart" class="btn-round"><i class="icon-basket-loaded margin-right-5"></i>Aggiungi al carrello </button>
+
+                                    </div>
                                 </div>
                             </div>
 
@@ -324,18 +327,6 @@
             </div>
         </section>
 
-        <!-- Clients img -->
-        <section class="light-gry-bg clients-img">
-            <div class="container">
-                <ul>
-                    <li><img src="images/c-img-1.png" alt="" ></li>
-                    <li><img src="images/c-img-2.png" alt="" ></li>
-                    <li><img src="images/c-img-3.png" alt="" ></li>
-                    <li><img src="images/c-img-4.png" alt="" ></li>
-                    <li><img src="images/c-img-5.png" alt="" ></li>
-                </ul>
-            </div>
-        </section>
     </div>
 @endsection
 
@@ -374,11 +365,31 @@
 
             </script>
 
-
+<!-- My scripts -->
             <script>
             $("#formButton").click(function(){
             $("#form1").toggle();
             });
             </script>
-@endsection
 
+            <script>
+
+
+                $('#cart').click(function(){
+                    $.post("/addtocart",
+                        {
+                            number: document.getElementById("number").value,
+                            itemid: 2,
+                        },
+                        function() {
+                            document.getElementById("cart").innerHTML = "Aggiunto!";
+                            document.getElementById("cart").disabled = true;
+                    }
+
+                    ) });
+
+
+            </script>
+
+
+@endsection
