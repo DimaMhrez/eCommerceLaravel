@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Brand;
 use App\Product;
 use Illuminate\Http\Request;
 use View;
@@ -41,17 +42,57 @@ class ProductController extends Controller
     {
         $rules = array(
             'name'       => 'required',
-            'search'      => 'required',
+            'brand'      => 'required',
             'basicPrice' => 'required|numeric'
         );
 
         $validator = Validator::make(Input::all(), $rules);
 
         if ($validator->fails()) {
-            return View::make('back_end.users');
+            return Redirect::to('/admin/product/create')
+                ->withErrors($validator)
+                ->withInput(Input::except('password'));
 
         } else {
-            return View::make('back_end.dashboard');
+
+            $brandExist = Brand::where('name',Input::get('brand'))->count();
+
+            $product = new Product();
+
+            if($brandExist == 1){
+                $brand = Brand::where('name',Input::get('brand'))->get();
+                $product->brand_id = $brand->id;
+            }else{
+                $product->brand_id = 1;
+            }
+
+
+
+            $product->name = Input::get('name');
+            $product->description = 'Ciccio';
+            $product->normalprice = Input::get('basicPrice');
+
+            if(Input::get('showcase')){
+                $product->showcase = 1;
+            }else{
+                $product->showcase = 0;
+            }
+
+            if(Input::get('featured')){
+                $product->featured  = 1;
+            }else{
+                $product->featured  = 0;
+            }
+
+            if(Input::get('special')){
+                $product->special = 1;
+            }else{
+                $product->special = 0;
+            }
+
+            $product->save();
+
+            return Redirect::to('/admin');
         }
     }
 

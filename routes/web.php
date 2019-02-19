@@ -30,7 +30,7 @@ Route::post('/addtocart', 'CartController@add');
 
 //rotta provvisoria che carica la dashboard
 Route::get('/admin',function (){
-    return view('back_end.index');
+    return view('back_end.dashboard');
 });
 
 

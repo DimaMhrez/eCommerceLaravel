@@ -96,8 +96,8 @@
                                                     <input type="text" class="form-control" id="exampleInput11"
                                                            name="lastname" required>-->
 
-                                                    {{ Form::label('search', 'Product\'s Brand',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('search', Input::old('descriptionProduct'),['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'search','value'=>'0.00']) }}
+                                                    {{ Form::label('brand', 'Product\'s Brand',['class' => 'bmd-label-floating'])}}
+                                                    {{ Form::text('brand', Input::old('descriptionProduct'),['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'brand','value'=>'0.00']) }}
                                                 </div>
                                                <!-- <input type="text" id="search" placeholder="Type to search users" autocomplete="off" >-->
                                             </div>
@@ -376,7 +376,7 @@
     </script>
 
     <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
-<!--
+
     <script>
         $(document).ready(function() {
             var bloodhound = new Bloodhound({
@@ -388,7 +388,7 @@
                 },
             });
 
-            $('#search').typeahead({
+            $('#brand').typeahead({
                 hint: true,
                 highlight: true,
                 minLength: 1
@@ -412,6 +412,4 @@
             });
         });
     </script>
-
--->
 @endpush
