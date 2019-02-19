@@ -1,7 +1,7 @@
 @extends('front_end.main')
 
 @section('content')
-<p>prova</p>
+<p hidden id="hiddenID">{{$productsdata['product']->id}}</p>
     <!-- Linking -->
     <div class="linking">
         <div class="container">
@@ -379,7 +379,7 @@
                     $.post("/addtocart",
                         {
                             number: document.getElementById("number").value,
-                            itemid: 2,
+                            itemid: $('#hiddenID').text(),
                         },
                         function() {
                             document.getElementById("cart").innerHTML = "Aggiunto!";

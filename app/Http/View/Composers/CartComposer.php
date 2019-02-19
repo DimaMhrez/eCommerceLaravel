@@ -8,6 +8,7 @@
 
 
 namespace App\Http\View\Composers;
+use App\Cart;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -20,7 +21,12 @@ class CartComposer
         $user = auth()->id() ?? 0;
 
         // do your query with the $userId
-        $temp=DB::select('Select p.id,p.normalPrice,p.name from products p INNER JOIN carts c INNER JOIN product_variants pv ON c.product_variant_id=pv.id and pv.product_id=p.id and c.user_id='.$user);
+
+        $temp=Cart::where('user_id',$user)
+            ->join('product_variants','product_variants.id','=','carts.product_variant_id')
+            ->join('products','products.id','=','product_variants.product_id')
+            ->select('products.name as productname','products.id as product','carts.*')
+            ->get();
 
         $view->with('cartnumber', count($temp))
             ->with('cartitems', $temp);

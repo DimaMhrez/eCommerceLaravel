@@ -24,6 +24,27 @@ class CartController extends Controller
                ->select('products.*')
                ->first();
 
+
+           //Controllo se c'è già nel carrello.
+           $carts=Cart::where('user_id',$userID)->get();
+           $already=false;
+
+           foreach($carts as $cart)
+           {
+               if($cart->product_variant_id == $item->id)
+               {$already=true;}
+           }
+
+           if($already){
+               $toupdate=Cart::where('product_variant_id',$item->id)->first();
+               $toupdate->quantity=$toupdate->quantity+$request->number;
+               $toupdate->totalprice=$toupdate->totalprice+($item->normalPrice*$request->number);
+
+               $toupdate->save();
+
+               return "Success";}
+
+
            $cartitem = new Cart();
 
            $cartitem->quantity = $request->number;

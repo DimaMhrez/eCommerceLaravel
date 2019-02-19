@@ -97,7 +97,9 @@
            @foreach($cartitems as $item)
             <li>
               <div class="media-left"> <a href="#." class="thumb"> <img src="{{ asset('front_end/images/item-img-1-1.jpg') }}" class="img-responsive" alt="" > </a> </div>
-              <div class="media-body"> <a href="#." class="tittle">{{$item->name}}</a> <span>{{$item->normalPrice}}</span> </div>
+              <div class="media-body"> <a href="/products/{{$item->product}}" class="tittle">{{$item->productname}}</a>
+                <span>Quantity: {{$item->quantity}} - €{{$item->totalprice}}</span>
+              </div>
             </li>
            @endforeach
            @endif
