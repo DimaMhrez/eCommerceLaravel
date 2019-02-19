@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Brand;
+use App\BulletDescription;
+use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
 use View;
@@ -29,7 +31,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return View::make('back_end.createProduct');
+        $categories = Category::all();
+        return View::make('back_end.createProduct',$categories);
     }
 
     /**
@@ -43,7 +46,8 @@ class ProductController extends Controller
         $rules = array(
             'name'       => 'required',
             'brand'      => 'required',
-            'basicPrice' => 'required|numeric'
+            'basicPrice' => 'required|numeric',
+            'category'   => 'required'
         );
 
         $validator = Validator::make(Input::all(), $rules);
@@ -55,18 +59,21 @@ class ProductController extends Controller
 
         } else {
 
-            $brandExist = Brand::where('name',Input::get('brand'))->count();
+            $brandExist = Brand::where('name',Input::get('brand'))->select('id')->first();
 
             $product = new Product();
 
-            if($brandExist == 1){
-                $brand = Brand::where('name',Input::get('brand'))->get();
-                $product->brand_id = $brand->id;
+            if($brandExist != null){
+              $product->brand_id = $brandExist->id;
             }else{
-                $product->brand_id = 1;
+                $brand = new Brand();
+
+                $brand->name = Input::get('brand');
+
+                $brand->save();
+
+                $product->brand_id = $brand->id;
             }
-
-
 
             $product->name = Input::get('name');
             $product->description = 'Ciccio';
@@ -90,7 +97,21 @@ class ProductController extends Controller
                 $product->special = 0;
             }
 
+            //mi servirà dopo
+            //$category = Category::where('name',Input::get('category'))->select('id')->first();
+
             $product->save();
+
+
+            for ($i = 1; $i <= 7; $i++) {
+                if(!empty(Input::get('bullet'.$i))){
+                    $bullet = new BulletDescription();
+
+                    $bullet->description = Input::get('bullet'.$i);
+                    $bullet->product_id = $product->id;
+                    $bullet->save();
+                }
+            }
 
             return Redirect::to('/admin');
         }

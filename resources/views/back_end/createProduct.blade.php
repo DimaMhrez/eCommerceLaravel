@@ -4,7 +4,7 @@
 @section('content')
     <div class="content">
         <div class="container-fluid">
-            <div class="col-md-8 col-12 mr-auto ml-auto">
+            <div class="col-md-10  col-12 mr-auto ml-auto">
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
@@ -29,12 +29,22 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#bulletdescription" data-toggle="tab" role="tab">
-                                        Bullet Description
+                                        Description
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#variants" data-toggle="tab" role="tab">
+                                        Variants
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#position" data-toggle="tab" role="tab">
+                                        Position
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#marketingoptions" data-toggle="tab" role="tab">
-                                        Marketing Options
+                                        Options
                                     </a>
                                 </li>
                                 <!--<li class="nav-item">
@@ -162,7 +172,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet1', '1st bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bulletdescription1', Input::old('nameProduct'),['class' => 'form-control','maxlength'=> '45']) }}
+                                                    {{ Form::text('bullet1', Input::old('nameProduct'),['class' => 'form-control','maxlength'=> '45']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -175,7 +185,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet2', '2nd bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bulletdescription2', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet2', Input::old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -188,7 +198,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet3', '3rd bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bulletdescription3', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet3', Input::old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -201,7 +211,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet4', '4th bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bulletdescription4', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet4', Input::old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -214,7 +224,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet5', '5th bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bulletdescription5', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet5', Input::old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -227,29 +237,26 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet6', '6th bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bulletdescription6', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet6', Input::old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
-
-
-
-                                        <!--
-                                        <div class="col-lg-10 mt-3">
-                                            <div class="input-group form-control-lg">
-                                                <div class="input-group-prepend">
-                                                     <span class="input-group-text">
-                                                         <i class="material-icons">email</i>
-                                                     </span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInput1" class="bmd-label-floating">Email
-                                                        (required)</label>
-                                                    <input type="email" class="form-control" id="exampleemalil"
-                                                           name="email" required>
-                                                </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="variants">
+                                    <h5 class="info-text"> Choose the right Category for your product!</h5>
+                                    <div class="row justify-content-center">
+                                        <div class="form-group select-wizard">
+                                            {!! Form::select('category', array_pluck($categories, 'name'), null ,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Category','required'=>'required')) !!}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="position">
+                                    <h5 class="info-text"> Choose the right Category for your product!</h5>
+                                    <div class="row justify-content-center">
+                                            <div class="form-group select-wizard">
+                                                {!! Form::select('category', array_pluck($categories, 'name'), null ,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Category','required'=>'required')) !!}
                                             </div>
-                                        </div>-->
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="marketingoptions">
