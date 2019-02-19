@@ -9,6 +9,8 @@
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
 
+
+
                     {{ Form::open(array('url' => 'admin/product','action' => ['LiveSearch@autocompleteBrands'])) }}
                     <!-- <form action="" method=""> -->
                         <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
@@ -21,12 +23,21 @@
                         <div class="wizard-navigation">
                             <ul class="nav nav-pills">
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="#about" data-toggle="tab" role="tab">
+                                    <a class="nav-link active" href="#basicinfo" data-toggle="tab" role="tab">
                                         Identification
                                     </a>
                                 </li>
-                                <!--
                                 <li class="nav-item">
+                                    <a class="nav-link" href="#bulletdescription" data-toggle="tab" role="tab">
+                                        Bullet Description
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#marketingoptions" data-toggle="tab" role="tab">
+                                        Marketing Options
+                                    </a>
+                                </li>
+                                <!--<li class="nav-item">
                                     <a class="nav-link" href="#account" data-toggle="tab" role="tab">
                                         Account
                                     </a>
@@ -40,7 +51,7 @@
                         </div>
                         <div class="card-body">
                             <div class="tab-content">
-                                <div class="tab-pane active" id="about">
+                                <div class="tab-pane active" id="basicinfo">
                                     <h5 class="info-text"> Basic information</h5>
                                     <div class="row justify-content-center">
                                         <!--<div class="col-sm-4">
@@ -67,7 +78,7 @@
                                                            name="firstname" required>-->
 
                                                     {{ Form::label('name', 'Product\'s name',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('nameProduct', Input::old('nameProduct'),['class' => 'form-control','required' => 'required']) }}
+                                                    {{ Form::text('name', Input::old('nameProduct'),['class' => 'form-control','required' => 'required']) }}
 
 
 
@@ -85,29 +96,32 @@
                                                     <input type="text" class="form-control" id="exampleInput11"
                                                            name="lastname" required>-->
 
-                                                    {{ Form::label('description', 'Product\'s name',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('descriptionProduct', Input::old('descriptionProduct'),['class' => 'form-control','required' => 'required']) }}
-                                                </div>
-
-                                            </div>
-                                            <div class="input-group form-control-lg">
-                                                <div class="input-group-prepend">
-                                                     <span class="input-group-text">
-                                                          <i class="material-icons">description</i>
-                                                     </span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <!--<label for="exampleInput11" class="bmd-label-floating">Second
-                                                        Name</label>
-                                                    <input type="text" class="form-control" id="exampleInput11"
-                                                           name="lastname" required>-->
-
-                                                    {{ Form::label('brand', 'Product\'s Brand',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('search', Input::old('descriptionProduct'),['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'search']) }}
+                                                    {{ Form::label('search', 'Product\'s Brand',['class' => 'bmd-label-floating'])}}
+                                                    {{ Form::text('search', Input::old('descriptionProduct'),['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'search','value'=>'0.00']) }}
                                                 </div>
                                                <!-- <input type="text" id="search" placeholder="Type to search users" autocomplete="off" >-->
                                             </div>
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                     <span class="input-group-text">
+                                                          <i class="material-icons">euro_symbol</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <!--<label for="exampleInput11" class="bmd-label-floating">Second
+                                                        Name</label>
+                                                    <input type="text" class="form-control" id="exampleInput11"
+                                                           name="lastname" required>-->
+
+                                                     {{ Form::label('basicPrice', 'Product\'s basic price',['class' => 'bmd-label-floating'])}}
+                                                <!-- <input type="number" min="0.00" max="10000.00" step="0.01" />-->
+                                                    {{ Form::number('basicPrice', Input::old('descriptionProduct'),['class' => 'form-control','required' => 'required','min'=>'0.00', 'max'=>'100000.00','step'=>'0.01']) }}
+                                                </div>
+
+                                            </div>
                                         </div>
+
+
                                         
                                         <!--
                                         <div class="col-lg-10 mt-3">
@@ -127,48 +141,160 @@
                                         </div>-->
                                     </div>
                                 </div>
-                                <!-- <div class="tab-pane" id="account">
-                                     <h5 class="info-text"> What are you doing? (checkboxes) </h5>
+                                <div class="tab-pane" id="bulletdescription">
+                                    <h5 class="info-text"> Bullet Description</h5>
+                                    <div class="row justify-content-center">
+                                        <!--<div class="col-sm-4">
+                                            <div class="picture-container">
+                                                <div class="picture">
+                                                    <img src="https://demos.creative-tim.com/material-dashboard-pro/assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="" />
+                                                    <input type="file" id="wizard-picture">
+                                                </div>
+                                                <h6 class="description">Choose Picture</h6>
+                                            </div>
+                                        </div>-->
+                                        <div class="col-sm-10">
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                         <i class="material-icons">format_list_numbered</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ Form::label('bullet1', '1st bullet',['class' => 'bmd-label-floating'])}}
+                                                    {{ Form::text('bulletdescription1', Input::old('nameProduct'),['class' => 'form-control','maxlength'=> '45']) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                         <i class="material-icons">format_list_numbered</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ Form::label('bullet2', '2nd bullet',['class' => 'bmd-label-floating'])}}
+                                                    {{ Form::text('bulletdescription2', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                         <i class="material-icons">format_list_numbered</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ Form::label('bullet3', '3rd bullet',['class' => 'bmd-label-floating'])}}
+                                                    {{ Form::text('bulletdescription3', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                         <i class="material-icons">format_list_numbered</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ Form::label('bullet4', '4th bullet',['class' => 'bmd-label-floating'])}}
+                                                    {{ Form::text('bulletdescription4', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                         <i class="material-icons">format_list_numbered</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ Form::label('bullet5', '5th bullet',['class' => 'bmd-label-floating'])}}
+                                                    {{ Form::text('bulletdescription5', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-10">
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                         <i class="material-icons">format_list_numbered</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{ Form::label('bullet6', '6th bullet',['class' => 'bmd-label-floating'])}}
+                                                    {{ Form::text('bulletdescription6', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <!--
+                                        <div class="col-lg-10 mt-3">
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                     <span class="input-group-text">
+                                                         <i class="material-icons">email</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="exampleInput1" class="bmd-label-floating">Email
+                                                        (required)</label>
+                                                    <input type="email" class="form-control" id="exampleemalil"
+                                                           name="email" required>
+                                                </div>
+                                            </div>
+                                        </div>-->
+                                    </div>
+                                </div>
+                                <div class="tab-pane" id="marketingoptions">
+                                     <h5 class="info-text"> Actions for the new product !</h5>
                                      <div class="row justify-content-center">
                                          <div class="col-lg-10">
                                              <div class="row">
                                                  <div class="col-sm-4">
                                                      <div class="choice" data-toggle="wizard-checkbox">
-                                                         <input type="checkbox" name="jobb" value="Design">
+
+                                                         {{ Form::checkbox('showcase',null,null, array('name'=>'showcase','value'=>'true')) }}
+
+                                                         <!--<input type="checkbox" name="showcase" value="Design">-->
                                                          <div class="icon">
-                                                             <i class="fa fa-pencil"></i>
+                                                             <i class="fa fa-home"></i>
                                                          </div>
-                                                         <h6>Design</h6>
+                                                         <h6>Showcase</h6>
                                                      </div>
                                                  </div>
                                                  <div class="col-sm-4">
                                                      <div class="choice" data-toggle="wizard-checkbox">
-                                                         <input type="checkbox" name="jobb" value="Code">
+                                                         {{ Form::checkbox('featured',null,null, array('name'=>'featured','value'=>'true')) }}
+                                                         <!--<input type="checkbox" name="jobb" value="Code">-->
                                                          <div class="icon">
-                                                             <i class="fa fa-terminal"></i>
+                                                             <i class="fa fa-rss"></i>
                                                          </div>
-                                                         <h6>Code</h6>
+                                                         <h6>Featured</h6>
                                                      </div>
                                                  </div>
                                                  <div class="col-sm-4">
                                                      <div class="choice" data-toggle="wizard-checkbox">
-                                                         <input type="checkbox" name="jobb" value="Develop">
+                                                         {{ Form::checkbox('special',null,null, array('name'=>'special','value'=>'true')) }}
+                                                         <!--<input type="checkbox" name="jobb" value="Develop">-->
                                                          <div class="icon">
-                                                             <i class="fa fa-laptop"></i>
+                                                             <i class="fa fa-star"></i>
                                                          </div>
-                                                         <h6>Develop</h6>
+                                                         <h6>Special</h6>
                                                      </div>
-                                                     <select class="selectpicker" data-style="btn btn-primary btn-round" title="Single Select" data-size="7">
-                                                         <option disabled selected>Choose city</option>
-                                                         <option value="2">Foobar</option>
-                                                         <option value="3">Is great</option>
-                                                     </select>
                                                  </div>
                                              </div>
                                          </div>
                                      </div>
                                  </div>
-                                 <div class="tab-pane" id="address">
+                                <!--
+                                <div class="tab-pane" id="address">
                                      <div class="row justify-content-center">
                                          <div class="col-sm-12">
                                              <h5 class="info-text"> Are you living in a nice area? </h5>
@@ -218,8 +344,9 @@
                             <div class="ml-auto">
                                 <input type="button" class="btn btn-next btn-fill btn-rose btn-wd" name="next"
                                        value="Next">
-                                <input type="button" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish"
-                                       value="Finish" style="display: none;">
+                                <!--<input type="button" class="btn btn-finish btn-fill btn-rose btn-wd" name="finish"
+                                       value="Finish" style="display: none;">-->
+                                {{ Form::submit('Finish!', array('class' => 'btn btn-finish btn-fill btn-rose btn-wd','style'=>'"display": none;')) }}
                             </div>
                             <div class="clearfix"></div>
                         </div>
@@ -249,7 +376,7 @@
     </script>
 
     <script src="https://twitter.github.io/typeahead.js/releases/latest/typeahead.bundle.js"></script>
-
+<!--
     <script>
         $(document).ready(function() {
             var bloodhound = new Bloodhound({
@@ -286,5 +413,5 @@
         });
     </script>
 
-
+-->
 @endpush

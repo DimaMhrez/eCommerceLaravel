@@ -7,6 +7,9 @@ use App\CategoryHasProductVariant;
 
 class Product extends Model
 {
+
+
+
     function categories(){
         return $this->morphToMany('CategoryHasProductVariant','product_has_category');
     }

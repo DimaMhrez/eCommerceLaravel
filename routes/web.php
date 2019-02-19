@@ -57,6 +57,9 @@ Route::resource('/admin/product','ProductController');
 Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
 
 
+//registra un nuovo prodotto
+
+
 //rotta di prova serve a stampare in JSON tutti gli utenti che sono nel DB
 // che riempiono poi la tabella del back_end
 //DA VIETARE L'UTILIZZO DA PARTE DEGLI UTENTI

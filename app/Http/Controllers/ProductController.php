@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 use View;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class ProductController extends Controller
 {
@@ -33,9 +37,22 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $rules = array(
+            'name'       => 'required',
+            'search'      => 'required',
+            'basicPrice' => 'required|numeric'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return View::make('back_end.users');
+
+        } else {
+            return View::make('back_end.dashboard');
+        }
     }
 
     /**
