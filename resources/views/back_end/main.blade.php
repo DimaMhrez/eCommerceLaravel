@@ -17,6 +17,8 @@
     <link href="{{asset('back_end/css/material-dashboard.min-v=2.1.0.css') }}" rel="stylesheet" />
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link href="{{asset('back_end/demo/demo.css" rel="stylesheet') }}" />
+    <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 
     @stack('css')
 
@@ -603,6 +605,7 @@
 <script src="{{asset('back_end/js/material-dashboard.min-v=2.1.0.js') }}" type="text/javascript"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{asset('back_end/demo/demo.js') }}"></script>
+<script src="https://demos.creative-tim.com/material-dashboard-pro/assets/demo/jquery.sharrre.js"></script>
 <script>
     $(document).ready(function() {
         $().ready(function() {
@@ -886,6 +889,7 @@
 
     });
 </script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
 @stack('scripts')
 </body>

@@ -27,26 +27,34 @@ Route::post('/addtocart', 'CartController@add');
 
 /* BACKEND ROUTES */
 
+
+//rotta provvisoria che carica la dashboard
 Route::get('/admin',function (){
     return view('back_end.index');
 });
 
-Route::get('/admin',function (){
-    return view('back_end.dashboard');
-})->name('admin');
 
-
+//rotta che ritorna la pagina per la gestione utenti
 Route::get('/admin/users','BackEndController@getUsers');
 
-
-
+//rotta provvisoria che mostra pagina profilo utente
 Route::get('admin/userProfile', function (){
    return view('back_end.userProfile');
 });
-
+//dovrebbe essere la giusta pagina utente
 Route::get('admin/userProfile/{id}','BackEndController@getUser');
 
 
+//ritorna il wizard per inserimento prodotti nuovi
+Route::get('admin/wizard',function(){
+    return view('back_end.wizard');
+});
+
+//funzioni crud sui prodotti nel back_end
+Route::resource('/admin/product','ProductController');
+
+//calcola il live search dei brands
+Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
 
 
 //rotta di prova serve a stampare in JSON tutti gli utenti che sono nel DB
