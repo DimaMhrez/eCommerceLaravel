@@ -215,7 +215,11 @@
                                         {!!  Form::open(['action'=>'ReviewController@store','method'=>'POST', 'id' => 'form1', 'class'=>'contact-form']) !!}
 
                                         <label>{{Form::label('rate','Rate')}}</label>
-                                        {{Form::text('rate', '', ['class' => 'form-control', 'placeholder' => 'Il tuo voto'])}}
+                                            <p>{{Form::radio('rate', '1',true)}} <i class="fa fa-star"></i></p>
+                                            <p>{{Form::radio('rate', '2')}} <i class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                                            <p>{{Form::radio('rate', '3')}} <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                                            <p>{{Form::radio('rate', '4')}} <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
+                                            <p>{{Form::radio('rate', '5')}} <i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></p>
 
                                             <label>{{Form::label('product_id','Product_id')}}</label>
                                             {{Form::hidden('product_id',$productsdata['product']->id,['class'=>'form-control','readonly'=>'true'])}}

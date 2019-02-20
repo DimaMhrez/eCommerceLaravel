@@ -18,7 +18,7 @@ class CreateReviewsTable extends Migration
             $table->timestamps();
 
             $table->string('title',45);
-            $table->string('description',45);
+            $table->text('description');
             $table->tinyInteger('rate');
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('user_id');

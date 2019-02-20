@@ -19,11 +19,8 @@ class CartController extends Controller
         }
        else {
            $userID=Auth::user()->id;
-           $item=ProductVariant::where('product_id',$request->itemid)
-               ->join('products','product_variants.product_id','=','products.id')
-               ->select('products.*')
-               ->first();
-
+           $itemID=$request->itemid;
+           $item=Product::find($itemID);
 
            //Controllo se c'è già nel carrello.
            $carts=Cart::where('user_id',$userID)->get();
@@ -31,12 +28,12 @@ class CartController extends Controller
 
            foreach($carts as $cart)
            {
-               if($cart->product_variant_id == $item->id)
+               if($cart->product_id == $item->id)
                {$already=true;}
            }
 
            if($already){
-               $toupdate=Cart::where('product_variant_id',$item->id)->first();
+               $toupdate=Cart::where('product_id',$item->id)->first();
                $toupdate->quantity=$toupdate->quantity+$request->number;
                $toupdate->totalprice=$toupdate->totalprice+($item->normalPrice*$request->number);
 

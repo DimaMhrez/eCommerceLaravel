@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             //Attributi
 
             $table->string('name',45);
-            $table->string('description',45)->nullable();
+            $table->text('description')->nullable();
             $table->double('normalPrice');
             $table->tinyInteger('new')->nullable();
             $table->tinyInteger('Rate')->default('0')->nullable();

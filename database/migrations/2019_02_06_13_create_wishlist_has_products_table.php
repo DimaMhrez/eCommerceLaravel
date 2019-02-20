@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWishlistHasProductVariantsTable extends Migration
+class CreateWishlistHasProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -20,7 +20,7 @@ class CreateWishlistHasProductVariantsTable extends Migration
             $table->unsignedInteger('product_id');
             $table->unsignedInteger('wishlist_id');
 
-            $table->foreign('product_variant_id')->references('id')->on('products');
+            $table->foreign('product_id')->references('id')->on('products');
             $table->foreign('wishlist_id')->references('id')->on('wishlists');
         });
     }
@@ -32,6 +32,6 @@ class CreateWishlistHasProductVariantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wishlist_has__product_variants');
+        Schema::dropIfExists('wishlist_has_products');
     }
 }
