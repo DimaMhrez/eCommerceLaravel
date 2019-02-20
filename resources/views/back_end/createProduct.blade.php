@@ -1,5 +1,10 @@
 @extends('back_end.main')
 
+@push('css')
+   <!-- <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>-->
+    <script src="https://cloud.tinymce.com/5/tinymce.min.js?apiKey=00nueudafld12dihq6ks5qrbmxmcswey82ezvlef8qtt0r60"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
+@endpush
 
 @section('content')
     <div class="content">
@@ -8,12 +13,7 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
-
-
-
                     {{ Form::open(array('url' => 'admin/product','action' => ['LiveSearch@autocompleteBrands'])) }}
-                    <!-- <form action="" method=""> -->
-                        <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
                         <div class="card-header text-center">
                             <h3 class="card-title">
                                 New Product
@@ -29,17 +29,12 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#bulletdescription" data-toggle="tab" role="tab">
-                                        Description
+                                        Bullet Description
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#variants" data-toggle="tab" role="tab">
-                                        Variants
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#position" data-toggle="tab" role="tab">
-                                        Position
+                                    <a class="nav-link" href="#fulldescription" data-toggle="tab" role="tab">
+                                        Full Description
                                     </a>
                                 </li>
                                 <li class="nav-item">
@@ -47,16 +42,6 @@
                                         Options
                                     </a>
                                 </li>
-                                <!--<li class="nav-item">
-                                    <a class="nav-link" href="#account" data-toggle="tab" role="tab">
-                                        Account
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#address" data-toggle="tab" role="tab">
-                                        Address
-                                    </a>
-                                </li>-->
                             </ul>
                         </div>
                         <div class="card-body">
@@ -64,15 +49,6 @@
                                 <div class="tab-pane active" id="basicinfo">
                                     <h5 class="info-text"> Basic information</h5>
                                     <div class="row justify-content-center">
-                                        <!--<div class="col-sm-4">
-                                            <div class="picture-container">
-                                                <div class="picture">
-                                                    <img src="https://demos.creative-tim.com/material-dashboard-pro/assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="" />
-                                                    <input type="file" id="wizard-picture">
-                                                </div>
-                                                <h6 class="description">Choose Picture</h6>
-                                            </div>
-                                        </div>-->
                                         <div class="col-sm-10">
                                             <div class="input-group form-control-lg">
                                                 <div class="input-group-prepend">
@@ -81,17 +57,8 @@
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
-
-<!--
-                                                    <label class="bmd-label-floating">Name</label>
-                                                    <input type="text" class="form-control" id="exampleInput1"
-                                                           name="firstname" required>-->
-
                                                     {{ Form::label('name', 'Product\'s name',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('name', old('nameProduct'),['class' => 'form-control','required' => 'required']) }}
-
-
-
+                                                    {{ Form::text('name', old('name'),['class' => 'form-control','required' => 'required']) }}
                                                 </div>
                                             </div>
                                             <div class="input-group form-control-lg">
@@ -101,15 +68,9 @@
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <!--<label for="exampleInput11" class="bmd-label-floating">Second
-                                                        Name</label>
-                                                    <input type="text" class="form-control" id="exampleInput11"
-                                                           name="lastname" required>-->
-
                                                     {{ Form::label('brand', 'Product\'s Brand',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('brand', old('descriptionProduct'),['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'brand','value'=>'0.00']) }}
+                                                    {{ Form::text('brand', old('brand'),['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'brand','value'=>'0.00']) }}
                                                 </div>
-                                               <!-- <input type="text" id="search" placeholder="Type to search users" autocomplete="off" >-->
                                             </div>
                                             <div class="input-group form-control-lg">
                                                 <div class="input-group-prepend">
@@ -118,51 +79,27 @@
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
-                                                    <!--<label for="exampleInput11" class="bmd-label-floating">Second
-                                                        Name</label>
-                                                    <input type="text" class="form-control" id="exampleInput11"
-                                                           name="lastname" required>-->
-
                                                      {{ Form::label('basicPrice', 'Product\'s basic price',['class' => 'bmd-label-floating'])}}
-                                                <!-- <input type="number" min="0.00" max="10000.00" step="0.01" />-->
-                                                    {{ Form::number('basicPrice', old('descriptionProduct'),['class' => 'form-control','required' => 'required','min'=>'0.00', 'max'=>'100000.00','step'=>'0.01']) }}
+                                                    {{ Form::number('basicPrice', old('basicPrice'),['class' => 'form-control','required' => 'required','min'=>'0.00', 'max'=>'100000.00','step'=>'0.01']) }}
+                                                </div>
+                                            </div>
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                     <span class="input-group-text">
+                                                          <i class="material-icons">category</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    {!! Form::select('category', array_pluck($categories, 'name'), old('cateogry') ,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Category','required'=>'required')) !!}
                                                 </div>
 
                                             </div>
                                         </div>
-
-
-                                        
-                                        <!--
-                                        <div class="col-lg-10 mt-3">
-                                            <div class="input-group form-control-lg">
-                                                <div class="input-group-prepend">
-                                                     <span class="input-group-text">
-                                                         <i class="material-icons">email</i>
-                                                     </span>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="exampleInput1" class="bmd-label-floating">Email
-                                                        (required)</label>
-                                                    <input type="email" class="form-control" id="exampleemalil"
-                                                           name="email" required>
-                                                </div>
-                                            </div>
-                                        </div>-->
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="bulletdescription">
                                     <h5 class="info-text"> Bullet Description</h5>
                                     <div class="row justify-content-center">
-                                        <!--<div class="col-sm-4">
-                                            <div class="picture-container">
-                                                <div class="picture">
-                                                    <img src="https://demos.creative-tim.com/material-dashboard-pro/assets/img/default-avatar.png" class="picture-src" id="wizardPicturePreview" title="" />
-                                                    <input type="file" id="wizard-picture">
-                                                </div>
-                                                <h6 class="description">Choose Picture</h6>
-                                            </div>
-                                        </div>-->
                                         <div class="col-sm-10">
                                             <div class="input-group form-control-lg">
                                                 <div class="input-group-prepend">
@@ -172,7 +109,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet1', '1st bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet1', old('nameProduct'),['class' => 'form-control','maxlength'=> '45']) }}
+                                                    {{ Form::text('bullet1', old('bullet1'),['class' => 'form-control','maxlength'=> '45']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -185,7 +122,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet2', '2nd bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet2', old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet2', old('bullet2'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -198,7 +135,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet3', '3rd bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet3', old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet3', old('bullet3'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -211,7 +148,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet4', '4th bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet4', old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet4', old('bullet4'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -224,7 +161,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet5', '5th bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet5', old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet5', old('bullet5'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -237,26 +174,18 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet6', '6th bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet6', old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet6', old('bullet6'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="tab-pane" id="variants">
-                                    <h5 class="info-text"> Choose the right Category for your product!</h5>
+                                <div class="tab-pane" id="fulldescription">
+                                    <h5 class="info-text"> Full Description</h5>
                                     <div class="row justify-content-center">
-                                        <div class="form-group select-wizard">
-                                            {!! Form::select('category', array_pluck($categories, 'name'), null ,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Category','required'=>'required')) !!}
+                                        <div class="col-sm-10">
+                                            {!! Form::textarea('fulldescription',old('fuldescription'), ['id' => 'fulldescription']) !!}
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="tab-pane" id="position">
-                                    <h5 class="info-text"> Choose the right Category for your product!</h5>
-                                    <div class="row justify-content-center">
-                                            <div class="form-group select-wizard">
-                                                {!! Form::select('category', array_pluck($categories, 'name'), null ,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Category','required'=>'required')) !!}
-                                            </div>
                                     </div>
                                 </div>
                                 <div class="tab-pane" id="marketingoptions">
@@ -266,10 +195,7 @@
                                              <div class="row">
                                                  <div class="col-sm-4">
                                                      <div class="choice" data-toggle="wizard-checkbox">
-
                                                          {{ Form::checkbox('showcase',null,null, array('name'=>'showcase','value'=>'true')) }}
-
-                                                         <!--<input type="checkbox" name="showcase" value="Design">-->
                                                          <div class="icon">
                                                              <i class="fa fa-home"></i>
                                                          </div>
@@ -279,7 +205,6 @@
                                                  <div class="col-sm-4">
                                                      <div class="choice" data-toggle="wizard-checkbox">
                                                          {{ Form::checkbox('featured',null,null, array('name'=>'featured','value'=>'true')) }}
-                                                         <!--<input type="checkbox" name="jobb" value="Code">-->
                                                          <div class="icon">
                                                              <i class="fa fa-rss"></i>
                                                          </div>
@@ -289,7 +214,6 @@
                                                  <div class="col-sm-4">
                                                      <div class="choice" data-toggle="wizard-checkbox">
                                                          {{ Form::checkbox('special',null,null, array('name'=>'special','value'=>'true')) }}
-                                                         <!--<input type="checkbox" name="jobb" value="Develop">-->
                                                          <div class="icon">
                                                              <i class="fa fa-star"></i>
                                                          </div>
@@ -300,47 +224,6 @@
                                          </div>
                                      </div>
                                  </div>
-                                <!--
-                                <div class="tab-pane" id="address">
-                                     <div class="row justify-content-center">
-                                         <div class="col-sm-12">
-                                             <h5 class="info-text"> Are you living in a nice area? </h5>
-                                         </div>
-                                         <div class="col-sm-7">
-                                             <div class="form-group">
-                                                 <label>Street Name</label>
-                                                 <input type="text" class="form-control">
-                                             </div>
-                                         </div>
-                                         <div class="col-sm-3">
-                                             <div class="form-group">
-                                                 <label>Street No.</label>
-                                                 <input type="text" class="form-control">
-                                             </div>
-                                         </div>
-                                         <div class="col-sm-5">
-                                             <div class="form-group">
-                                                 <label>City</label>
-                                                 <input type="text" class="form-control">
-                                             </div>
-                                         </div>
-                                         <div class="col-sm-5">
-                                             <div class="form-group select-wizard">
-                                                 <label>Country</label>
-                                                 <select class="selectpicker" data-size="7" data-style="select-with-transition" title="Single Select">
-                                                     <option value="Afghanistan"> Afghanistan </option>
-                                                     <option value="Albania"> Albania </option>
-                                                     <option value="Algeria"> Algeria </option>
-                                                     <option value="American Samoa"> American Samoa </option>
-                                                     <option value="Andorra"> Andorra </option>
-                                                     <option value="Angola"> Angola </option>
-                                                     <option value="Anguilla"> Anguilla </option>
-                                                     <option value="Antarctica"> Antarctica </option>
-                                                 </select>
-                                             </div>
-                                         </div>
-                                     </div>
-                                 </div>-->
                             </div>
                         </div>
                         <div class="card-footer">

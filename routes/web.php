@@ -33,6 +33,11 @@ Route::get('/admin',function (){
     return view('back_end.dashboard');
 });
 
+Route::get('/admin/main',function (){
+    return view('back_end.main');
+});
+
+
 
 //rotta che ritorna la pagina per la gestione utenti
 Route::get('/admin/users','BackEndController@getUsers');
