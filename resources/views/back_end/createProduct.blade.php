@@ -13,7 +13,7 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
-                    {{ Form::open(array('url' => 'admin/product','action' => ['LiveSearch@autocompleteBrands'])) }}
+                    {{ Form::open(array('url' => 'admin/product','action' => ['LiveSearch@autocompleteBrands','enctype'=>'multipart/data','files'=>'true'])) }}
                         <div class="card-header text-center">
                             <h3 class="card-title">
                                 New Product
@@ -90,7 +90,18 @@
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
-                                                    {!! Form::select('category', array_pluck($categories, 'name'), old('cateogry') ,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Category','required'=>'required')) !!}
+                                                    {!! Form::select('category', array_pluck($categories, 'name'), old('category') ,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Category','required'=>'required')) !!}
+                                                </div>
+
+                                            </div>
+                                            <div class="input-group form-control-lg">
+                                                <div class="input-group-prepend">
+                                                     <span class="input-group-text">
+                                                          <i class="material-icons">image</i>
+                                                     </span>
+                                                </div>
+                                                <div class="form-group">
+                                                    {{!!Form::file('image')!!}}
                                                 </div>
 
                                             </div>
