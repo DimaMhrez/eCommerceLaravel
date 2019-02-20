@@ -25,6 +25,11 @@ Route::get('products/{id}', 'FrontEndController@show');
 
 Route::post('/addtocart', 'CartController@add');
 
+Route::group(['middleware'=>'auth'], function(){
+
+    Route::get('/cart','CartController@show');
+});
+
 /* BACKEND ROUTES */
 
 

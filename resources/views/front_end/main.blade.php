@@ -90,7 +90,7 @@
       <!-- Cart Part -->
         @if(!Auth::guest())
       <ul class="nav navbar-right cart-pop">
-        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">{{$cartnumber}}</span> <i class="flaticon-shopping-bag"></i> <strong>Il mio carrello</strong> <br>
+        <li class="dropdown"> <a href="/cart/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="itm-cont">{{$cartnumber}}</span> <i class="flaticon-shopping-bag"></i> <strong>Il mio carrello</strong> <br>
             <span>{{$cartnumber}} item(s)</span></a>
             @if($cartnumber!=0)
           <ul class="dropdown-menu">

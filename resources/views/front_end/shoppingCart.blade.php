@@ -14,7 +14,7 @@
                     <li class="col-sm-3 current">
                         <div class="media-left"> <i class="flaticon-shopping"></i> </div>
                         <div class="media-body"> <span>Step 1</span>
-                            <h6>Shopping Cart</h6>
+                            <h6>Carrello</h6>
                         </div>
                     </li>
 
@@ -22,7 +22,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="flaticon-business"></i> </div>
                         <div class="media-body"> <span>Step 2</span>
-                            <h6>Payment Methods</h6>
+                            <h6>Metodi di pagamento</h6>
                         </div>
                     </li>
 
@@ -30,7 +30,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="flaticon-delivery-truck"></i> </div>
                         <div class="media-body"> <span>Step 3</span>
-                            <h6>Delivery Methods</h6>
+                            <h6>Metodi di spedizione</h6>
                         </div>
                     </li>
 
@@ -38,7 +38,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="fa fa-check"></i> </div>
                         <div class="media-body"> <span>Step 4</span>
-                            <h6>Confirmation</h6>
+                            <h6>Conferma</h6>
                         </div>
                     </li>
                 </ul>
@@ -51,50 +51,35 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>Items</th>
-                        <th class="text-center">Price</th>
-                        <th class="text-center">Quantity</th>
-                        <th class="text-center">Total Price </th>
+                        <th>Articoli</th>
+                        <th class="text-center">Prezzo</th>
+                        <th class="text-center">Quantità</th>
+                        <th class="text-center">Prezzo totale </th>
                         <th>&nbsp; </th>
                     </tr>
                     </thead>
                     <tbody>
 
                     <!-- Item Cart -->
+                    @foreach ($data['items'] as $item)
                     <tr>
                         <td><div class="media">
-                                <div class="media-left"> <a href="#."> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" > </a> </div>
+                                <div class="media-left"> <a href="/products/{{$item->id}}"> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" > </a> </div>
                                 <div class="media-body">
-                                    <p>E-book Reader Lector De Libros
-                                        Digitales 7''</p>
+                                    <p>{{$item->name}}</p>
                                 </div>
                             </div></td>
-                        <td class="text-center padding-top-60">$200.00</td>
+                        <td class="text-center padding-top-60">€{{$item->normalPrice}}</td>
                         <td class="text-center"><!-- Quinty -->
 
                             <div class="quinty padding-top-20">
-                                <input type="number" value="02">
+                                <p>{{$item->quantity}}</p>
                             </div></td>
-                        <td class="text-center padding-top-60">$400.00</td>
+                        <td class="text-center padding-top-60">€{{$item->totalprice}}</td>
                         <td class="text-center padding-top-60"><a href="#." class="remove"><i class="fa fa-close"></i></a></td>
                     </tr>
+                    @endforeach
 
-                    <!-- Item Cart -->
-                    <tr>
-                        <td><div class="media">
-                                <div class="media-left"> <a href="#."> <img class="img-responsive" src="images/item-img-1-2.jpg" alt="" > </a> </div>
-                                <div class="media-body">
-                                    <p>E-book Reader Lector De Libros
-                                        Digitales 7''</p>
-                                </div>
-                            </div></td>
-                        <td class="text-center padding-top-60">$200.00</td>
-                        <td class="text-center"><div class="quinty padding-top-20">
-                                <input type="number" value="02">
-                            </div></td>
-                        <td class="text-center padding-top-60">$400.00</td>
-                        <td class="text-center padding-top-60"><a href="#." class="remove"><i class="fa fa-close"></i></a></td>
-                    </tr>
                     </tbody>
                 </table>
 
@@ -109,12 +94,12 @@
 
                     <!-- Grand total -->
                     <div class="g-totel">
-                        <h5>Grand total: <span>$500.00</span></h5>
+                        <h5>Importo complessivo: <span>€{{$data['sum']}}</span></h5>
                     </div>
                 </div>
 
                 <!-- Button -->
-                <div class="pro-btn"> <a href="#." class="btn-round btn-light">Continue Shopping</a> <a href="#." class="btn-round">Go Payment Methods</a> </div>
+                <div class="pro-btn"> <a href="/" class="btn-round btn-light">Continua con gli acquisti</a> <a href="#." class="btn-round">Metodi di pagamento</a> </div>
             </div>
         </section>
 
@@ -130,4 +115,5 @@
                 </ul>
             </div>
         </section>
+    </div>
 @endsection
