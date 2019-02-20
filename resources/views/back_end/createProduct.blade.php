@@ -88,7 +88,7 @@
                                                            name="firstname" required>-->
 
                                                     {{ Form::label('name', 'Product\'s name',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('name', Input::old('nameProduct'),['class' => 'form-control','required' => 'required']) }}
+                                                    {{ Form::text('name', old('nameProduct'),['class' => 'form-control','required' => 'required']) }}
 
 
 
@@ -107,7 +107,7 @@
                                                            name="lastname" required>-->
 
                                                     {{ Form::label('brand', 'Product\'s Brand',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('brand', Input::old('descriptionProduct'),['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'brand','value'=>'0.00']) }}
+                                                    {{ Form::text('brand', old('descriptionProduct'),['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'brand','value'=>'0.00']) }}
                                                 </div>
                                                <!-- <input type="text" id="search" placeholder="Type to search users" autocomplete="off" >-->
                                             </div>
@@ -125,7 +125,7 @@
 
                                                      {{ Form::label('basicPrice', 'Product\'s basic price',['class' => 'bmd-label-floating'])}}
                                                 <!-- <input type="number" min="0.00" max="10000.00" step="0.01" />-->
-                                                    {{ Form::number('basicPrice', Input::old('descriptionProduct'),['class' => 'form-control','required' => 'required','min'=>'0.00', 'max'=>'100000.00','step'=>'0.01']) }}
+                                                    {{ Form::number('basicPrice', old('descriptionProduct'),['class' => 'form-control','required' => 'required','min'=>'0.00', 'max'=>'100000.00','step'=>'0.01']) }}
                                                 </div>
 
                                             </div>
@@ -172,7 +172,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet1', '1st bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet1', Input::old('nameProduct'),['class' => 'form-control','maxlength'=> '45']) }}
+                                                    {{ Form::text('bullet1', old('nameProduct'),['class' => 'form-control','maxlength'=> '45']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -185,7 +185,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet2', '2nd bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet2', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet2', old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -198,7 +198,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet3', '3rd bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet3', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet3', old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -211,7 +211,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet4', '4th bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet4', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet4', old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -224,7 +224,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet5', '5th bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet5', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet5', old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
@@ -237,7 +237,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('bullet6', '6th bullet',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('bullet6', Input::old('nameProduct'),['class' => 'form-control']) }}
+                                                    {{ Form::text('bullet6', old('nameProduct'),['class' => 'form-control']) }}
                                                 </div>
                                             </div>
                                         </div>
