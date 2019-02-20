@@ -76,7 +76,7 @@ class ProductController extends Controller
             }
 
             $product->name = Input::get('name');
-            $product->description = 'Ciccio';
+            $product->description = Input::get('fulldescription');
             $product->normalprice = Input::get('basicPrice');
 
             if(Input::get('showcase')){
@@ -97,7 +97,7 @@ class ProductController extends Controller
                 $product->special = 0;
             }
 
-            //mi servirà dopo
+
             //$category = Category::where('name',Input::get('category'))->select('id')->first();
 
             $product->save();
