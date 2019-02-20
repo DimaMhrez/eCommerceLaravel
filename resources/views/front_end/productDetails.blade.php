@@ -149,7 +149,7 @@
                                     <div role="tabpanel" class="tab-pane fade in active" id="pro-detil">
                                         <!-- List Details -->
                                         <ul class="bullet-round-list">
-                                            {{$productsdata['product']->description}}
+                                            {!!  $productsdata['product']->description !!}
                                         </ul>
                                         <div class="table-responsive">
                                             <table class="table">
