@@ -98,8 +98,8 @@ class ProductController extends Controller
             }
 
 
-            //$category = Category::where('name',Input::get('category'))->select('id')->first();
-
+            $category = Category::where('name',Input::get('category'))->select('id')->first();
+            $product->category_id = $category->id;
             $product->save();
 
 
