@@ -23,12 +23,14 @@ class CartComposer
         // do your query with the $userId
 
         $temp=Cart::where('user_id',$user)
-            ->join('product_variants','product_variants.id','=','carts.product_variant_id')
-            ->join('products','products.id','=','product_variants.product_id')
-            ->select('products.name as productname','products.id as product','carts.*')
+            ->join('products','carts.product_id','=','products.id')
+            ->select('carts.*','products.id as product','products.name as productname')
             ->get();
 
-        $view->with('cartnumber', count($temp))
+        $number=Cart::where('user_id',$user)->sum('quantity');
+
+
+        $view->with('cartnumber', $number)
             ->with('cartitems', $temp);
     }
 }

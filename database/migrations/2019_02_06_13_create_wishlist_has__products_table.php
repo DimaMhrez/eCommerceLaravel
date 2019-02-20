@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProductVariantsTable extends Migration
+class CreateWishlistHasProductVariantsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateProductVariantsTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_variants', function (Blueprint $table) {
+        Schema::create('wishlist_has_products', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
 
-            //Attributi
-            $table->string('color',7);
-            $table->tinyInteger('availability');
-
-            //Chiavi esterne
             $table->unsignedInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedInteger('wishlist_id');
 
+            $table->foreign('product_variant_id')->references('id')->on('products');
+            $table->foreign('wishlist_id')->references('id')->on('wishlists');
         });
     }
 
@@ -35,6 +32,6 @@ class CreateProductVariantsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('product_variants');
+        Schema::dropIfExists('wishlist_has__product_variants');
     }
 }

@@ -19,7 +19,8 @@ class CreateCategoriesTable extends Migration
 
             $table->string('name',45);
             $table->string('sortOrder',45);
-            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('category_id')->nullable();
+            $table->string('href',50)->nullable();
 
             //L'entità categoria è autoreferenziante.
             $table->foreign('category_id')->references('id')->on('categories');

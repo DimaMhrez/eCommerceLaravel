@@ -425,7 +425,7 @@
                         <article> <img class="img-responsive" src="images/item-img-1-6.jpg" alt="" > <span class="sale-tag">-25%</span>
 
                             <!-- Content -->
-                            <span class="tag">Tablets</span> <a href="#." class="tittle">{{$featured->name}}</a>
+                            <span class="tag">{{$featured->category}}</span> <a href="#." class="tittle">{{$featured->name}}</a>
                             <!-- Reviews -->
                             <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">{{$featured->reviewsnumber}} Recensioni</span></p>
                             <div class="price">{{$featured->normalPrice}} <span>{{$featured->normalPrice + 20}}</span></div>

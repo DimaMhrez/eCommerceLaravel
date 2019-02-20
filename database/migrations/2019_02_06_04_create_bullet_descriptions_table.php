@@ -18,8 +18,10 @@ class CreateBulletDescriptionsTable extends Migration
             $table->timestamps();
 
             $table->string('description',45);
+            $table->unsignedInteger('product_id');
 
-            //Nessuna chiave esterna
+
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 

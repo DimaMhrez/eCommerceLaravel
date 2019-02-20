@@ -19,10 +19,12 @@ class CreateReviewsTable extends Migration
 
             $table->string('title',45);
             $table->string('description',45);
-            $table->string('rate',45);
+            $table->tinyInteger('rate');
             $table->unsignedInteger('product_id');
+            $table->unsignedInteger('user_id');
 
             $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('user_id')->references('id')->on('users');
 
         });
     }

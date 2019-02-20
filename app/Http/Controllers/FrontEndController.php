@@ -25,71 +25,67 @@ class FrontEndController extends Controller
         //Se non mostrassimo le categorie, per le query basterebbe la prima riga.
 
         $ShowcaseItems=Product::where('showcase','1')
+            ->join('categories','categories.id','=','products.category_id')
             ->select('categories.name as category','products.*')
-            ->join('category_has_product_variants','products.id','=','category_has_product_variants.product_id')
-            ->join('categories','categories.id','=','category_has_product_variants.category_id')
-            ->take(3)->get();
+            ->take(15)
+            ->get();
 
 
         $FeaturedItems=Product::where('featured','1')
             ->select('categories.name as category','products.*')
-            ->join('category_has_product_variants','products.id','=','category_has_product_variants.product_id')
-            ->join('categories','categories.id','=','category_has_product_variants.category_id')
-            ->take(15)->get();
+            ->join('categories','categories.id','=','products.category_id')
+            ->take(15)
+            ->get();
+
 
         $SpecialItems=Product::where('special','1')->
             select('categories.name as category','products.*')
-            ->join('category_has_product_variants','products.id','=','category_has_product_variants.product_id')
-            ->join('categories','categories.id','=','category_has_product_variants.category_id')
-            ->take(5)->get();
+            ->join('categories','categories.id','=','products.category_id')
+            ->take(15)
+            ->get();
 
         $onSaleItems=Product::whereNotNull('sale_id')
             ->select('categories.name as category','products.*')
-            ->join('category_has_product_variants','products.id','=','category_has_product_variants.product_id')
-            ->join('categories','categories.id','=','category_has_product_variants.category_id')
-            ->take(15)->get();
+            ->join('categories','categories.id','=','products.category_id')
+            ->take(15)
+            ->get();
 
 
-            //Prendo i prodotti di diverse categorie.
+
+        //Prendo i prodotti di diverse categorie.
         $Tv=Product::select('products.*','categories.name as category')
-            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
-            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','TV & Video')
             ->select('products.*','categories.name as category')
             ->take(5)->get();
 
         $Smartphones=Product::select('products.*','categories.name as category')
-            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
-            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','Smartphones')
             ->select('products.*','categories.name as category')
             ->take(5)->get();
 
         $PC=Product::select('products.*','categories.name as category')
-            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
-            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','PC')
             ->select('products.*','categories.name as category')
             ->take(5)->get();
 
         $games=Product::select('products.*','categories.name as category')
-            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
-            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','Video Games')
             ->select('products.*','categories.name as category')
             ->take(5)->get();
 
 
         $watches=Product::select('products.*','categories.name as category')
-            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
-            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','Watches')
             ->select('products.*','categories.name as category')
             ->take(5)->get();
 
         $accessories=Product::select('products.*','categories.name as category')
-            ->join('category_has_product_variants','category_has_product_variants.product_id','=','products.id')
-            ->join('categories','category_has_product_variants.category_id','=','categories.id')
+            ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','Accessories')
             ->select('products.*','categories.name as category')
             ->take(5)->get();
@@ -130,19 +126,24 @@ class FrontEndController extends Controller
 
 
             $category = Category::select('categories.id','categories.name')
-                ->join('category_has_product_variants','categories.id','=','category_has_product_variants.category_id')
-                ->join('products','products.id','=','category_has_product_variants.product_id')
+                ->join('products','categories.id','=','products.category_id')
                 ->where('products.id',$id)
                 ->first();
 
             //Se possibile, sarebbe carino riscrivere queste query con Eloquent (ci ho provato ma sembra non funzionare)
-            $bulletpoints=DB::select('select bd.id, bd.description from bullet_descriptions bd where product_id='.$id);
+            $bulletpoints=BulletDescription::select('bullet_descriptions.id','bullet_descriptions.description')
+                ->where('product_id',$id)
+                ->get();
 
-            $variants=DB::select('select * from product_variants where product_id='.$id);
 
-            $details=DB::select('select * from bullet_details where product_id='.$id);
+            // $bulletpoints=DB::select('select bd.id, bd.description from bullet_descriptions bd where product_id='.$id);
 
-            $relatedProducts=DB::select('select p.* from products p INNER JOIN category_has_product_variants pv where p.id=pv.product_id AND pv.category_id='.$category->id);
+            $relatedProducts=Product::join('categories','products.category_id','=','categories.id')
+                ->where('categories.id',$category->id)
+                ->take(15)
+                ->get();
+
+           //  $relatedProducts=DB::select('select p.* from products p INNER JOIN category_has_products pv where p.id=pv.product_id AND pv.category_id='.$category->id);
 
 
             //Prendo le recensioni. Il numero 5 è da aggiustare, dovremmo prenderne di più. Era solo per testare.
@@ -157,7 +158,13 @@ class FrontEndController extends Controller
             $onestar=Review::where('product_id',$id)
                 ->where('rate',1)->take(5)->get();
 
-            $reviews=DB::select('select *,u.name as user from reviews,users u where reviews.user_id=u.id AND product_id='.$id);
+            $reviews=Review::join('users','users.id','=','reviews.user_id')
+                ->where('reviews.product_id',$id)
+                ->select('reviews.*','users.name as user')
+                ->get();
+
+
+           // $reviews=DB::select('select *,u.name as user from reviews,users u where reviews.user_id=u.id AND product_id='.$id);
 
             $shippers=Shipper::take(5)->get();
 
@@ -182,8 +189,6 @@ class FrontEndController extends Controller
                 'product' => $product,
                 'category' => $category,
                 'bulletpoints' => $bulletpoints,
-                'variants' => $variants,
-                'details' => $details,
                 'related' => $relatedProducts,
                 'fivestars' => $fivestars,
                 'fourstars' =>$fourstars,

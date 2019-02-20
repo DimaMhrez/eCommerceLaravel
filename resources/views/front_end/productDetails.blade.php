@@ -107,15 +107,15 @@
                                                 @endforeach
                                         </ul>
                                         <!-- Colors -->
-                                        <div class="row">
+                                        <!-- <div class="row">
                                             <div class="col-xs-5">
                                                 <div class="clr">
-                                                    @foreach($productsdata['variants'] as $variant)
-                                                    <span style="background:#{{$variant->color}}"></span>
-                                                    @endforeach
+
+                                                    <span style="background:#"></span>
+
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <!-- Compare Wishlist -->
                                         <ul class="cmp-list">
@@ -149,9 +149,7 @@
                                     <div role="tabpanel" class="tab-pane fade in active" id="pro-detil">
                                         <!-- List Details -->
                                         <ul class="bullet-round-list">
-                                            @foreach($productsdata['details'] as $detail)
-                                            <li>{{$detail->detail}}</li>
-                                            @endforeach
+                                            {{$productsdata['product']->description}}
                                         </ul>
                                         <div class="table-responsive">
                                             <table class="table">

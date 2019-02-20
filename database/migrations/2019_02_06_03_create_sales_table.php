@@ -18,7 +18,7 @@ class CreateSalesTable extends Migration
             $table->timestamps();
 
             $table->string('EventName',40);
-            $table->double('price');
+            $table->double('discount%');
             $table->dateTime('saleFrom');
             $table->dateTime('saleTo');
         });

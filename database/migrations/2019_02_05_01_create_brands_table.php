@@ -19,10 +19,10 @@ class CreateBrandsTable extends Migration
 
             //Attributi
             $table->string('name',45);
-            $table->string('location',45);
-            $table->string('description',45);
-            $table->string('email',30);
-            $table->string('phoneNumber',10);
+            $table->string('location',45)->nullable();
+            $table->string('description',45)->nullable();
+            $table->string('email',30)->nullable();
+            $table->string('phoneNumber',10)->nullable();
 
             //Non ci sono chiavi esterne.
 
