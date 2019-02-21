@@ -7,6 +7,7 @@ use App\Product;
 use App\ProductVariant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Support\Facades\View;
 
 class CartController extends Controller
 {
@@ -59,6 +60,8 @@ class CartController extends Controller
     public function show(){
         //Prendo l'ID dell'utente, tanto è loggato per forza perché lo controlla il middleware.
 
+
+
         $id=Auth::user()->id;
 
         //Prendo gli item nel carrello di quel particolare utente.
@@ -68,17 +71,12 @@ class CartController extends Controller
             ->select('carts.quantity','carts.id as cartid','carts.totalprice','products.*')
             ->get();
 
-        // Store a piece of data in the session...
-        session(['user' => $id]);
-
-        $url=urlencode(session('user'));
 
         $sum=Cart::where('user_id',$id)->sum('totalprice');
         $data=array(
 
             'items' => $items,
             'sum' => $sum,
-            'url' => $url,
         );
 
         return view('front_end.shoppingCart')->with('data',$data);
@@ -86,12 +84,35 @@ class CartController extends Controller
     }
 
 
-    public function remove(Request $request){
+    public function remove(Request $request)
+    {
 
-        Cart::find($request->id)->delete();
+        if ($request->ajax()) {
 
+            Cart::find($request->id)->delete();
+
+            $id = Auth::user()->id;
+            $items = Cart::where('user_id', $id)
+                ->join('products', 'products.id', '=', 'carts.product_id')
+                ->select('carts.quantity', 'carts.id as cartid', 'carts.totalprice', 'products.*')
+                ->get();
+
+
+            $sum = Cart::where('user_id', $id)->sum('totalprice');
+            $data = array(
+
+                'items' => $items,
+                'sum' => $sum,
+            );
+
+            $view = View::make('front_end.CartTable')->with('data', $data);
+            $sections = $view->renderSections();
+            return $sections['table'];
+
+
+        }
+        else{return view('front_end.error404');}
     }
-
 
 
 

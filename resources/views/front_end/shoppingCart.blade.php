@@ -46,39 +46,28 @@
         </div>
 
         <!-- Shopping Cart -->
+
        <div class="tablecointaner">
            @include('front_end.cartTable')
        </div>
-        <!-- Clients img -->
-        <section class="light-gry-bg clients-img">
-            <div class="container">
-                <ul>
-                    <li><img src="images/c-img-1.png" alt="" ></li>
-                    <li><img src="images/c-img-2.png" alt="" ></li>
-                    <li><img src="images/c-img-3.png" alt="" ></li>
-                    <li><img src="images/c-img-4.png" alt="" ></li>
-                    <li><img src="images/c-img-5.png" alt="" ></li>
-                </ul>
-            </div>
-        </section>
+
     </div>
 
-<script>
-    $(document).ready(function() {
+    <script>
 
-        $(".remove").click(function () {
-            $.post("/removefromcart",
-                {
-                   id: this.id,
-                },
-                //Se ha successo viene eseguita la seguente funzione:
-                function () {
-                    location.reload();
-                }
-            )
-        });
+            $(".remove").click(function () {
+                $.post("/removefromcart",
+                    {
+                       id: this.id,
+                    },
+                    //If that succeeds:
+                    function (data) {
+                        $('.tablecointaner').empty().append( data );
+                    }
 
-    });
+                )
+            });
 
-</script>
+
+    </script>
 @endsection

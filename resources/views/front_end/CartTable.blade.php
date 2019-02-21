@@ -1,4 +1,4 @@
-
+@section('table')
 <section class="shopping-cart padding-bottom-60">
             <div class="container">
                 <table id="carttable" class="table">
@@ -70,8 +70,9 @@
 
         <a href="/" class="btn-round btn-light">Continua con gli acquisti</a>
         @if($data['items']->count() != 0)
-        <a href="/payment/{{$data['url']}}" class="btn-round">Metodi di pagamento</a>
+        <a href="/payment" class="btn-round">Metodi di pagamento</a>
         @endif
     </div>
     </div>
 </section>
+@show
