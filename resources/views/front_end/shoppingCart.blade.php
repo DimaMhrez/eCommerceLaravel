@@ -46,63 +46,9 @@
         </div>
 
         <!-- Shopping Cart -->
-        <section class="shopping-cart padding-bottom-60">
-            <div class="container">
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Articoli</th>
-                        <th class="text-center">Prezzo</th>
-                        <th class="text-center">Quantità</th>
-                        <th class="text-center">Prezzo totale </th>
-                        <th>&nbsp; </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-
-                    <!-- Item Cart -->
-                    @foreach ($data['items'] as $item)
-                    <tr>
-                        <td><div class="media">
-                                <div class="media-left"> <a href="/products/{{$item->id}}"> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" > </a> </div>
-                                <div class="media-body">
-                                    <p>{{$item->name}}</p>
-                                </div>
-                            </div></td>
-                        <td class="text-center padding-top-60">€{{$item->normalPrice}}</td>
-                        <td class="text-center"><!-- Quinty -->
-
-                            <div class="quinty padding-top-20">
-                                <p>{{$item->quantity}}</p>
-                            </div></td>
-                        <td class="text-center padding-top-60">€{{$item->totalprice}}</td>
-                        <td class="text-center padding-top-60"><a href="#." class="remove"><i class="fa fa-close"></i></a></td>
-                    </tr>
-                    @endforeach
-
-                    </tbody>
-                </table>
-
-                <!-- Promotion -->
-                <div class="promo">
-                    <div class="coupen">
-                        <label> Promotion Code
-                            <input type="text" placeholder="Your code here">
-                            <button type="submit"><i class="fa fa-arrow-circle-right"></i></button>
-                        </label>
-                    </div>
-
-                    <!-- Grand total -->
-                    <div class="g-totel">
-                        <h5>Importo complessivo: <span>€{{$data['sum']}}</span></h5>
-                    </div>
-                </div>
-
-                <!-- Button -->
-                <div class="pro-btn"> <a href="/" class="btn-round btn-light">Continua con gli acquisti</a> <a href="#." class="btn-round">Metodi di pagamento</a> </div>
-            </div>
-        </section>
-
+       <div class="tablecointaner">
+           @include('front_end.cartTable')
+       </div>
         <!-- Clients img -->
         <section class="light-gry-bg clients-img">
             <div class="container">
@@ -116,4 +62,23 @@
             </div>
         </section>
     </div>
+
+<script>
+    $(document).ready(function() {
+
+        $(".remove").click(function () {
+            $.post("/removefromcart",
+                {
+                   id: this.id,
+                },
+                //Se ha successo viene eseguita la seguente funzione:
+                function () {
+                    location.reload();
+                }
+            )
+        });
+
+    });
+
+</script>
 @endsection

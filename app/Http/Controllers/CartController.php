@@ -65,17 +65,40 @@ class CartController extends Controller
 
         $items=Cart::where('user_id',$id)
             ->join('products','products.id','=','carts.product_id')
-            ->select('carts.quantity','carts.totalprice','products.*')
+            ->select('carts.quantity','carts.id as cartid','carts.totalprice','products.*')
             ->get();
+
+        // Store a piece of data in the session...
+        session(['user' => $id]);
+
+        $url=urlencode(session('user'));
 
         $sum=Cart::where('user_id',$id)->sum('totalprice');
         $data=array(
 
             'items' => $items,
             'sum' => $sum,
+            'url' => $url,
         );
 
         return view('front_end.shoppingCart')->with('data',$data);
 
     }
+
+
+    public function remove(Request $request){
+
+        Cart::find($request->id)->delete();
+
+    }
+
+
+
+
+    public function payment($session){
+
+        return view('front_end.paymentMethods');
+    }
 }
+
+
