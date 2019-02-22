@@ -554,10 +554,12 @@ demo = {
         } else if (type == 'success-message') {
             swal({
                 title: "Good job!",
-                text: "You clicked the button!",
+                text: "Now you have done!",
                 buttonsStyling: false,
                 confirmButtonClass: "btn btn-success",
                 type: "success"
+            }).then(function(){
+                window.location.assign(dashboard);
             }).catch(swal.noop)
 
         } else if (type == 'warning-message-and-confirmation') {

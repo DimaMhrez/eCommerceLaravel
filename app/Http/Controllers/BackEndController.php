@@ -10,6 +10,10 @@ use Yajra\Datatables\Datatables;
 
 class BackEndController extends Controller
 {
+    public function main(){
+        return view('back_end.dashboard');
+    }
+
     public function users(){
 
         $users=User::OrderBy('surname','asc')->simplePaginate(10);

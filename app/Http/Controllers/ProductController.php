@@ -116,7 +116,8 @@ class ProductController extends Controller
                 }
             }
 
-            return Redirect::to('/admin');
+            $productID = $product->id;
+            return Redirect::to('image-view/'.$productID);
         }
     }
 

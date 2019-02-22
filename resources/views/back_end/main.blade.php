@@ -19,6 +19,8 @@
     <link href="{{asset('back_end/demo/demo.css" rel="stylesheet') }}" />
     <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
+
+
     @stack('css')
 
 </head>
@@ -419,6 +421,7 @@
 
         <!-- content -->
         @yield('content')
+
         <!-- End content -->
         <footer class="footer">
             <div class="container-fluid">

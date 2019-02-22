@@ -91,19 +91,8 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {!! Form::select('category', array_pluck($categories, 'name'), old('category') ,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Category','required'=>'required')) !!}
-                                                </div>
 
-                                            </div>
-                                            <div class="input-group form-control-lg">
-                                                <div class="input-group-prepend">
-                                                     <span class="input-group-text">
-                                                          <i class="material-icons">image</i>
-                                                     </span>
                                                 </div>
-                                                <div class="form-group">
-                                                    {{!!Form::file('image')!!}}
-                                                </div>
-
                                             </div>
                                         </div>
                                     </div>

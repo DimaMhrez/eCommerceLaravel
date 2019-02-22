@@ -29,9 +29,7 @@ Route::post('/addtocart', 'CartController@add');
 
 
 //rotta provvisoria che carica la dashboard
-Route::get('/admin',function (){
-    return view('back_end.dashboard');
-});
+Route::get('/admin','BackEndController@main')->name('admin');
 
 Route::get('/admin/main',function (){
     return view('back_end.main');
@@ -54,6 +52,9 @@ Route::get('admin/userProfile/{id}','BackEndController@getUser');
 Route::get('admin/wizard',function(){
     return view('back_end.wizard');
 });
+//rotte per inserimento immagini dopo che l'utente di backoffice ha creato un nuovo prodotto
+Route::get('image-view/{id}','ImageController@index');
+Route::post('image-view/{id}','ImageController@store');
 
 //funzioni crud sui prodotti nel back_end
 Route::resource('/admin/product','ProductController');
