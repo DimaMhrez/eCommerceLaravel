@@ -57,7 +57,40 @@
                                 <h2>Accettiamo tutti i principali metodi di pagamento.</h2>
                                 <hr>
                             </div>
-                            <img src="{{ asset('front_end/images/card-icon.png') }}" alt="missing." > </div>
+                            {!!  Form::open(['action'=>'PaymentController@store','method'=>'POST']) !!}
+                            <label for="MasterCard">
+                                <input class="cardselector" type="radio" name="card" id="MasterCard" value="MasterCard" checked>
+                                <img src="{{asset('front_end/images/mastercard.png')}}" alt="missing">
+                                Mastercard
+                            </label>
+
+
+                            <label for="VISA">
+                                <input class="cardselector" type="radio" name="card" id="VISA" value="VISA">
+                                <img src="{{asset('front_end/images/VISA.png')}}" alt="missing">
+                               VISA
+                            </label>
+
+                            <label for="discover">
+                                <input class="cardselector" type="radio" name="card" id="discover" value="Discover">
+                                <img src="{{asset('front_end/images/discover.png')}}" alt="missing">
+                                Discover
+                            </label>
+
+                            <label for="Paypal">
+                                <input class="cardselector" type="radio" name="card" id="Paypal" value="Paypal">
+                                <img src="{{asset('front_end/images/paypal.png')}}" alt="missing">
+                                Paypal
+                            </label>
+
+                            <label for="Americanexpress">
+                                <input class="cardselector" type="radio" name="card" id="Americanexpress" value="American Express">
+                                <img src="{{asset('front_end/images/american-express.png')}}" alt="missing">
+                                American Express
+                            </label>
+
+
+                        </div>
 
                         <div class="col-md-6">
 
@@ -66,7 +99,7 @@
                                 <h2>Le tue informazioni</h2>
                                 <hr>
                             </div>
-                            {!!  Form::open(['action'=>'PaymentController@store','method'=>'POST']) !!}
+
                                 <div class="row">
                                     <!-- Cardholder Name -->
                                     <div class="col-sm-6">
@@ -88,16 +121,18 @@
                                         <label for="expiremonth">Scadenza</label>
                                         <div class="row">
                                             <div class="col-xs-6">
-                                                {{Form::select('expiremonth',
+                                                {{
+                                                Form::select('expiremonth',
                                                 ['01' => '01', '02'=>'02', '03' =>'03', '04'=>'04', '05'=>'05', '06'=>'06',
                                                 '07'=>'07','08'=>'08','09'=>'09','10'=>'10','11'=>'11','12'=>'12'],
-                                                '01',['class' => "selectpicker"])}}
+                                                '01',['class' => "form-control"])
+                                                }}
 
                                             </div>
                                             <span class="col-xs-6">
                                                 {{Form::select('expireyear',
                                                 ['2019' => '2019', '2020'=>'2020', '2021' =>'2021', '2022'=>'2022', '2023'=>'2023', '2024'=>'2024'],
-                                                '2019',['class' => "selectpicker"])}}
+                                                '2019',['class' => "form-control"])}}
                                             </span>
                                         </div>
                                     </div>

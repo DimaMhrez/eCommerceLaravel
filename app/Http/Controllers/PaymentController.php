@@ -16,12 +16,13 @@ class PaymentController extends Controller
 
     public function store(Request $request){
 
+        //AGGIUNGI VALIDATION!
 
 
         $payment= new paymentMethod();
 
-        $payment->method = 'bancomat';
-        $payment->ccType = 'nonsisa';
+        $payment->method = 'Carta di credito';
+        $payment->ccType = $request->card;
         $payment-> ccNumber= $request->CVV;
         $payment-> expire_month= $request->expiremonth;
         $payment-> expire_year= $request->expireyear;

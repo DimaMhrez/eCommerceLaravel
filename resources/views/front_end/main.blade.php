@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="{{ asset('front_end/css/main.css') }}">
   <link rel="stylesheet" href="{{ asset('front_end/css/style.css') }}">
   <link rel="stylesheet" href="{{ asset('front_end/css/responsive.css') }}">
+  <link rel="stylesheet" href="{{ asset('front_end/css/mystyle.css')}}">
 @yield('otherCss')
 
 <!-- Fonts Online -->
