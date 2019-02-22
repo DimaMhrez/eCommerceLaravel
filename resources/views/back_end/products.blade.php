@@ -103,6 +103,8 @@
                      });*/
                     $(document).ready(function(){
                         $(".nav-item, .active").removeClass("active");
+                        $("#catalog").attr("aria-expanded","true");
+                        $("#catalogComponent").addClass("show");
                         $("#products").parent().addClass("active");
                     });
 

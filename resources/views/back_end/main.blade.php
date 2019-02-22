@@ -151,13 +151,13 @@
                     </div>
                 </li>-->
                 <li class="nav-item ">
-                    <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
+                    <a class="nav-link" id="catalog" href="#catalogComponent" data-toggle="collapse">
                         <i class="material-icons">apps</i>
                         <p> Catalog
                             <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="componentsExamples">
+                    <div class="collapse" id="catalogComponent">
                         <ul class="nav">
                             <li class="nav-item ">
                                 <a class="nav-link" href="{{url('/admin/product/create')}}">
@@ -166,7 +166,7 @@
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" id="products" href="{{url('/admin/product/show')}}">
+                                <a class="nav-link" id="products" href="{{url('/admin/product')}}">
                                     <span class="sidebar-mini"> GS </span>
                                     <span class="sidebar-normal"> Products List </span>
                                 </a>

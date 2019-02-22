@@ -7,6 +7,7 @@ use App\BulletDescription;
 use App\Category;
 use App\Product;
 use Illuminate\Http\Request;
+use Prophecy\Doubler\DoubleInterface;
 use View;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
@@ -141,7 +142,13 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        // get the product
+        $product = Product::find($id);
+        $bullets = BulletDescription::where('')
+
+        // show the edit form and pass the nerd
+        return View::make('back_end.editProduct')
+            ->with('product', $product);
     }
 
     /**
