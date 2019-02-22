@@ -30,11 +30,10 @@ Route::group(['middleware'=>'auth'], function(){
 
     Route::get('/cart','CartController@show');
     Route::get('/payment', 'PaymentController@show');
+    Route::post('/addpayment', 'PaymentController@store');
 
 });
 
-
-Route::get('/payment/{session}','CartController@payment');
 
 
 

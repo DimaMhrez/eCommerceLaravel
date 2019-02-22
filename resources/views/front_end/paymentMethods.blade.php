@@ -66,90 +66,58 @@
                                 <h2>Le tue informazioni</h2>
                                 <hr>
                             </div>
-                            <form>
+                            {!!  Form::open(['action'=>'PaymentController@store','method'=>'POST']) !!}
                                 <div class="row">
-
                                     <!-- Cardholder Name -->
                                     <div class="col-sm-6">
-                                        <label> Cardholder Name
-                                            <input class="form-control" type="text">
-                                        </label>
+
+                                        {{Form::label('nome','Nome intestatario')}}
+                                        {{Form::text('nome', '', ['class' => 'form-control'])}}
+
                                     </div>
 
                                     <!-- Card Number -->
                                     <div class="col-sm-6">
-                                        <label> Card Number
-                                            <input class="form-control" type="text">
-                                        </label>
+                                        {{Form::label('cardnumber','Numero carta')}}
+                                        {{Form::text('cardnumber', '', ['class' => 'form-control'])}}
+
                                     </div>
 
-                                    <!-- Card Number -->
+
                                     <div class="col-sm-7">
-                                        <label> Expire Date </label>
+                                        <label for="expiremonth">Scadenza</label>
                                         <div class="row">
                                             <div class="col-xs-6">
-                                                <select class="selectpicker">
-                                                    <option> MM</option>
-                                                    <option> 01</option>
-                                                    <option> 02</option>
-                                                    <option> 03</option>
-                                                    <option> 04</option>
-                                                    <option> 05</option>
-                                                    <option> 06</option>
-                                                    <option> 07</option>
-                                                    <option> 08</option>
-                                                    <option> 09</option>
-                                                    <option> 10</option>
-                                                    <option> 11</option>
-                                                    <option> 12</option>
-                                                </select>
+                                                {{Form::select('expiremonth',
+                                                ['01' => '01', '02'=>'02', '03' =>'03', '04'=>'04', '05'=>'05', '06'=>'06',
+                                                '07'=>'07','08'=>'08','09'=>'09','10'=>'10','11'=>'11','12'=>'12'],
+                                                '01',['class' => "selectpicker"])}}
+
                                             </div>
-                                            <div class="col-xs-6">
-                                                <select class="selectpicker">
-                                                    <option> YYYY</option>
-                                                    <option> 2001</option>
-                                                    <option> 2002</option>
-                                                    <option> 2003</option>
-                                                    <option> 2004</option>
-                                                    <option> 2005</option>
-                                                    <option> 2006</option>
-                                                    <option> 2007</option>
-                                                    <option> 2008</option>
-                                                    <option> 2009</option>
-                                                    <option> 2010</option>
-                                                    <option> 2011</option>
-                                                    <option> 2012</option>
-                                                </select>
-                                            </div>
+                                            <span class="col-xs-6">
+                                                {{Form::select('expireyear',
+                                                ['2019' => '2019', '2020'=>'2020', '2021' =>'2021', '2022'=>'2022', '2023'=>'2023', '2024'=>'2024'],
+                                                '2019',['class' => "selectpicker"])}}
+                                            </span>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
-                                        <label> CVV
-                                            <input class="form-control" type="text">
-                                        </label>
+                                        {{Form::label('CVV','CVV')}}
+                                        {{Form::text('CVV', '', ['class' => 'form-control'])}}
+
                                     </div>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
 
                 <!-- Button -->
-                <div class="pro-btn"> <a href="#." class="btn-round btn-light">Back to Shopping Cart</a> <a href="#." class="btn-round">Go Delivery Methods</a> </div>
-            </div>
-        </section>
+                <div class="pro-btn"> <a href="/cart" class="btn-round btn-light">Torna al carrello</a>
+    {{ Form::submit('Vai ai metodi di consegna', ['class' => 'btn-round']) }}
+                    {!! Form::close() !!}
+                </div>
+</div>
+</section>
 
-        <!-- Clients img -->
-        <section class="light-gry-bg clients-img">
-            <div class="container">
-                <ul>
-                    <li><img src="images/c-img-1.png" alt="" ></li>
-                    <li><img src="images/c-img-2.png" alt="" ></li>
-                    <li><img src="images/c-img-3.png" alt="" ></li>
-                    <li><img src="images/c-img-4.png" alt="" ></li>
-                    <li><img src="images/c-img-5.png" alt="" ></li>
-                </ul>
-            </div>
-        </section>
-
+</div>
 @endsection
