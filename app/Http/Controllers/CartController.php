@@ -7,6 +7,7 @@ use App\Product;
 use App\ProductVariant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use \Illuminate\Support\Facades\View;
 
 class CartController extends Controller
 {
@@ -47,11 +48,78 @@ class CartController extends Controller
            $cartitem->quantity = $request->number;
            $cartitem->totalprice = $item->normalPrice * $cartitem->quantity;
            $cartitem->user_id = $userID;
-           $cartitem->product_variant_id = $item->id;
+           $cartitem->product_id = $item->id;
 
            $cartitem->save();
 
            return ('Success');
        }
     }
+
+
+    public function show(){
+        //Prendo l'ID dell'utente, tanto è loggato per forza perché lo controlla il middleware.
+
+
+
+        $id=Auth::user()->id;
+
+        //Prendo gli item nel carrello di quel particolare utente.
+
+        $items=Cart::where('user_id',$id)
+            ->join('products','products.id','=','carts.product_id')
+            ->select('carts.quantity','carts.id as cartid','carts.totalprice','products.*')
+            ->get();
+
+
+        $sum=Cart::where('user_id',$id)->sum('totalprice');
+        $data=array(
+
+            'items' => $items,
+            'sum' => $sum,
+        );
+
+        return view('front_end.shoppingCart')->with('data',$data);
+
+    }
+
+
+    public function remove(Request $request)
+    {
+
+        if ($request->ajax()) {
+
+            Cart::find($request->id)->delete();
+
+            $id = Auth::user()->id;
+            $items = Cart::where('user_id', $id)
+                ->join('products', 'products.id', '=', 'carts.product_id')
+                ->select('carts.quantity', 'carts.id as cartid', 'carts.totalprice', 'products.*')
+                ->get();
+
+
+            $sum = Cart::where('user_id', $id)->sum('totalprice');
+            $data = array(
+
+                'items' => $items,
+                'sum' => $sum,
+            );
+
+            $view = View::make('front_end.CartTable')->with('data', $data);
+            $sections = $view->renderSections();
+            return $sections['table'];
+
+
+        }
+        else{return view('front_end.error404');}
+    }
+
+
+
+    public function payment($session){
+
+        return view('front_end.paymentMethods');
+    }
 }
+
+

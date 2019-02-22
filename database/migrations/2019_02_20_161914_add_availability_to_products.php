@@ -16,6 +16,10 @@ class AddAvailabilityToProducts extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->Integer('availability')->default('0');
         });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->boolean('setVisible')->default('1');
+        });
     }
 
     /**
@@ -27,6 +31,10 @@ class AddAvailabilityToProducts extends Migration
     {
         Schema::table('products', function (Blueprint $table) {
             $table->dropColumn('availability');
+        });
+
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('setVisible');
         });
     }
 }
