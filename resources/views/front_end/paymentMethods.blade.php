@@ -54,15 +54,16 @@
 
                             <!-- Your Card -->
                             <div class="heading">
-                                <h2>Your Card</h2>
+                                <h2>Accettiamo tutti i principali metodi di pagamento.</h2>
                                 <hr>
                             </div>
-                            <img src="images/card-icon.png" alt="" > </div>
+                            <img src="{{ asset('front_end/images/card-icon.png') }}" alt="missing." > </div>
+
                         <div class="col-md-6">
 
                             <!-- Your information -->
                             <div class="heading">
-                                <h2>Your information</h2>
+                                <h2>Le tue informazioni</h2>
                                 <hr>
                             </div>
                             <form>

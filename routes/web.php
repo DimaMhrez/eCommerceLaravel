@@ -29,6 +29,8 @@ Route::post('/removefromcart', 'CartController@remove');
 Route::group(['middleware'=>'auth'], function(){
 
     Route::get('/cart','CartController@show');
+    Route::get('/payment', 'PaymentController@show');
+
 });
 
 
