@@ -160,7 +160,7 @@
                     <div class="collapse" id="catalogComponent">
                         <ul class="nav">
                             <li class="nav-item ">
-                                <a class="nav-link" href="{{url('/admin/product/create')}}">
+                                <a class="nav-link" id="newProduct" href="{{url('/admin/product/create')}}">
                                     <span class="sidebar-mini"> B </span>
                                     <span class="sidebar-normal"> New Product </span>
                                 </a>

@@ -13,7 +13,7 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
-                        {{ Form::model($product, array('route' => array('product.update', $product->id), 'method' => 'PUT')) }}
+                        {{ Form::model($product, array('route' => array('product.update', $product['id']), 'method' => 'PUT')) }}
                         <div class="card-header text-center">
                             <h3 class="card-title">
                                 New Product
@@ -61,7 +61,7 @@
                                                     {{ Form::text('name', null,['class' => 'form-control','required' => 'required']) }}
                                                 </div>
                                             </div>
-                                            <div class="input-group form-control-lg">
+                                            <div class="input-group form-control-lg is-filled has-success">
                                                 <div class="input-group-prepend">
                                                      <span class="input-group-text">
                                                           <i class="material-icons">description</i>
@@ -69,7 +69,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     {{ Form::label('brand', 'Product\'s Brand',['class' => 'bmd-label-floating'])}}
-                                                    {{ Form::text('brand', null,['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'brand','value'=>'0.00']) }}
+                                                    {{ Form::text('brand',null,['class' => 'form-control','required' => 'required','autocomplete'=>'off','id'=>'brand']) }}
                                                 </div>
                                             </div>
                                             <div class="input-group form-control-lg">
@@ -90,7 +90,7 @@
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
-                                                    {!! Form::select('category', array_pluck($categories, 'name'),null,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Category','required'=>'required')) !!}
+                                                    {!! Form::select('category', array_pluck($categories, 'name'),null,array('class'=>'selectpicker','data-style'=>'select-with-transition','selected'=>$product['category'],'required'=>'required')) !!}
 
                                                 </div>
                                             </div>
@@ -184,7 +184,7 @@
                                     <h5 class="info-text"> Full Description</h5>
                                     <div class="row justify-content-center">
                                         <div class="col-sm-10">
-                                            {!! Form::textarea('fulldescription',null, ['id' => 'fulldescription']) !!}
+                                            {!! Form::textarea('fulldescription',$product['description'], ['id' => 'fulldescription']) !!}
                                         </div>
                                     </div>
                                 </div>
@@ -194,8 +194,8 @@
                                         <div class="col-lg-10">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        {{ Form::checkbox('showcase',null,null, array('name'=>'showcase','value'=>'true')) }}
+                                                    <div class="choice @if($product['showcase'] == true)active @endif" data-toggle="wizard-checkbox">
+                                                        {{ Form::checkbox('showcase',null,$product['showcase'],array('name'=>'showcase','value'=>'true')) }}
                                                         <div class="icon">
                                                             <i class="fa fa-home"></i>
                                                         </div>
@@ -203,8 +203,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        {{ Form::checkbox('featured',null,null, array('name'=>'featured','value'=>'true')) }}
+                                                    <div class="choice @if($product['featured'] == true)active @endif" data-toggle="wizard-checkbox">
+                                                        {{ Form::checkbox('featured',null,$product['featured'], array('name'=>'featured','value'=>'true')) }}
                                                         <div class="icon">
                                                             <i class="fa fa-rss"></i>
                                                         </div>
@@ -212,8 +212,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-4">
-                                                    <div class="choice" data-toggle="wizard-checkbox">
-                                                        {{ Form::checkbox('special',null,null, array('name'=>'special','value'=>'true')) }}
+                                                    <div class="choice @if($product['special'] == true)active @endif" data-toggle="wizard-checkbox">
+                                                        {{ Form::checkbox('special',null,$product['special'], array('name'=>'special','value'=>'true')) }}
                                                         <div class="icon">
                                                             <i class="fa fa-star"></i>
                                                         </div>
