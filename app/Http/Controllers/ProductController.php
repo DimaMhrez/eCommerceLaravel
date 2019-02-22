@@ -11,6 +11,7 @@ use View;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
+use Yajra\Datatables\Datatables;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        return view('back_end.products');
     }
 
     /**
@@ -164,5 +165,26 @@ class ProductController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function anyData()
+    {
+        return Datatables::of(Product::query()
+            ->select('id','name','normalPrice'))
+            ->setRowId(function ($product){
+                return $product->id;
+            })
+            //->addColumn('intro','back_end.action')
+            //->addColumn('intro', '<a href="{{ url(\'admin/userProfile/'.id.'\') }}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>')
+
+            ->addColumn('intro', function(Product $product) {
+                return '<a href="'. url('/admin/') .'" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>';
+            })
+            ->rawColumns(['intro'])
+            ->toJson();
+        //return Datatables::of(User::)
+
+        //return Datatables::eloquent(User::query())->make(true);
     }
 }

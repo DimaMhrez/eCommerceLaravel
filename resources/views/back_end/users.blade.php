@@ -100,7 +100,10 @@
                     //  alert( 'Clicked row id '+id );
                 });
             });*/
-
+           $(document).ready(function(){
+               $(".nav-item, .active").removeClass("active");
+               $("#users").parent().addClass("active");
+           });
 
     </script>
 @endpush
