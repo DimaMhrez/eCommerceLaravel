@@ -84,13 +84,13 @@
                 </div>
             </div>
             <ul class="nav">
-                <li class="nav-item active ">
-                    <a class="nav-link" href="dashboard.html">
+                <li class="nav-item">
+                    <a class="nav-link" id="dashboard" href="{{url('/admin')}}">
                         <i class="material-icons">dashboard</i>
                         <p> Dashboard </p>
                     </a>
                 </li>
-                <li class="nav-item ">
+                <!--<li class="nav-item ">
                     <a class="nav-link" data-toggle="collapse" href="#pagesExamples">
                         <i class="material-icons">image</i>
                         <p> Pages
@@ -149,79 +149,43 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li>-->
                 <li class="nav-item ">
                     <a class="nav-link" data-toggle="collapse" href="#componentsExamples">
                         <i class="material-icons">apps</i>
-                        <p> Components
+                        <p> Catalog
                             <b class="caret"></b>
                         </p>
                     </a>
                     <div class="collapse" id="componentsExamples">
                         <ul class="nav">
                             <li class="nav-item ">
-                                <a class="nav-link" data-toggle="collapse" href="#componentsCollapse">
-                                    <span class="sidebar-mini"> MLT </span>
-                                    <span class="sidebar-normal"> Multi Level Collapse
-                      <b class="caret"></b>
-                    </span>
-                                </a>
-                                <div class="collapse" id="componentsCollapse">
-                                    <ul class="nav">
-                                        <li class="nav-item ">
-                                            <a class="nav-link" href="#0">
-                                                <span class="sidebar-mini"> E </span>
-                                                <span class="sidebar-normal"> Example </span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="components/buttons.html">
+                                <a class="nav-link" href="{{url('/admin/product/create')}}">
                                     <span class="sidebar-mini"> B </span>
-                                    <span class="sidebar-normal"> Buttons </span>
+                                    <span class="sidebar-normal"> New Product </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="components/grid.html">
+                                <a class="nav-link" id="products" href="{{url('/admin/product/show')}}">
                                     <span class="sidebar-mini"> GS </span>
-                                    <span class="sidebar-normal"> Grid System </span>
+                                    <span class="sidebar-normal"> Products List </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="components/panels.html">
                                     <span class="sidebar-mini"> P </span>
-                                    <span class="sidebar-normal"> Panels </span>
+                                    <span class="sidebar-normal"> New Category </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
                                 <a class="nav-link" href="components/sweet-alert.html">
                                     <span class="sidebar-mini"> SA </span>
-                                    <span class="sidebar-normal"> Sweet Alert </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="components/notifications.html">
-                                    <span class="sidebar-mini"> N </span>
-                                    <span class="sidebar-normal"> Notifications </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="components/icons.html">
-                                    <span class="sidebar-mini"> I </span>
-                                    <span class="sidebar-normal"> Icons </span>
-                                </a>
-                            </li>
-                            <li class="nav-item ">
-                                <a class="nav-link" href="components/typography.html">
-                                    <span class="sidebar-mini"> T </span>
-                                    <span class="sidebar-normal"> Typography </span>
+                                    <span class="sidebar-normal"> Categories </span>
                                 </a>
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li><!--
                 <li class="nav-item ">
                     <a class="nav-link" data-toggle="collapse" href="#formsExamples">
                         <i class="material-icons">content_paste</i>
@@ -331,17 +295,18 @@
                     </a>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" href="{{url('/admin/users')}}">
-                        <i class="material-icons">timeline</i>
-                        <p> Users </p>
-                    </a>
-                </li>
-                <li class="nav-item ">
                     <a class="nav-link" href="calendar.html">
                         <i class="material-icons">date_range</i>
                         <p> Calendar </p>
                     </a>
+                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link" id="users" href="{{url('/admin/users')}}">
+                        <i class="material-icons">face</i>
+                        <p> Users </p>
+                    </a>
                 </li>
+
             </ul>
         </div>
     </div>
@@ -365,7 +330,7 @@
                     <span class="navbar-toggler-icon icon-bar"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end">
-                    <form class="navbar-form">
+                    <!--<form class="navbar-form">
                         <div class="input-group no-border">
                             <input type="text" value="" class="form-control" placeholder="Search...">
                             <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -413,7 +378,7 @@
                                 <a class="dropdown-item" href="#">Log out</a>
                             </div>
                         </li>
-                    </ul>
+                    </ul>-->
                 </div>
             </div>
         </nav>
@@ -780,7 +745,7 @@
     });
 </script>
 <!-- Sharrre libray -->
-<script src="../assets/demo/jquery.sharrre.js"></script>
+<script src="{{asset('assets/demo/jquery.sharrre.js') }}"></script>
 <script>
     $(document).ready(function() {
 

@@ -54,6 +54,9 @@ Route::get('/admin/main',function (){
 //rotta che ritorna la pagina per la gestione utenti
 Route::get('/admin/users','BackEndController@getUsers');
 
+//rotta che ritorna l'elenco dei prodotti presenti nel catalogo
+Route::get('/admin/product/show','ProductController@index');
+
 //rotta provvisoria che mostra pagina profilo utente
 Route::get('admin/userProfile', function (){
    return view('back_end.userProfile');
@@ -84,6 +87,9 @@ Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
 // che riempiono poi la tabella del back_end
 //DA VIETARE L'UTILIZZO DA PARTE DEGLI UTENTI
 Route::get('/anyData','BackEndController@anyData')->name('datatables.data');
+
+Route::get('/productsData','ProductController@anyData')->name('products.data');
+
 
 
 

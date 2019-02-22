@@ -389,3 +389,12 @@
   </div>
 
 @endsection
+
+@push('scripts')
+  <script>
+    $(document).ready(function(){
+      $(".nav-item, .active").removeClass("active");
+      $("#dashboard").parent().addClass("active");
+    });
+  </script>
+@endpush
