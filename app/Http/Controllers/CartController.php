@@ -40,7 +40,12 @@ class CartController extends Controller
 
                $toupdate->save();
 
-               return "Success";}
+               //Compongo la nuova view CartPart.
+
+
+               $view = View::make('front_end.CartPart');
+               $sections = $view->renderSections();
+               return $sections['cartpart']; }
 
 
            $cartitem = new Cart();
@@ -52,7 +57,12 @@ class CartController extends Controller
 
            $cartitem->save();
 
-           return ('Success');
+           //Compongo la nuova view CartPart.
+
+
+           $view = View::make('front_end.CartPart');
+           $sections = $view->renderSections();
+           return $sections['cartpart'];
        }
     }
 

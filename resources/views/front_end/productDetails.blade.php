@@ -383,12 +383,14 @@
                             number: document.getElementById("number").value,
                             itemid: $('#hiddenID').text(),
                         },
-                        function() {
+                        function(data) {
+                            $('#cartpartcontainer').empty().append( data );
                             document.getElementById("cart").innerHTML = "Aggiunto!";
                             document.getElementById("cart").disabled = true;
                     }
 
                     ) });
+
 
 
             </script>
