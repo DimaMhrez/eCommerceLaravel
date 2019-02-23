@@ -68,6 +68,9 @@ Route::post('image-view/{id}','ImageController@store');
 //funzioni crud sui prodotti nel back_end
 Route::resource('/admin/product','ProductController');
 
+//funzioni crud sullle categorie
+Route::resource('/admin/category','CategoryController');
+
 //calcola il live search dei brands
 Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
 
@@ -76,6 +79,7 @@ Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
 //DA VIETARE L'UTILIZZO DA PARTE DEGLI UTENTI
 Route::get('/anyData','BackEndController@anyData')->name('datatables.data');
 Route::get('/productsData','ProductController@anyData')->name('products.data');
+Route::get('/categoriesData','CategoryController@anyData')->name('categories.data');
 
 
 

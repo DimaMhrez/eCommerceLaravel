@@ -286,14 +286,16 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->setVisible = false;
+        $product->save();
     }
 
 
     public function anyData()
     {
         return Datatables::of(Product::query()
-            ->select('id','name','normalPrice'))
+            ->select('id','name','normalPrice','setVisible'))
             ->setRowId(function ($product){
                 return $product->id;
             })
@@ -301,9 +303,23 @@ class ProductController extends Controller
             //->addColumn('intro', '<a href="{{ url(\'admin/userProfile/'.id.'\') }}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>')
 
             ->addColumn('intro', function(Product $product) {
-                return '<a href="'. url('/admin/product/'.$product->id.'/edit') .'" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>';
+
+                if($product->setVisible == true) {
+                    return '<a href="' . url('/admin/product/' . $product->id . '/edit') . '" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>
+                        <a href="' . url('/admin/') . '" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">euro_symbol</i><div class="ripple-container"></div></a>';
+                }else{
+                    return '<a href="' . url('/admin/product/' . $product->id . '/edit') . '" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>
+                            <a href="' . url('/admin/') . '" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">euro_symbol</i><div class="ripple-container"></div></a>';
+                }
             })
-            ->rawColumns(['intro'])
+            ->addColumn('visible',function(Product $product) {
+                if($product->setVisible == true) {
+                    return '<a href="' . url('/admin/product/' . $product->id . '/edit') . '" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">check_circle_outline</i></a>';
+                }else{
+                    return '<a href="' . url('/admin/product/' . $product->id . '/edit') . '" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">highlight_off</i></a>';
+                }
+            })
+            ->rawColumns(['intro','visible'])
             ->toJson();
         //return Datatables::of(User::)
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Brand;
+use App\Category;
 
 class SearchController extends Controller
 {
@@ -11,4 +11,5 @@ class SearchController extends Controller
     {
         return Brand::where('name', 'LIKE', '%'.$request->q.'%')->get();
     }
+
 }

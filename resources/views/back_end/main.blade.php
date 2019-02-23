@@ -178,7 +178,7 @@
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="components/sweet-alert.html">
+                                <a class="nav-link" href="/admin/category">
                                     <span class="sidebar-mini"> SA </span>
                                     <span class="sidebar-normal"> Categories </span>
                                 </a>

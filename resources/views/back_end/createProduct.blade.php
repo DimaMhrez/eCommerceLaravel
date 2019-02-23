@@ -13,7 +13,7 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
-                    {{ Form::open(array('url' => 'admin/product','action' => ['LiveSearch@autocompleteBrands','enctype'=>'multipart/data','files'=>'true'])) }}
+                    {{ Form::open(array('url' => 'admin/product','action' => ['enctype'=>'multipart/data','files'=>'true'])) }}
                         <div class="card-header text-center">
                             <h3 class="card-title">
                                 New Product
@@ -104,7 +104,7 @@
                                             <div class="input-group form-control-lg">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">
-                                                         <i class="material-icons">format_list_numbered</i>
+                                                         <i class="material-icons">filter_1</i>
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
@@ -117,7 +117,7 @@
                                             <div class="input-group form-control-lg">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">
-                                                         <i class="material-icons">format_list_numbered</i>
+                                                         <i class="material-icons">filter_2</i>
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
@@ -130,7 +130,7 @@
                                             <div class="input-group form-control-lg">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">
-                                                         <i class="material-icons">format_list_numbered</i>
+                                                         <i class="material-icons">filter_3</i>
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
@@ -143,7 +143,7 @@
                                             <div class="input-group form-control-lg">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">
-                                                         <i class="material-icons">format_list_numbered</i>
+                                                         <i class="material-icons">filter_4</i>
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
@@ -156,7 +156,7 @@
                                             <div class="input-group form-control-lg">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">
-                                                         <i class="material-icons">format_list_numbered</i>
+                                                         <i class="material-icons">filter_5</i>
                                                      </span>
                                                 </div>
                                                 <div class="form-group">
@@ -169,7 +169,7 @@
                                             <div class="input-group form-control-lg">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">
-                                                         <i class="material-icons">format_list_numbered</i>
+                                                         <i class="material-icons">filter_6</i>
                                                      </span>
                                                 </div>
                                                 <div class="form-group">

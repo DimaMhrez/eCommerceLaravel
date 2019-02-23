@@ -12,7 +12,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h4 class="card-title">Products</h4>
+                            <h4 class="card-title">seiunpussone</h4>
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
@@ -26,8 +26,8 @@
                                         <tr>
                                             <th>Id num</th>
                                             <th>Name</th>
-                                            <th>Normal Price</th>
-                                            <th>Visible</th>
+                                            <th>Sort Order</th>
+                                            <th>Parent Category</th>
                                             <th>Actions</th>
                                             <!-- <th>Actions</th> -->
                                             <!-- <th>Created At</th>
@@ -45,7 +45,7 @@
                 </div>
             </div>
 
-@endsection
+            @endsection
 
 
             @push('scripts')
@@ -58,15 +58,14 @@
                             ],
                             processing: true,
                             serverSide: true,
-                            ajax: '{!! route('products.data') !!}',
+                            ajax: '{!! route('categories.data') !!}',
 
                             columns: [
                                 { data: 'id', name: 'id' },
                                 { data: 'name', name: 'name' },
-                                { data: 'normalPrice', name: 'normalPrice' },
-                                {data: 'visible', name: 'visible'},
-                                {data: 'intro', name: 'intro'},
-
+                                { data: 'sortOrder', name: 'sortOrder' },
+                                { data: 'parent', name:'parent'},
+                                { data: 'intro', name: 'intro'},
 
 
 
@@ -104,12 +103,5 @@
                              //  alert( 'Clicked row id '+id );
                          });
                      });*/
-                    $(document).ready(function(){
-                        $(".nav-item, .active").removeClass("active");
-                        $("#catalog").attr("aria-expanded","true");
-                        $("#catalogComponent").addClass("show");
-                        $("#products").parent().addClass("active");
-                    });
-
                 </script>
     @endpush
