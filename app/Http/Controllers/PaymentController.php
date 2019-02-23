@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\paymentMethod;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class PaymentController extends Controller
 {
@@ -15,8 +16,30 @@ class PaymentController extends Controller
 
 
     public function store(Request $request){
+        //Costruisco un custom validator per mostrare messaggi più chiari e in italiano.
 
-        //AGGIUNGI VALIDATION!
+        $messages = [
+            'required'    => 'Questo campo è obbligatorio',
+            'size'    => 'Questo campo deve contenere esattamente :size caratteri.',
+            'between' => 'Questo campo può contenere tra :min e :max caratteri.',
+            'digits' => 'Questo campo deve contenere esattamente :digits caratteri.'
+        ];
+
+        $validator = Validator::make($request->all(), [
+            'card' => 'required|digits:16',
+            'CVV' => 'required|digits:3',
+            'expiremonth' => 'required',
+            'expireyear' => 'required',
+            'nome' => 'required|max:25|min:3|',
+        ], $messages);
+
+
+
+        if ($validator->fails()) {
+            return redirect('/payment')
+                ->withErrors($validator)
+                ->withInput();
+        }
 
 
         $payment= new paymentMethod();

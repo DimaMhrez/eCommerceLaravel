@@ -58,6 +58,8 @@
                                 <hr>
                             </div>
                             {!!  Form::open(['action'=>'PaymentController@store','method'=>'POST']) !!}
+
+                            {{ csrf_field() }}
                             <label for="MasterCard">
                                 <input class="cardselector" type="radio" name="card" id="MasterCard" value="MasterCard" checked>
                                 <img src="{{asset('front_end/images/mastercard.png')}}" alt="missing">
@@ -104,16 +106,22 @@
                                     <!-- Cardholder Name -->
                                     <div class="col-sm-6">
 
+
+                                        <div class="form-group{{ $errors->has('nome') ? ' has-error' : '' }}">
                                         {{Form::label('nome','Nome intestatario')}}
                                         {{Form::text('nome', '', ['class' => 'form-control'])}}
+                                            <small class="text-danger">{{ $errors->first('nome') }}</small>
+                                        </div>
 
                                     </div>
 
                                     <!-- Card Number -->
                                     <div class="col-sm-6">
+                                        <div class="form-group{{ $errors->has('card') ? ' has-error' : '' }}">
                                         {{Form::label('cardnumber','Numero carta')}}
                                         {{Form::text('cardnumber', '', ['class' => 'form-control'])}}
-
+                                            <small class="text-danger">{{ $errors->first('card') }}</small>
+                                        </div>
                                     </div>
 
 
@@ -121,30 +129,40 @@
                                         <label for="expiremonth">Scadenza</label>
                                         <div class="row">
                                             <div class="col-xs-6">
+                                                <div class="form-group{{ $errors->has('expiremonth') ? ' has-error' : '' }}">
                                                 {{
                                                 Form::select('expiremonth',
                                                 ['01' => '01', '02'=>'02', '03' =>'03', '04'=>'04', '05'=>'05', '06'=>'06',
                                                 '07'=>'07','08'=>'08','09'=>'09','10'=>'10','11'=>'11','12'=>'12'],
                                                 '01',['class' => "form-control"])
                                                 }}
+                                                    <small class="text-danger">{{ $errors->first('expiremonth') }}</small>
+                                                </div>
 
                                             </div>
                                             <span class="col-xs-6">
+                                                <div class="form-group{{ $errors->has('expireyear') ? ' has-error' : '' }}">
                                                 {{Form::select('expireyear',
                                                 ['2019' => '2019', '2020'=>'2020', '2021' =>'2021', '2022'=>'2022', '2023'=>'2023', '2024'=>'2024'],
                                                 '2019',['class' => "form-control"])}}
+                                                <small class="text-danger">{{ $errors->first('expireyear') }}</small>
+                                                </div>
                                             </span>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
+                                        <div class="form-group{{ $errors->has('CVV') ? ' has-error' : '' }}">
                                         {{Form::label('CVV','CVV')}}
                                         {{Form::text('CVV', '', ['class' => 'form-control'])}}
-
+                                            <small class="text-danger">{{ $errors->first('CVV') }}</small>
                                     </div>
                                 </div>
                         </div>
                     </div>
                 </div>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+            @endforeach
 
                 <!-- Button -->
                 <div class="pro-btn"> <a href="/cart" class="btn-round btn-light">Torna al carrello</a>
