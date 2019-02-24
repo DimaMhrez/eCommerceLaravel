@@ -26,8 +26,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $categories = Category::all();
-        return View::make('back_end.createCategory',$categories);
+        $categories = Category::whereNull('category_id')->get();
+        $subcategories = Category::where('category_id','0')->get();
+        return View::make('back_end.createCategory',array('categories'=>$categories,'subcategories'=>$subcategories));
     }
 
     /**
@@ -114,5 +115,16 @@ class CategoryController extends Controller
         //return Datatables::of(User::)
 
         //return Datatables::eloquent(User::query())->make(true);
+    }
+
+    public function get(Request $request){
+
+        return "Questo è ritornato dal server. Il collegamento è fatto, ora bisogna ritornare il form."
+        $category=Category::where('name',$request->categoryname)->first();
+
+        $subcategories=Category::where('category_id',$category->id)->get();
+
+        return view('back_end.selectorderform')->with('subcategories',$subcategories);
+
     }
 }

@@ -1,4 +1,5 @@
 @extends('back_end.main')
+<meta name="csrf-token" content="{{ csrf_token() }}">
 
 @section('content')
     <div class="content">
@@ -12,7 +13,7 @@
                             <h3 class="card-title">
                                 New Category
                             </h3>
-                            <h5 class="card-description">Wizard for insert a new product</h5>
+                            <h5 class="card-description">Wizard for inserting a new product</h5>
                         </div>
                         <div class="wizard-navigation">
                             <ul class="nav nav-pills">
@@ -73,9 +74,12 @@
                                             {!! Form::select('position1', array_pluck($categories, 'name'), old('position1') ,array('id'=>'position1','class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Parent Category','required'=>'required')) !!}
                                         </div>
                                         <div class="col-sm-10" style="display:none" id="insideRanking">
-                                                <!-- QUI DOVREBBERO APPARIRE I NUMERI POSSIBILI COME SOTTOCATEGORIA !!!PROBLEMA!!!-->
-                                            {!! Form::select('position2', array_pluck($categories, 'sortOrder'), old('position2') ,array('id'=>'position2','class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Position','required'=>'required')) !!}
+                                                <!-- QUI DOVREBBERO APPARIRE I NUMERI POSSIBILI COME SOTTOCATEGORIA !!! Non esistono problemi, solo soluzioni da trovare.-->
+
+                                           @include('back_end.selectorderform')
+
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
@@ -134,7 +138,32 @@
                     $("#parentCat").slideUp().fadeOut();
                     $("#insideRanking").slideUp().fadeOut();
                 }
+
             });
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+        $('#position1').change(function(){
+            $.post("/selectcategory",
+                {
+                    categoryname: $('#position1 option:selected').text(),
+                },
+                function(data) {
+                    $('#insideRanking').empty().append( data );
+
+                    var options = data;
+                    $('#position2').empty();
+                    $.each(options, function(i, p) {
+                        $('#position2').append($('<option>options.name</option>').val(p).html(p));
+                    });
+                }
+
+            ) });
         });
+
     </script>
 @endpush

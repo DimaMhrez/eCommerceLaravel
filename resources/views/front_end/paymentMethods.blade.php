@@ -160,9 +160,7 @@
                         </div>
                     </div>
                 </div>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-            @endforeach
+
 
                 <!-- Button -->
                 <div class="pro-btn"> <a href="/cart" class="btn-round btn-light">Torna al carrello</a>

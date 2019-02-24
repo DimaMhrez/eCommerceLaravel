@@ -80,6 +80,7 @@ Route::get('/admin/order/shipped','OrderController@orderShipped');
 Route::resource('/admin/order','OrderController');
 
 
+Route::post('/selectcategory','CategoryController@get');
 
 //calcola il live search dei brands
 Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
