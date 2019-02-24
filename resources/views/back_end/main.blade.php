@@ -185,6 +185,38 @@
                             </li>
                         </ul>
                     </div>
+
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" id="catalog" href="#ordersComponent" data-toggle="collapse">
+                        <i class="material-icons">apps</i>
+                        <p> Orders
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="ordersComponent">
+                        <ul class="nav">
+                            <li class="nav-item ">
+                                <a class="nav-link" id="newProduct" href="{{url('/admin/order/')}}">
+                                    <span class="sidebar-mini"> B </span>
+                                    <span class="sidebar-normal"> New Orders </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" id="products" href="{{url('/admin/order/preparing')}}">
+                                    <span class="sidebar-mini"> GS </span>
+                                    <span class="sidebar-normal"> Preparing Orders </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" href="{{url('/admin/order/shipped')}}">
+                                    <span class="sidebar-mini"> P </span>
+                                    <span class="sidebar-normal"> Shipped Orders </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
                 </li><!--
                 <li class="nav-item ">
                     <a class="nav-link" data-toggle="collapse" href="#formsExamples">

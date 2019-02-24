@@ -68,8 +68,18 @@ Route::post('image-view/{id}','ImageController@store');
 //funzioni crud sui prodotti nel back_end
 Route::resource('/admin/product','ProductController');
 
-//funzioni crud sullle categorie
+//funzioni crud sulle categorie
 Route::resource('/admin/category','CategoryController');
+
+//elenco ordini in preparazione
+Route::get('/admin/order/preparing','OrderController@orderInPreparation');
+
+//elenco ordini spediti
+Route::get('/admin/order/shipped','OrderController@orderShipped');
+//funzioni crud per gli ordini
+Route::resource('/admin/order','OrderController');
+
+
 
 //calcola il live search dei brands
 Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
@@ -80,6 +90,9 @@ Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
 Route::get('/anyData','BackEndController@anyData')->name('datatables.data');
 Route::get('/productsData','ProductController@anyData')->name('products.data');
 Route::get('/categoriesData','CategoryController@anyData')->name('categories.data');
+Route::get('/ordersData','OrderController@anyData')->name('order.data');
+Route::get('/ordersDataPreparing','OrderController@preparing')->name('orderPreparing.data');
+Route::get('/ordersDataShipped','OrderController@shipped')->name('orderShipped.data');
 
 
 
