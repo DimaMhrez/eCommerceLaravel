@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+<<<<<<< Updated upstream
 use App\Brand;
 use App\BulletDescription;
 use App\Category;
@@ -13,6 +14,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 use Yajra\Datatables\Datatables;
+=======
+use Illuminate\Http\Request;
+use View;
+>>>>>>> Stashed changes
 
 class ProductController extends Controller
 {
@@ -23,7 +28,11 @@ class ProductController extends Controller
      */
     public function index()
     {
+<<<<<<< Updated upstream
         return view('back_end.products');
+=======
+        //
+>>>>>>> Stashed changes
     }
 
     /**
@@ -33,8 +42,12 @@ class ProductController extends Controller
      */
     public function create()
     {
+<<<<<<< Updated upstream
         $categories = Category::all();
         return View::make('back_end.createProduct',$categories);
+=======
+        return View::make('back_end.createProduct');
+>>>>>>> Stashed changes
     }
 
     /**
@@ -43,6 +56,7 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+<<<<<<< Updated upstream
     public function store()
     {
         $rules = array(
@@ -121,6 +135,11 @@ class ProductController extends Controller
             $productID = $product->id;
             return Redirect::to('image-view/'.$productID);
         }
+=======
+    public function store(Request $request)
+    {
+        //
+>>>>>>> Stashed changes
     }
 
     /**
@@ -142,6 +161,7 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
+<<<<<<< Updated upstream
         // get the product
 
         $item = Product::find($id);
@@ -180,6 +200,9 @@ class ProductController extends Controller
         // show the edit form and pass the nerd
         return View::make('back_end.editProduct')
             ->with('product', $product);
+=======
+        //
+>>>>>>> Stashed changes
     }
 
     /**
@@ -191,6 +214,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+<<<<<<< Updated upstream
         $rules = array(
             'name'       => 'required',
             'brand'      => 'required',
@@ -276,6 +300,9 @@ class ProductController extends Controller
 
             return Redirect::to('/admin/product/');
         }
+=======
+        //
+>>>>>>> Stashed changes
     }
 
     /**
@@ -286,6 +313,7 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
+<<<<<<< Updated upstream
         $product = Product::find($id);
         $product->setVisible = false;
         $product->save();
@@ -324,5 +352,8 @@ class ProductController extends Controller
         //return Datatables::of(User::)
 
         //return Datatables::eloquent(User::query())->make(true);
+=======
+        //
+>>>>>>> Stashed changes
     }
 }

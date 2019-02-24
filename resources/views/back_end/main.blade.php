@@ -19,7 +19,10 @@
     <link href="{{asset('back_end/demo/demo.css" rel="stylesheet') }}" />
     <link href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
     @stack('css')
 

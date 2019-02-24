@@ -23,6 +23,7 @@ Route::resource('review','ReviewController');
 
 Route::get('products/{id}', 'FrontEndController@show');
 
+<<<<<<< Updated upstream
 Route::post('/addtocart', 'CartController@add');
 Route::post('/removefromcart', 'CartController@remove');
 
@@ -53,11 +54,31 @@ Route::get('/admin/main',function (){
 //rotta che ritorna la pagina per la gestione utenti
 Route::get('/admin/users','BackEndController@getUsers');
 
+=======
+
+
+
+/* BACKEND ROUTES */
+
+
+//rotta provvisoria che carica la dashboard
+Route::get('/admin',function (){
+    return view('back_end.index');
+});
+
+
+//rotta che ritorna la pagina per la gestione utenti
+Route::get('/admin/users','BackEndController@getUsers');
+
+>>>>>>> Stashed changes
 //rotta provvisoria che mostra pagina profilo utente
 Route::get('admin/userProfile', function (){
    return view('back_end.userProfile');
 });
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 //dovrebbe essere la giusta pagina utente
 Route::get('admin/userProfile/{id}','BackEndController@getUser');
 
@@ -71,8 +92,21 @@ Route::resource('/admin/product','ProductController');
 //funzioni crud sulle categorie
 Route::resource('/admin/category','CategoryController');
 
+<<<<<<< Updated upstream
 //elenco ordini in preparazione
 Route::get('/admin/order/preparing','OrderController@orderInPreparation');
+=======
+//ritorna il wizard per inserimento prodotti nuovi
+Route::get('admin/wizard',function(){
+    return view('back_end.wizard');
+});
+
+//funzioni crud sui prodotti nel back_end
+Route::resource('/admin/product','ProductController');
+
+//calcola il live search dei brands
+Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
+>>>>>>> Stashed changes
 
 //elenco ordini spediti
 Route::get('/admin/order/shipped','OrderController@orderShipped');

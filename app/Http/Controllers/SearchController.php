@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+<<<<<<< Updated upstream
 use App\Category;
+=======
+use App\Brand;
+>>>>>>> Stashed changes
 
 class SearchController extends Controller
 {
@@ -11,5 +15,8 @@ class SearchController extends Controller
     {
         return Brand::where('name', 'LIKE', '%'.$request->q.'%')->get();
     }
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 }
