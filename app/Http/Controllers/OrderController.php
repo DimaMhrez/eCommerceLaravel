@@ -86,6 +86,27 @@ class OrderController extends Controller
         //
     }
 
+    public function setInProgress($id){
+        $order = Order::find($id);
+
+        $order->status = 1;
+
+        $order->save();
+
+        return view('back_end.ordersPreparing');
+    }
+
+    public function setShipped($id){
+
+        $order = Order::find($id);
+
+        $order->status = 2;
+
+        $order->save();
+
+        return view('back_end.ordersShipped');
+    }
+
     /**
      * Update the specified resource in storage.
      *
@@ -116,10 +137,15 @@ class OrderController extends Controller
             ->setRowId(function ($order){
                 return $order->id;
             })
+            ->addColumn('formattedDate', function(Order $order) {
+                return date('d-m-Y',strtotime($order->date));
+            })
+            ->addColumn('status', function(Order $order) {
+                return '<text class="text-danger">Recevied</text>';
+            })
             ->addColumn('intro', function(Order $order) {
-                return '<a href="'. url('/admin/order/'.$order->id) .'" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i><div class="ripple-container"></div></a>
-                        <a href="'. url('/admin/order/'.$order->id.'/edit') .'" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>
-                        <a href="'. url('/admin/') .'" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">euro_symbol</i><div class="ripple-container"></div></a>';
+                return '<a href="'. url('/admin/order/'.$order->id) .'"><button class="btn btn-info btn-sm">Show Details<div class="ripple-container"></div></button></a>
+                        <a href="'. url('/admin/order/'.$order->id.'/inprogress') .'"><button class="btn btn-warning btn-sm">Prepare<div class="ripple-container"></div></button></a>';
             })
             ->addColumn('user', function(Order $order) {
 
@@ -130,7 +156,7 @@ class OrderController extends Controller
                     return '<i class="material-icons">highlight_off</i>';
                 }
             })
-            ->rawColumns(['intro','user'])
+            ->rawColumns(['intro','user','formattedDate','status'])
             ->toJson();
         //return Datatables::of(User::)
 
@@ -140,13 +166,18 @@ class OrderController extends Controller
     public function preparing()
     {
         return Datatables::of(Order::query()->where('status',1)
-            ->select('id','date','status','totalprice','user_id')->orderBy('date','asc'))
+            ->select('id','date','status','totalprice','user_id')->orderBy('date','desc'))
             ->setRowId(function ($order){
                 return $order->id;
             })
-            ->addColumn('intro', function(Order $order) {
-                return '<a href="'. url('/admin/order/'.$order->id.'/edit') .'" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>
-                        <a href="'. url('/admin/') .'" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">euro_symbol</i><div class="ripple-container"></div></a>';
+            ->addColumn('formattedDate', function(Order $order) {
+                return date('d-m-Y',strtotime($order->date));
+            })
+            ->addColumn('status', function(Order $order) {
+                return '<text class="text-warning">In Preparation</text>';
+            })
+            ->addColumn('intro', function(Order $order) {return '<a href="'. url('/admin/order/'.$order->id) .'"><button class="btn btn-info btn-sm">Show Details<div class="ripple-container"></div></button></a>
+                        <a href="'. url('/admin/order/'.$order->id.'/shipped') .'"><button class="btn btn-success btn-sm">Ship<div class="ripple-container"></div></button></a>';
             })
             ->addColumn('user', function(Order $order) {
 
@@ -157,7 +188,7 @@ class OrderController extends Controller
                     return '<i class="material-icons">highlight_off</i>';
                 }
             })
-            ->rawColumns(['intro','user'])
+            ->rawColumns(['intro','user','formattedDate','status'])
             ->toJson();
         //return Datatables::of(User::)
 
@@ -171,9 +202,14 @@ class OrderController extends Controller
             ->setRowId(function ($order){
                 return $order->id;
             })
+            ->addColumn('formattedDate', function(Order $order) {
+                return date('d-m-Y',strtotime($order->date));
+            })
             ->addColumn('intro', function(Order $order) {
-                return '<a href="'. url('/admin/order/'.$order->id.'/edit') .'" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">edit</i></a>
-                        <a href="'. url('/admin/') .'" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">euro_symbol</i><div class="ripple-container"></div></a>';
+                return '<a href="'. url('/admin/order/'.$order->id) .'" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i><div class="ripple-container"></div></a>';
+            })
+            ->addColumn('status', function(Order $order) {
+                return '<text class="text-success">Shipped</text>';
             })
             ->addColumn('user', function(Order $order) {
 
@@ -184,7 +220,7 @@ class OrderController extends Controller
                     return '<i class="material-icons">highlight_off</i>';
                 }
             })
-            ->rawColumns(['intro','user'])
+            ->rawColumns(['intro','user','formattedDate','status'])
             ->toJson();
         //return Datatables::of(User::)
 

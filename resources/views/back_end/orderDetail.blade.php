@@ -48,7 +48,7 @@
                                     <h6>Name & Surname: <p class="text-info">{{$shipping->name.' '/*.$shipping->surname*/}}</p></h6>
                                 </div>
                                 <div class="card-body">
-                                    <h6>City & ZIP Code: <p class="text-info">{{$shipping->city.' '.$shipping->zipcode}}</p></h6>
+                                    <h6>City & ZIP Code: <p class="text-info">{{$shipping->city.' ('.$shipping->zipcode.')'}}</p></h6>
                                 </div>
                                 <div class="card-body">
                                     <h6>Street & Number: <p class="text-info">{{$shipping->street.' '.$shipping->number}}</p></h6>
@@ -106,7 +106,7 @@
                                                 <td></td>
                                                 <td></td>
                                                 <td class="td-total">
-                                                    Total: {{ $order}} <small>€</small>
+                                                    Total: {{ $order->totalprice}} <small>€</small>
                                                 </td>
                                             </tr>
                                         </tbody>

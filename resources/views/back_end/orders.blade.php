@@ -12,7 +12,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h4 class="card-title">Orders</h4>
+                            <h4 class="card-title">Received Orders</h4>
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
@@ -63,7 +63,7 @@
 
                             columns: [
                                 { data: 'id', name: 'id' },
-                                { data: 'date', name: 'date' },
+                                { data: 'formattedDate', name: 'formattedDate' },
                                 { data: 'status', name: 'status' },
                                 { data: 'totalprice', name:'totalprice'},
                                 { data: 'user', name:'user'},

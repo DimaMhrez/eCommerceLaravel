@@ -76,6 +76,10 @@ Route::get('/admin/order/preparing','OrderController@orderInPreparation');
 
 //elenco ordini spediti
 Route::get('/admin/order/shipped','OrderController@orderShipped');
+//imposta un ordine in lavorazione
+Route::get('/admin/order/{id}/inprogress','OrderController@setInProgress');
+//imposta un ordine come spedito
+Route::get('/admin/order/{id}/shipped','OrderController@setShipped');
 //funzioni crud per gli ordini
 Route::resource('/admin/order','OrderController');
 
@@ -93,7 +97,6 @@ Route::get('/categoriesData','CategoryController@anyData')->name('categories.dat
 Route::get('/ordersData','OrderController@anyData')->name('order.data');
 Route::get('/ordersDataPreparing','OrderController@preparing')->name('orderPreparing.data');
 Route::get('/ordersDataShipped','OrderController@shipped')->name('orderShipped.data');
-Route::get('/pippo/{id}','OrderController@pippo')->name('orderShipped.data');
 
 
 
