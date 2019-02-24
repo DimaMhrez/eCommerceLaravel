@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Order;
 use App\OrderDetail;
 use App\Product;
+use App\ShippingAddress;
 use App\User;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
@@ -62,13 +63,16 @@ class OrderController extends Controller
     public function show($id)
     {
         $orderDetails = OrderDetail::where('order_id',$id)->select('totalPrice','quantity','product_id','id')->get();
+        $order = Order::find($id);
+
+        $shipping_address = ShippingAddress::find($order->shipping_address_id);
 
         foreach($orderDetails as $detail){
             $product = Product::find($detail->product_id);
             $detail->productName = $product->name;
         }
 
-        return View::make('back_end.orderDetail')->with('details',$orderDetails);
+        return View::make('back_end.orderDetail')->with('details',$orderDetails)->with('order',$order)->with('shipping',$shipping_address);
     }
 
     /**

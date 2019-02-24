@@ -199,7 +199,7 @@
                             <li class="nav-item ">
                                 <a class="nav-link" id="newProduct" href="{{url('/admin/order/')}}">
                                     <span class="sidebar-mini"> B </span>
-                                    <span class="sidebar-normal"> New Orders </span>
+                                    <span class="sidebar-normal"> Received Orders </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
