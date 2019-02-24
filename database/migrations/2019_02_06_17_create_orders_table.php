@@ -28,11 +28,14 @@ class CreateOrdersTable extends Migration
             $table->unsignedInteger('payment_method_id');
             $table->unsignedInteger('payment_method_user_id');
             $table->unsignedInteger('shipper_id');
+            $table->unsignedInteger('shipping_address_id');
 
             //Realizzazione chiavi esterne
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('payment_method_id')->references('id')->on('payment_methods');
             $table->foreign('payment_method_user_id')->references('user_id')->on('payment_methods');
+            $table->foreign('shipper_id')->references('id')->on('shippers');
+            $table->foreign('shipping_address_id')->references('id')->on('shipping_addresses');
         });
     }
 
