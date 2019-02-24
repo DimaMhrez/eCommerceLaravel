@@ -93,6 +93,7 @@ Route::get('/categoriesData','CategoryController@anyData')->name('categories.dat
 Route::get('/ordersData','OrderController@anyData')->name('order.data');
 Route::get('/ordersDataPreparing','OrderController@preparing')->name('orderPreparing.data');
 Route::get('/ordersDataShipped','OrderController@shipped')->name('orderShipped.data');
+Route::get('/pippo/{id}','OrderController@pippo')->name('orderShipped.data');
 
 
 
