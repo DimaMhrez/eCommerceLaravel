@@ -119,7 +119,7 @@ class CategoryController extends Controller
 
     public function get(Request $request){
 
-        return "Questo è ritornato dal server. Il collegamento è fatto, ora bisogna ritornare il form."
+        return "Questo è ritornato dal server. Il collegamento è fatto, ora bisogna ritornare il form.";
         $category=Category::where('name',$request->categoryname)->first();
 
         $subcategories=Category::where('category_id',$category->id)->get();
