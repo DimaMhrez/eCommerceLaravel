@@ -30,7 +30,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="flaticon-delivery-truck"></i> </div>
                         <div class="media-body"> <span>Step 3</span>
-                            <h6>Metodi di spedizione</h6>
+                            <h6>Spedizione</h6>
                         </div>
                     </li>
 

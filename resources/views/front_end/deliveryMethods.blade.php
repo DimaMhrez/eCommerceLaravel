@@ -14,7 +14,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="fa fa-check"></i> </div>
                         <div class="media-body"> <span>Step 1</span>
-                            <h6>Shopping Cart</h6>
+                            <h6>Carrello</h6>
                         </div>
                     </li>
 
@@ -22,7 +22,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="fa fa-check"></i> </div>
                         <div class="media-body"> <span>Step 2</span>
-                            <h6>Payment Methods</h6>
+                            <h6>Metodi di pagamento</h6>
                         </div>
                     </li>
 
@@ -30,7 +30,7 @@
                     <li class="col-sm-3 current">
                         <div class="media-left"> <i class="flaticon-delivery-truck"></i> </div>
                         <div class="media-body"> <span>Step 3</span>
-                            <h6>Delivery Methods</h6>
+                            <h6>Spedizione</h6>
                         </div>
                     </li>
 
@@ -38,7 +38,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="fa fa-check"></i> </div>
                         <div class="media-body"> <span>Step 4</span>
-                            <h6>Confirmation</h6>
+                            <h6>Conferma</h6>
                         </div>
                     </li>
                 </ul>
@@ -55,40 +55,40 @@
 
                             <!-- Your information -->
                             <div class="heading">
-                                <h2>Your information</h2>
+                                <h2>Le tue informazioni</h2>
                                 <hr>
                             </div>
-                            <form>
+                            {!!  Form::open(['action'=>'MessageController@store','method'=>'POST', 'id' => 'contact_form', 'class'=>'contact-form']) !!}
                                 <div class="row">
 
                                     <!-- Name -->
                                     <div class="col-sm-6">
-                                        <label> First name
-                                            <input class="form-control" type="text">
-                                        </label>
+                                        <label>{{Form::label('name','Nome')}}</label>
+                                        {{Form::text('name', '', ['class' => 'form-control'])}}
+
                                     </div>
 
-                                    <!-- Number -->
+
                                     <div class="col-sm-6">
-                                        <label> Last Name
-                                            <input class="form-control" type="text">
-                                        </label>
+                                        <label>{{Form::label('surname','Cognome')}}</label>
+                                        {{Form::text('surname', '', ['class' => 'form-control'])}}
+
                                     </div>
 
                                     <!-- Card Number -->
                                     <div class="col-sm-7">
                                         <div class="row">
                                             <div class="col-xs-6">
-                                                <label> Country </label>
-                                                <select class="selectpicker">
+                                                <label for="country"> Nazione </label>
+                                                <select id="country" class="selectpicker">
+                                                    <option selected> Italia </option>
+                                                    <option> Francia </option>
                                                     <option> USA</option>
-                                                    <option> USA</option>
-                                                    <option> USA</option>
-                                                    <option> USA</option>
-                                                    <option> USA</option>
-                                                    <option> USA</option>
+                                                    <option> Germania </option>
+                                                    <option> UK </option>
                                                 </select>
                                             </div>
+                                            <!--
                                             <div class="col-xs-6">
                                                 <label> City </label>
                                                 <select class="selectpicker">
@@ -99,50 +99,55 @@
                                                     <option> City</option>
                                                     <option> City</option>
                                                 </select>
+                                            </div> -->
+                                            <div class="col-sm-5">
+                                                <label>{{Form::label('province','Provincia')}}</label>
+                                                {{Form::text('province', '', ['class' => 'form-control'])}}
+
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-5">
-                                        <label> State
-                                            <input class="form-control" type="text">
-                                        </label>
+                                        <label>{{Form::label('city','Città')}}</label>
+                                        {{Form::text('city', '', ['class' => 'form-control'])}}
+
                                     </div>
+
 
                                     <!-- Zip code -->
                                     <div class="col-sm-4">
-                                        <label> Zip code
-                                            <input class="form-control" type="text">
-                                        </label>
+                                        <label>{{Form::label('cap','CAP')}}</label>
+                                        {{Form::text('cap', '', ['class' => 'form-control'])}}
+
                                     </div>
 
                                     <!-- Address -->
                                     <div class="col-sm-8">
-                                        <label> Address
-                                            <input class="form-control" type="text">
-                                        </label>
+                                        <label>{{Form::label('address','Indirizzo')}}</label>
+                                        {{Form::text('address', '', ['class' => 'form-control'])}}
+
                                     </div>
 
                                     <!-- Phone -->
                                     <div class="col-sm-6">
-                                        <label> Phone
-                                            <input class="form-control" type="text">
-                                        </label>
+                                        <label>{{Form::label('phone','Numero di Telefono')}}</label>
+                                        {{Form::text('phone', '', ['class' => 'form-control'])}}
+
                                     </div>
 
                                     <!-- Number -->
                                     <div class="col-sm-6">
-                                        <label> Email
-                                            <input class="form-control" type="email">
-                                        </label>
+                                        <label>{{Form::label('email','Indirizzo email')}}</label>
+                                        {{Form::text('email', '', ['class' => 'form-control'])}}
                                     </div>
                                 </div>
-                            </form>
+                            {!! Form::close() !!}
                         </div>
 
                         <!-- Select Your Transportation -->
                         <div class="col-md-6">
                             <div class="heading">
-                                <h2>Select Your Transportation</h2>
+                                <h2>Metodi di spedizione</h2>
                                 <hr>
                             </div>
                             <div class="transportation">
@@ -177,20 +182,8 @@
                 </div>
 
                 <!-- Button -->
-                <div class="pro-btn"> <a href="#." class="btn-round btn-light">Back to Payment</a> <a href="#." class="btn-round">Go Confirmation</a> </div>
+                <div class="pro-btn"> <a href="/payment" class="btn-round btn-light">Torna al pagamento</a> <a href="#." class="btn-round">Vai alla conferma</a> </div>
             </div>
         </section>
 
-        <!-- Clients img -->
-        <section class="light-gry-bg clients-img">
-            <div class="container">
-                <ul>
-                    <li><img src="images/c-img-1.png" alt="" ></li>
-                    <li><img src="images/c-img-2.png" alt="" ></li>
-                    <li><img src="images/c-img-3.png" alt="" ></li>
-                    <li><img src="images/c-img-4.png" alt="" ></li>
-                    <li><img src="images/c-img-5.png" alt="" ></li>
-                </ul>
-            </div>
-        </section>
 @endsection

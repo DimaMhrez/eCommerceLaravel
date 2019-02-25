@@ -15,6 +15,8 @@
                         </li>
                     @endforeach
                     @endif
+                        <li class="btn-cart"> <a href="/cart" class="btn-round">Vai al carrello</a> </li>
+
                 </ul>
         </li>
     </ul>

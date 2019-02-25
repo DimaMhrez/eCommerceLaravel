@@ -23,6 +23,7 @@ Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart','CartController@show');
     Route::get('/payment', 'PaymentController@show');
     Route::post('/addpayment', 'PaymentController@store');
+    Route::get('delivery','FrontEndController@delivery');
 });
 /* BACKEND ROUTES */
 //backend home page

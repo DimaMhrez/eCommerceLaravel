@@ -13,7 +13,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="flaticon-shopping"></i> </div>
                         <div class="media-body"> <span>Step 1</span>
-                            <h6>Shopping Cart</h6>
+                            <h6>Carrello</h6>
                         </div>
                     </li>
 
@@ -21,7 +21,7 @@
                     <li class="col-sm-3 current">
                         <div class="media-left"> <i class="flaticon-business"></i> </div>
                         <div class="media-body"> <span>Step 2</span>
-                            <h6>Payment Methods</h6>
+                            <h6>Metodi di pagamento</h6>
                         </div>
                     </li>
 
@@ -29,7 +29,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="flaticon-delivery-truck"></i> </div>
                         <div class="media-body"> <span>Step 3</span>
-                            <h6>Delivery Methods</h6>
+                            <h6>Spedizione</h6>
                         </div>
                     </li>
 
@@ -37,7 +37,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="fa fa-check"></i> </div>
                         <div class="media-body"> <span>Step 4</span>
-                            <h6>Confirmation</h6>
+                            <h6>Conferma</h6>
                         </div>
                     </li>
                 </ul>
@@ -164,10 +164,11 @@
 
                 <!-- Button -->
                 <div class="pro-btn"> <a href="/cart" class="btn-round btn-light">Torna al carrello</a>
-    {{ Form::submit('Vai ai metodi di consegna', ['class' => 'btn-round']) }}
+    {{ Form::submit('Vai ai metodi di consegna', ['class' => 'btn-round','href'=>'/delivery']) }}
                     {!! Form::close() !!}
                 </div>
-</div>
+                </div>
+    </div>
 </section>
 
 </div>

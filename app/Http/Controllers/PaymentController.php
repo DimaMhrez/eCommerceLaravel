@@ -26,7 +26,7 @@ class PaymentController extends Controller
         ];
 
         $validator = Validator::make($request->all(), [
-            'card' => 'required|digits:16',
+            'card' => 'min:10|max:16',
             'CVV' => 'required|digits:3',
             'expiremonth' => 'required',
             'expireyear' => 'required',
@@ -55,7 +55,7 @@ class PaymentController extends Controller
         $payment->save();
 
 
-
+        return view('front_end.deliveryMethods');
     }
 
 
