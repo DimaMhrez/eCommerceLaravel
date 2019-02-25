@@ -73,10 +73,9 @@
                                             <!-- SCEGLI CATEGORIA PADRE-->
                                             {!! Form::select('position1', array_pluck($categories, 'name'), old('position1') ,array('id'=>'position1','class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Parent Category','required'=>'required')) !!}
                                         </div>
-                                        <div class="col-sm-10" style="display:none" id="insideRanking">
+                                        <div class  id="formcontainer">
                                                 <!-- QUI DOVREBBERO APPARIRE I NUMERI POSSIBILI COME SOTTOCATEGORIA !!! Non esistono problemi, solo soluzioni da trovare.-->
 
-                                           @include('back_end.selectorderform')
 
                                         </div>
 
@@ -153,13 +152,8 @@
                     categoryname: $('#position1 option:selected').text(),
                 },
                 function(data) {
-                    $('#insideRanking').empty().append( data );
+                    $('#formcontainer').empty().append( data );
 
-                    var options = data;
-                    $('#position2').empty();
-                    $.each(options, function(i, p) {
-                        $('#position2').append($('<option>options.name</option>').val(p).html(p));
-                    });
                 }
 
             ) });

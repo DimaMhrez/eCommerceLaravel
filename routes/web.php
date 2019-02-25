@@ -58,6 +58,8 @@ Route::get('/admin/order/{id}/inprogress','OrderController@setInProgress');
 Route::get('/admin/order/{id}/shipped','OrderController@setShipped');
 //funzioni crud per gli ordini
 Route::resource('/admin/order','OrderController');
+//Metodo
+Route::post('/selectcategory','CategoryController@get');
 //calcola il live search dei brands
 Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
 //rotta di prova serve a stampare in JSON tutti gli utenti che sono nel DB

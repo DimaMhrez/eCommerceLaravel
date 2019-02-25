@@ -1,7 +1,4 @@
-@section('subcategories')
 
-{!! Form::select('position2', array_pluck($subcategories, 'sortOrder'),
-old('position2') ,
-array('id'=>'position2','class'=>'selectpicker','data-st yle'=>'select-with-transition','title'=>'Position','required'=>'required')) !!}
-
-@show
+    <div class="col-sm-10" id="insideRanking">
+{!! Form::select('position2', array_pluck($subcategories, 'name'),['id'=>'position2','class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Position','required'=>'required']) !!}
+    </div>
