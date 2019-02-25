@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\paymentMethod;
+use App\Shipper;
+use App\ShippingAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -25,9 +27,11 @@ class PaymentController extends Controller
             'digits' => 'Questo campo deve contenere esattamente :digits caratteri.'
         ];
 
+
         $validator = Validator::make($request->all(), [
-            'card' => 'min:10|max:16',
+            'card' => 'required',
             'CVV' => 'required|digits:3',
+            'cardnumber' => 'required|digits:16',
             'expiremonth' => 'required',
             'expireyear' => 'required',
             'nome' => 'required|max:25|min:3|',
@@ -54,9 +58,38 @@ class PaymentController extends Controller
 
         $payment->save();
 
+        session(['paymentID' => $payment->id]);
 
-        return view('front_end.deliveryMethods');
+
+        //Costruisco la nuova vista dei deliverymethods.
+
+        $shippers=Shipper::where('availability','1')->orderBy('price','asc')->take(6)->get();
+
+        return view('front_end.deliveryMethods')->with('shippers',$shippers);
     }
 
+    public function confirmation(Request $request){
+
+        session(['shipperID'=>$request->radioshipper]);
+
+        $delivery = new ShippingAddress();
+
+        $delivery->name=$request->name;
+        $delivery->surname=$request->surname;
+        $delivery->street=$request->address;
+        $delivery->city=$request->city;
+        $delivery->zipcode=$request->cap;
+        $delivery->phoneNumber=$request->phone;
+        $delivery->user_id=Auth::user()->id;
+        $delivery->country=$request->country;
+        $delivery->province=$request->province;
+        $delivery->email=$request->email;
+
+        $delivery->save();
+
+
+        return view ('front_end.confirmation');
+
+    }
 
 }

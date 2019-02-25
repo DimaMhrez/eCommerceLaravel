@@ -117,7 +117,7 @@
 
                                     <!-- Card Number -->
                                     <div class="col-sm-6">
-                                        <div class="form-group{{ $errors->has('card') ? ' has-error' : '' }}">
+                                        <div class="form-group{{ $errors->has('cardnumber') ? ' has-error' : '' }}">
                                         {{Form::label('cardnumber','Numero carta')}}
                                         {{Form::text('cardnumber', '', ['class' => 'form-control'])}}
                                             <small class="text-danger">{{ $errors->first('card') }}</small>
@@ -164,7 +164,7 @@
 
                 <!-- Button -->
                 <div class="pro-btn"> <a href="/cart" class="btn-round btn-light">Torna al carrello</a>
-    {{ Form::submit('Vai ai metodi di consegna', ['class' => 'btn-round','href'=>'/delivery']) }}
+    {{ Form::submit('Vai ai metodi di consegna', ['class' => 'btn-round']) }}
                     {!! Form::close() !!}
                 </div>
                 </div>

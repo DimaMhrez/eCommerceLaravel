@@ -210,9 +210,4 @@ class FrontEndController extends Controller
        }
     }
 
-    public function delivery(){
-
-        return view('front_end.deliveryMethods');
-    }
-
 }

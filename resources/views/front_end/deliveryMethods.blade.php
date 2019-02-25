@@ -58,7 +58,7 @@
                                 <h2>Le tue informazioni</h2>
                                 <hr>
                             </div>
-                            {!!  Form::open(['action'=>'MessageController@store','method'=>'POST', 'id' => 'contact_form', 'class'=>'contact-form']) !!}
+                            {!!  Form::open(['action'=>'PaymentController@confirmation','method'=>'POST', 'id' => 'delivery_form', 'class'=>'contact-form']) !!}
                                 <div class="row">
 
                                     <!-- Name -->
@@ -80,12 +80,12 @@
                                         <div class="row">
                                             <div class="col-xs-6">
                                                 <label for="country"> Nazione </label>
-                                                <select id="country" class="selectpicker">
-                                                    <option selected> Italia </option>
-                                                    <option> Francia </option>
-                                                    <option> USA</option>
-                                                    <option> Germania </option>
-                                                    <option> UK </option>
+                                                <select id="country" form="delivery_form" class="selectpicker">
+                                                    <option selected value="Italia"> Italia </option>
+                                                    <option value="Francia"> Francia </option>
+                                                    <option value="USA"> USA</option>
+                                                    <option value="Germania"> Germania </option>
+                                                    <option value="UK"> UK </option>
                                                 </select>
                                             </div>
                                             <!--
@@ -141,7 +141,7 @@
                                         {{Form::text('email', '', ['class' => 'form-control'])}}
                                     </div>
                                 </div>
-                            {!! Form::close() !!}
+
                         </div>
 
                         <!-- Select Your Transportation -->
@@ -153,37 +153,34 @@
                             <div class="transportation">
                                 <div class="row">
 
-                                    <!-- Free Delivery -->
-                                    <div class="col-sm-6">
-                                        <div class="charges">
-                                            <h6>Free Delivery</h6>
-                                            <br>
-                                            <span>7 - 12 days</span> </div>
-                                    </div>
+                                   @foreach($shippers as $shipper)
+                                        <div class="col-sm-6">
+                                                <label class="labl">
+                                                <input type="radio" name="radioshipper" id="radioshipper" value="{{$shipper->id}}">
+                                                    <div class="charges">
+                                                        <h6>{{$shipper->name}}</h6>
+                                                        <br>
+                                                        <span>{{$shipper->description}}</span>
+                                                        @if($shipper->price != 0)
+                                                        <span class="deli-charges"> +{{$shipper->price}}€ </span>
+                                                            @endif
+                                                    </div>
+                                                </label>
+                                        </div>
 
-                                    <!-- Free Delivery -->
-                                    <div class="col-sm-6">
-                                        <div class="charges select">
-                                            <h6>Fast Delivery</h6>
-                                            <br>
-                                            <span>4 - 7 days</span> <span class="deli-charges"> +$25 </span> </div>
-                                    </div>
-                                    <!-- Expert Delivery -->
-                                    <div class="col-sm-6">
-                                        <div class="charges">
-                                            <h6>Expert Delivery</h6>
-                                            <br>
-                                            <span>24 - 48 Hours</span> <span class="deli-charges"> +$75 </span> </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
                     </div>
+
                 </div>
 
                 <!-- Button -->
-                <div class="pro-btn"> <a href="/payment" class="btn-round btn-light">Torna al pagamento</a> <a href="#." class="btn-round">Vai alla conferma</a> </div>
+                <div class="pro-btn"> <a href="/payment" class="btn-round btn-light">Torna al pagamento</a>
+                    {{  Form::submit('Vai alla conferma', ['class' => 'btn-round'])      }} </div>
             </div>
+            {!! Form::close() !!}
         </section>
-
+    </div>
 @endsection

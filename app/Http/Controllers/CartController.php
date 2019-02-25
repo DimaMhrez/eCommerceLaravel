@@ -128,6 +128,12 @@ class CartController extends Controller
 
     public function payment($session){
 
+        $items = Cart::where('user_id', $id)
+            ->join('products', 'products.id', '=', 'carts.product_id')
+            ->select('carts.quantity', 'carts.id as cartid', 'carts.totalprice', 'products.*')
+            ->get();
+
+        session(['cartitems'],$items);
         return view('front_end.paymentMethods');
     }
 }

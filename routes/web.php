@@ -22,8 +22,8 @@ Route::post('/removefromcart', 'CartController@remove');
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart','CartController@show');
     Route::get('/payment', 'PaymentController@show');
-    Route::post('/addpayment', 'PaymentController@store');
-    Route::get('delivery','FrontEndController@delivery');
+    Route::post('/delivery', 'PaymentController@store');
+    Route::post('/confirmation','PaymentController@confirmation');
 });
 /* BACKEND ROUTES */
 //backend home page
