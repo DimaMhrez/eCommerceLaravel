@@ -59,6 +59,10 @@ Route::get('/admin/order/{id}/inprogress','OrderController@setInProgress');
 Route::get('/admin/order/{id}/shipped','OrderController@setShipped');
 //funzioni crud per gli ordini
 Route::resource('/admin/order','OrderController');
+//crud permessi
+Route::resource('/admin/permission','PermissionController');
+//crud ruoli
+Route::resource('/admin/role','RoleController');
 //Metodo
 Route::post('/selectcategory','CategoryController@get');
 //calcola il live search dei brands
@@ -72,3 +76,5 @@ Route::get('/categoriesData','CategoryController@anyData')->name('categories.dat
 Route::get('/ordersData','OrderController@anyData')->name('order.data');
 Route::get('/ordersDataPreparing','OrderController@preparing')->name('orderPreparing.data');
 Route::get('/ordersDataShipped','OrderController@shipped')->name('orderShipped.data');
+Route::get('/permissions','PermissionController@permissions')->name('permissions.data');
+Route::get('/roles','RoleController@permissions')->name('roles.data');
