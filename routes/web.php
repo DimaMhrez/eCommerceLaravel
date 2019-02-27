@@ -14,6 +14,7 @@ Route::get('/', 'FrontEndController@index');
 Route::get('/about','FrontEndController@about');
 Route::get('/store','MessageController@store');
 Auth::routes();
+Route::get('/products','FrontEndController@allproducts');
 Route::resource('message','MessageController');
 Route::resource('review','ReviewController');
 Route::get('products/{id}', 'FrontEndController@show');

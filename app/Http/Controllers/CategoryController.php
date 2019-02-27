@@ -124,7 +124,7 @@ class CategoryController extends Controller
         $subcategories=Category::where('category_id',$category->id)->get();
 
 
-        return view('back_end.selectorderform')->with('subcategories',$subcategories);
+        return view('back_end.selectorderform')->with('subcategories',$subcategories)->render();
 
     }
 }

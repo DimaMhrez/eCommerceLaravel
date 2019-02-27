@@ -210,4 +210,32 @@ class FrontEndController extends Controller
        }
     }
 
+    public function allproducts(){
+
+        $categories=Category::all();
+        $products=DB::table('products')
+            ->join('categories','products.category_id','=','categories.id')
+            ->select('products.*','categories.name as category')
+            ->paginate(20);
+
+        $bullets=BulletDescription::all();
+
+        $brands=Brand::take(10)->get();
+
+        $productsnumber=Product::count();
+
+
+        $data=array(
+
+            'category' => $categories,
+            'products' => $products,
+            'brands' => $brands,
+            'productsnumber' => $productsnumber,
+            'bullets' => $bullets,
+        );
+
+
+        return view('front_end.ListProducts')->with('data',$data);
+    }
+
 }
