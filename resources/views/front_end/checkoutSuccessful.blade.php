@@ -10,9 +10,9 @@
                 <!-- Payout Method -->
 
                 <div class="order-success"> <i class="fa fa-check"></i>
-                    <h6>Congratulation! Your order has been processed</h6>
-                    <p>Aenean dui mi, tempus non volutpat eget, molestie a orci. Nullam eget sem et eros laoreet rutrum. Quisque sem ante, feugiat quis lorem in.</p>
-                    <a href="#." class="btn-round">Return to Shop</a> </div>
+                    <h6>Congratulazioni! Il tuo ordine è andato a buon fine</h6>
+                    <p>Grazie per averci scelto. Per qualsiasi informazione o problema, può contattarci al numero di <a href="/about">supporto</a>.</p>
+                    <a href="/" class="btn-round">Torna alla home</a> </div>
             </div>
         </section>
 @endsection

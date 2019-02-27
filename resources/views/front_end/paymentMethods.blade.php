@@ -61,7 +61,7 @@
 
                             {{ csrf_field() }}
                             <label for="MasterCard">
-                                <input class="cardselector" type="radio" name="card" id="MasterCard" value="MasterCard" checked>
+                                <input class="cardselector" type="radio" name="card" id="MasterCard" value="mastercard" checked>
                                 <img src="{{asset('front_end/images/mastercard.png')}}" alt="missing">
                                 Mastercard
                             </label>
@@ -74,13 +74,13 @@
                             </label>
 
                             <label for="discover">
-                                <input class="cardselector" type="radio" name="card" id="discover" value="Discover">
+                                <input class="cardselector" type="radio" name="card" id="discover" value="discover">
                                 <img src="{{asset('front_end/images/discover.png')}}" alt="missing">
                                 Discover
                             </label>
 
                             <label for="Paypal">
-                                <input class="cardselector" type="radio" name="card" id="Paypal" value="Paypal">
+                                <input class="cardselector" type="radio" name="card" id="Paypal" value="paypal">
                                 <img src="{{asset('front_end/images/paypal.png')}}" alt="missing">
                                 Paypal
                             </label>
