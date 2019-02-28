@@ -20,6 +20,9 @@ Route::resource('review','ReviewController');
 Route::get('products/{id}', 'FrontEndController@show');
 Route::post('/addtocart', 'CartController@add');
 Route::post('/removefromcart', 'CartController@remove');
+
+Route::post('/filter','FrontEndController@filter');
+
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart','CartController@show');
     Route::get('/payment', 'PaymentController@show');
