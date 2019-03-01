@@ -9,7 +9,32 @@
       <!-- <button type="button" class="btn btn-round btn-default dropdown-toggle btn-link" data-toggle="dropdown">
 7 days
 </button> -->
-
+      <div class="col-lg-6 col-md-12">
+        <div class="card">
+          <div class="card-header card-header-text card-header-warning">
+            <div class="card-text">
+              <h4 class="card-title">Products Finishing</h4>
+              <p class="card-category">Last 5 product with low availability</p>
+            </div>
+          </div>
+          <div class="card-body table-responsive">
+            <table class="table table-hover">
+              <thead class="text-warning">
+              <tr><th>ID</th>
+                <th>Name</th>
+              </tr></thead>
+              <tbody>
+                @foreach($productFinishing as $p)
+                  <tr>
+                    <td>{{$p->id}}</td>
+                    <td>{{$p->name}}</td>
+                  </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-lg-4 col-md-6 col-sm-6">
           <div class="card card-stats">
@@ -60,6 +85,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 

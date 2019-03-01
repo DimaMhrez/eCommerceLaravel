@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Order;
+use App\Product;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -19,7 +20,11 @@ class BackEndController extends Controller
         $orderedToday = DB::table('orders')->select(DB::raw('count(id) as count'))->where('date','>',DB::raw('date_sub(now(),INTERVAL 1 DAY)'))->first();
 
         $inPreparation = DB::table('orders')->select(DB::raw('count(id) as count'))->where('status',1);
-        return view('back_end.dashboard')->with('completed',$thisWeekCompleteOrder)->with('orderedToday',$orderedToday)->with('inPreparation',$inPreparation);;
+
+        $productFinishing = Product::where('setVisible',1)->where('availability','<=',5)->orderby('updated_at','desc')->limit(5)->get();
+
+        $countFinishing = count($productFinishing);
+        return view('back_end.dashboard')->with('productFinishing',$productFinishing)->with('countFinishing',$countFinishing)->with('completed',$thisWeekCompleteOrder)->with('orderedToday',$orderedToday)->with('inPreparation',$inPreparation);
     }
 
     public function users(){
