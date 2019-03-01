@@ -151,7 +151,6 @@ class RoleController extends Controller
 
     public function writeRole($idRole){
         $role = Role::findById(intval($idRole));
-
         if($role != null){
             $perm = Permission::findByID(Input::get('permission'));
             if($perm != null){
