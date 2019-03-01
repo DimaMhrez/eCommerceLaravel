@@ -12,7 +12,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h4 class="card-title">Categories</h4>
+                            <h4 class="card-title">Roles</h4>
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
@@ -26,8 +26,6 @@
                                         <tr>
                                             <th>Id num</th>
                                             <th>Name</th>
-                                            <th>Sort Order</th>
-                                            <th>Parent Category</th>
                                             <th>Actions</th>
                                             <!-- <th>Actions</th> -->
                                             <!-- <th>Created At</th>
@@ -58,14 +56,12 @@
                             ],
                             processing: true,
                             serverSide: true,
-                            ajax: '{!! route('categories.data') !!}',
+                            ajax: '{!! route('roles.data') !!}',
 
                             columns: [
                                 { data: 'id', name: 'id' },
                                 { data: 'name', name: 'name' },
-                                { data: 'sortOrder', name: 'sortOrder' },
-                                { data: 'parent', name:'parent'},
-                                { data: 'intro', name: 'intro'},
+                                { data:'intro', name:'intro'}
 
 
 

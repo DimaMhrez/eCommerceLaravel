@@ -337,6 +337,31 @@
                         <p> Users </p>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link" id="auth" href="#authorization" data-toggle="collapse">
+                        <i class="material-icons">apps</i>
+                        <p> Autorization
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="authorization">
+                        <ul class="nav">
+                            <li class="nav-item ">
+                                <a class="nav-link" id="newProduct" href="{{url('/admin/permission/')}}">
+                                    <span class="sidebar-mini"> B </span>
+                                    <span class="sidebar-normal"> Services </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" id="products" href="{{url('/admin/role/')}}">
+                                    <span class="sidebar-mini"> GS </span>
+                                    <span class="sidebar-normal"> Roles </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
 
             </ul>
         </div>

@@ -12,7 +12,8 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h4 class="card-title">Categories</h4>
+                            <h4 class="card-title">Services </h4>
+
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
@@ -21,13 +22,12 @@
                             <div class="material-datatables">
                                 <div class="dataTables_wrapper dt-bootstrap4" id="tables_wrapper">
                                     <table class="table table-striped table-no-bordered table-hover"
-                                           id="users-table" cellspacing="0" width="100%" style="width:100%">
+                                           id="{{$id}}" cellspacing="0" width="100%" style="width:100%">
                                         <thead>
+                                        <button class="btn btn-primary btn-sm" href="{{url('/admin/permission/create')}}">New<div class="ripple-container"></div></button>
                                         <tr>
                                             <th>Id num</th>
                                             <th>Name</th>
-                                            <th>Sort Order</th>
-                                            <th>Parent Category</th>
                                             <th>Actions</th>
                                             <!-- <th>Actions</th> -->
                                             <!-- <th>Created At</th>
@@ -50,22 +50,22 @@
 
             @push('scripts')
                 <script>
+
+                    var id = $('.table.table-striped.table-no-bordered.table-hover').attr('id');
                     $(function() {
-                        $('#users-table').DataTable({
+                        $(id).DataTable({
                             lengthMenu: [
                                 [10, 25, 50, 100, -1],
                                 [10, 25, 50, 100, "All"]
                             ],
                             processing: true,
                             serverSide: true,
-                            ajax: '{!! route('categories.data') !!}',
+                            ajax: '/admin/rolesPermissions/pippo',
 
                             columns: [
                                 { data: 'id', name: 'id' },
                                 { data: 'name', name: 'name' },
-                                { data: 'sortOrder', name: 'sortOrder' },
-                                { data: 'parent', name:'parent'},
-                                { data: 'intro', name: 'intro'},
+                                { data:'intro', name:'intro'}
 
 
 
