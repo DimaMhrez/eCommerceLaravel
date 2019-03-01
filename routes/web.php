@@ -69,6 +69,8 @@ Route::resource('/admin/order','OrderController');
 //crud permessi
 Route::resource('/admin/permission','PermissionController');
 //
+Route::get('admin/role/{idRole}/writeRole','RoleController@writeRole');
+Route::get('/admin/role/{id}/grantPermission','RoleController@grantPermission');
 Route::get('/admin/permission/delete/{id}','PermissionController@destroy');
 Route::get('/admin/role/delete/{id}','RoleController@destroy');
 //crud ruoli

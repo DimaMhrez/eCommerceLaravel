@@ -72,7 +72,7 @@ class RoleController extends Controller
     public function show($id)
     {
 
-        $role = Role::findByID($id);
+        $role = Role::findByID(intval($id));
         $permission = null;
 
         if ($role != null) {
@@ -87,21 +87,18 @@ class RoleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($role)
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($role)
     {
-        //
+
     }
 
     /**
@@ -146,4 +143,12 @@ class RoleController extends Controller
         return back();
     }
 
+    public function grantPermission($id)
+    {
+        $permissions = Permission::all();
+        return view('back_end.grantPermissionToRole')->with('permissions',$permissions)->with('idRole',$id);
+    }
+
+    public function writeRole($idRole){
+    }
 }

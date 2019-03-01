@@ -18,7 +18,7 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class=" text-primary">
-                                        <button class="btn btn-primary btn-sm" href="{{url('/admin/permission/create')}}">New<div class="ripple-container"></div></button>
+                                        <a href="{{url('/admin/role/'.$role->id.'/grantPermission')}}"><button class="btn btn-primary btn-sm" >New<div class="ripple-container"></div></button></a>
                                             <tr>
                                                  <th>
                                                       ID
