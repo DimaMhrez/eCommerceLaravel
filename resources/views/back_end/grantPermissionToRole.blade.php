@@ -42,8 +42,9 @@
                                                 <div class="form-group">
                                                     <select name="permission" id="permission" class="selectpicker" data-style="select-with-transition" title="Service" required="required">
                                                         @foreach($permissions as $permission)
-                                                            <option value="{{$permission->id}}> {{$permission->name}} </option>
+                                                            <option value="{{$permission->id}}"}> {{$permission->name}} </option>
                                                         @endforeach
+                                                    </select>
                                                     </select>
                                                 </div>
                                             </div>

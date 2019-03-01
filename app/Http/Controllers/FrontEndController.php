@@ -10,6 +10,7 @@ use App\Message;
 use App\ProductVariant;
 use App\Review;
 use App\User;
+use App\UserPreferences;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
@@ -131,6 +132,14 @@ class FrontEndController extends Controller
                 ->join('products','categories.id','=','products.category_id')
                 ->where('products.id',$id)
                 ->first();
+
+            //Faccio la insert tra le preferenze dell'utente.
+            if(!Auth::guest()) {
+                $insert = new UserPreferences();
+                $insert->user_id = Auth::user()->id;
+                $insert->product_id=
+
+            }
 
             //Se possibile, sarebbe carino riscrivere queste query con Eloquent (ci ho provato ma sembra non funzionare)
             $bulletpoints=BulletDescription::select('bullet_descriptions.id','bullet_descriptions.description')
