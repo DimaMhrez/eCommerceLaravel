@@ -60,9 +60,6 @@ class PermissionController extends Controller
                 return Redirect::to('/admin/permission/create')
                     ->withErrors('Already Exist');
             }
-
-
-
         }
     }
 
@@ -108,17 +105,22 @@ class PermissionController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $perm = Permission::findById(intval($id));
+
+        if($perm != null)
+            $perm->delete();
+
+        return back();
     }
 
     public function permissions()
     {
         $permissions = Permission::all();
         return Datatables::of($permissions)
-            ->setRowId(function ($order){
-                return $order->id;})
+            ->setRowId(function ($perm){
+                return $perm->id;})
             ->addColumn('intro', function(Permission $perm) {
-                return '<a href="'. url('/admin/order/'.$perm->id) .'" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i><div class="ripple-container"></div></a>';
+                return '<a href="' . url('/admin/permission/delete/' . $perm->id) .'" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i><div class="ripple-container"></div></a>';
             })
             ->rawColumns(['intro'])
             ->toJson();

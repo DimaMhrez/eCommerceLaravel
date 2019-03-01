@@ -12,12 +12,13 @@
                                 <div class="card-icon">
                                     <i class="material-icons">assignment</i>
                                 </div>
-                                <h4 class="card-title ">Products</h4>
+                                <h4 class="card-title ">Role: {{$role->name}}</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class=" text-primary">
+                                        <button class="btn btn-primary btn-sm" href="{{url('/admin/permission/create')}}">New<div class="ripple-container"></div></button>
                                             <tr>
                                                  <th>
                                                       ID
@@ -40,7 +41,7 @@
                                                     {{ $p->name }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{url('/admin/role/revokePermission/'.$p->id.'/'.$role)}}" class="btn btn-link btn-danger btn-just-icon remove">
+                                                    <a href="{{url('/admin/role/revokePermission/'.$p->id.'/'.$role->id)}}" class="btn btn-link btn-danger btn-just-icon remove">
                                                         <i class="material-icons">close</i>
                                                         <div class="ripple-container"></div>
                                                     </a>

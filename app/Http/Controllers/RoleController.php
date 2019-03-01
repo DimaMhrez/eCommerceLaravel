@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Yajra\Datatables\Datatables;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class RoleController extends Controller
 {
@@ -26,7 +29,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('back_end.createRole');
     }
 
     /**
@@ -35,9 +38,29 @@ class RoleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $rules = array(
+            'name'       => 'required'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('/admin/permission/create')
+                ->withErrors($validator);
+        } else {
+
+            $role = Role::where('name',Input::get('name'))->select('name')->first();
+
+            if($role == null){
+                Role::create(['name'=>Input::get('name')]);
+                return Redirect::to('/admin/role/');
+            }else{
+                return Redirect::to('/admin/role/create')
+                    ->withErrors('Already Exist');
+            }
+        }
     }
 
     /**
@@ -55,7 +78,7 @@ class RoleController extends Controller
         if ($role != null) {
             $permissions = $role->permissions()->get(); //trying to get permissions here throws error
         }
-        return view('back_end.roleDetails')->with('perm',$permissions)->with('role',$role->id);
+        return view('back_end.roleDetails')->with('perm',$permissions)->with('role',$role);
     }
 
     /**
@@ -89,7 +112,12 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $role = Role::findById(intval($id));
+
+        if($role != null)
+            $role->delete();
+
+        return back();
     }
 
     public function permissions()
@@ -100,7 +128,8 @@ class RoleController extends Controller
             ->setRowId(function ($role){
                 return $role->id;})
             ->addColumn('intro', function(Role $role) {
-                return '<a href="'. url('/admin/role/'.$role->id) .'" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i><div class="ripple-container"></div></a>';
+                return '<a href="'. url('/admin/role/'.$role->id) .'" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i><div class="ripple-container"></div></a>
+                        <a href="' . url('/admin/role/delete/' . $role->id) .'" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i><div class="ripple-container"></div></a>';
             })
             ->rawColumns(['intro'])
             ->toJson();

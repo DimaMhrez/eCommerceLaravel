@@ -16,7 +16,7 @@
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
-                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                <a href="{{url('/admin/role/create')}}"><button class="btn btn-primary btn-sm">New<div class="ripple-container"></div></button></a>
                             </div>
                             <div class="material-datatables">
                                 <div class="dataTables_wrapper dt-bootstrap4" id="tables_wrapper">

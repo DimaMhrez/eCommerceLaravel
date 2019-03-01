@@ -17,14 +17,13 @@
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
-                                <!--        Here you can write extra buttons/actions for the toolbar              -->
+                                <a href="{{url('/admin/permission/create')}}"><button class="btn btn-primary btn-sm" >New<div class="ripple-container"></div></button></a>
                             </div>
                             <div class="material-datatables">
                                 <div class="dataTables_wrapper dt-bootstrap4" id="tables_wrapper">
                                     <table class="table table-striped table-no-bordered table-hover"
                                            id="users-table" cellspacing="0" width="100%" style="width:100%">
                                         <thead>
-                                        <button class="btn btn-primary btn-sm" href="{{url('/admin/permission/create')}}">New<div class="ripple-container"></div></button>
                                         <tr>
                                             <th>Id num</th>
                                             <th>Name</th>

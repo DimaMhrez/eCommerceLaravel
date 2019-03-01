@@ -68,6 +68,9 @@ Route::get('/admin/order/{id}/shipped','OrderController@setShipped');
 Route::resource('/admin/order','OrderController');
 //crud permessi
 Route::resource('/admin/permission','PermissionController');
+//
+Route::get('/admin/permission/delete/{id}','PermissionController@destroy');
+Route::get('/admin/role/delete/{id}','RoleController@destroy');
 //crud ruoli
 Route::resource('/admin/role','RoleController');
 //revoca un permesso ad un ruolo
