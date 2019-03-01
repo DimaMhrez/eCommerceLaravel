@@ -330,16 +330,16 @@
                             <!-- Product -->
                             @foreach($data['Featured'] as $Fitem)
                             <div class="product">
-                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-1.jpg') }}" alt="" >
+                                <article> <img class="img-responsive" src="{{asset('upload/'.$Fitem->URL) }}" alt="" >
                                     <!-- Content -->
                                     <span class="tag">{{$Fitem->category}}</span> <a href="/products/{{$Fitem->id}}" class="tittle">{{$Fitem->name}}</a>
                                     <!-- Reviews -->
                                     <p class="rev"><span class="margin-left-10">{{$Fitem->reviewsnumber}} Recensioni</span></p>
                                    @if (!empty($Fitem->rate))
-                                        <p class="rev">@for($i=0; $i<$Fitem->rate && $i<5; ++$i)<i class="fa fa-star"></i></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor <span class="margin-left-10"></span></p>
+                                        <p class="rev">@for($i=0; $i<$Fitem->rate && $i<5; ++$i)<i class="fa fa-star"></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor <span class="margin-left-10"></span></p>
                                     @else <p class="rev"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></p>
                                     @endif
-                                    <div class="price">€{{$Fitem->normalPrice}}.00 </div>
+                                    <div class="price">€{{$Fitem->normalPrice}}</div>
                                     <a href="/products/{{$Fitem->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a>
                                 </article>
                             </div>
@@ -354,7 +354,7 @@
                             @foreach($data['Special'] as $Sitem)
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="{{asset('front_end/images/item-img-1-11.jpg') }}" alt="" >
+                                <article> <img class="img-responsive" src="{{asset('upload/'.$Sitem->URL) }}" alt="" >
                                     <!-- Content -->
                                     <span class="tag">{{$Sitem->category}}</span> <a href="/products/{{$Sitem->id}}" class="tittle">{{$Sitem->name}}</a>
                                     <!-- Reviews -->
@@ -377,7 +377,7 @@
                             @foreach($data['Sale'] as $onsaleitem)
                             <!-- Product -->
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-3.jpg" alt="" >
+                                <article> <img class="img-responsive" src="{{asset('upload/'.$onsaleitem->URL) }}" alt="" >
                                     <!-- Content -->
                                     <span class="tag">{{$onsaleitem->category}} </span> <a href="/products/{{$onsalitem->id}}" class="tittle">{{$onsaleitem->name}}</a>
                                     <!-- Reviews -->
@@ -423,7 +423,7 @@
                     @foreach($data['Featured'] as $featured)
                     <!-- Product -->
                     <div class="product">
-                        <article> <img class="img-responsive" src="images/item-img-1-6.jpg" alt="" > <span class="sale-tag">-25%</span>
+                        <article> <img class="img-responsive" src="{{asset('upload/'.$featured->URL) }}" alt="" > <span class="sale-tag">-25%</span>
 
                             <!-- Content -->
                             <span class="tag">{{$featured->category}}</span> <a href="#." class="tittle">{{$featured->name}}</a>
@@ -464,7 +464,7 @@
                         @foreach($data['preferences'] as $preference)
                             <!-- Product -->
                                 <div class="product">
-                                    <article> <img class="img-responsive" src="images/item-img-1-6.jpg" alt="" > <span class="sale-tag">-25%</span>
+                                    <article> <img class="img-responsive" src="{{asset('upload/'.$preference->URL) }}" alt="" > <span class="sale-tag">-25%</span>
 
                                         <!-- Content -->
                                         <span class="tag">{{$preference->category}}</span> <a href="/products/{{$preference->id}}" class="tittle">{{$preference->name}}</a>
@@ -502,7 +502,7 @@
                             <!-- Product -->
                             @foreach($data['tv'] as $tv)
                             <div class="product">
-                                <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
+                                <article> <img class="img-responsive" src="{{asset('upload/'.$tv->URL) }}" alt="" >
                                     <!-- Content -->
                                     <span class="tag">{{$tv->category}}</span> <a href="#." class="tittle">{{$tv->name}}</a>
                                     <!-- Reviews -->
@@ -523,7 +523,7 @@
                             <!-- Product -->
                             @foreach($data['smartphones'] as $smartphone)
                                 <div class="product">
-                                    <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
+                                    <article> <img class="img-responsive" src="{{asset('upload/'.$smartphone->URL) }}" alt="" >
                                         <!-- Content -->
                                         <span class="tag">{{$smartphone->category}}</span> <a href="#." class="tittle">{{$smartphone->name}}</a>
                                         <!-- Reviews -->
@@ -544,7 +544,7 @@
                             <!-- Product -->
                             @foreach($data['pc'] as $pc)
                                 <div class="product">
-                                    <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
+                                    <article> <img class="img-responsive" src="{{asset('upload/'.$pc->URL) }}" alt="" >
                                         <!-- Content -->
                                         <span class="tag">{{$pc->category}}</span> <a href="/products/{{$pc->id}}" class="tittle">{{$pc->name}}</a>
                                         <!-- Reviews -->
@@ -564,7 +564,7 @@
                             @foreach($data['games'] as $game)
 
                                 <div class="product">
-                                    <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
+                                    <article> <img class="img-responsive" src="{{asset('upload/'.$game->URL) }}" alt="" >
                                         <!-- Content -->
                                         <span class="tag">{{$game->category}}</span> <a href="/products/{{$game->id}}" class="tittle">{{$game->name}}</a>
                                         <!-- Reviews -->
@@ -585,7 +585,7 @@
                             <!-- Product -->
                             @foreach($data['watches'] as $watch)
                                 <div class="product">
-                                    <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
+                                    <article> <img class="img-responsive" src="{{asset('upload/'.$watch->URL) }}" alt="" >
                                         <!-- Content -->
                                         <span class="tag">{{$watch->category}}</span> <a href="/products/{{$watch->id}}" class="tittle">{{$watch->name}}</a>
                                         <!-- Reviews -->
@@ -605,7 +605,7 @@
                             <!-- Product -->
                             @foreach($data['accessories'] as $acc)
                                 <div class="product">
-                                    <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
+                                    <article> <img class="img-responsive" src="{{asset('upload/'.$acc->URL) }}" alt="" >
                                         <!-- Content -->
                                         <span class="tag">{{$acc->category}}</span> <a href="/products/{{$acc->id}}" class="tittle">{{$acc->name}}</a>
                                         <!-- Reviews -->

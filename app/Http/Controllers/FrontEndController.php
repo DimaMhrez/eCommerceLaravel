@@ -48,6 +48,8 @@ class FrontEndController extends Controller
 
                 $catproducts= Product::where('category_id',$cp->category_id)
                     ->take($cat)
+                    ->join('photos','photos.product_id','=','products.id')
+                    ->where('photos.main','1')
                     ->get();
 
                 $totalp=$totalp->merge($catproducts);
@@ -75,68 +77,83 @@ class FrontEndController extends Controller
 
         $ShowcaseItems=Product::where('showcase','1')
             ->join('categories','categories.id','=','products.category_id')
-            ->select('categories.name as category','products.*')
+            ->join('photos','photos.product_id','=','products.id')
+            ->select('categories.name as category','products.*','photos.URL')
+            ->where('photos.main','1')
             ->take(15)
             ->get();
 
 
         $FeaturedItems=Product::where('featured','1')
-            ->select('categories.name as category','products.*')
+            ->select('categories.name as category','products.*','photos.URL')
             ->join('categories','categories.id','=','products.category_id')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
             ->take(15)
             ->get();
 
 
+
         $SpecialItems=Product::where('special','1')->
-            select('categories.name as category','products.*')
+            select('categories.name as category','products.*','photos.URL')
             ->join('categories','categories.id','=','products.category_id')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
             ->take(15)
             ->get();
 
         $onSaleItems=Product::whereNotNull('sale_id')
-            ->select('categories.name as category','products.*')
+            ->select('categories.name as category','products.*','photos.URL')
             ->join('categories','categories.id','=','products.category_id')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
             ->take(15)
             ->get();
 
 
 
         //Prendo i prodotti di diverse categorie.
-        $Tv=Product::select('products.*','categories.name as category')
+        $Tv=Product::select('products.*','categories.name as category','photos.URL')
             ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','TV & Video')
-            ->select('products.*','categories.name as category')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
             ->take(5)->get();
 
-        $Smartphones=Product::select('products.*','categories.name as category')
+        $Smartphones=Product::select('products.*','categories.name as category','photos.URL')
             ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','Smartphones')
-            ->select('products.*','categories.name as category')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
             ->take(5)->get();
 
-        $PC=Product::select('products.*','categories.name as category')
+        $PC=Product::select('products.*','categories.name as category','photos.URL')
             ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','PC')
-            ->select('products.*','categories.name as category')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
             ->take(5)->get();
 
-        $games=Product::select('products.*','categories.name as category')
+        $games=Product::select('products.*','categories.name as category','photos.URL')
             ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','Video Games')
-            ->select('products.*','categories.name as category')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
             ->take(5)->get();
 
 
-        $watches=Product::select('products.*','categories.name as category')
+        $watches=Product::select('products.*','categories.name as category','photos.URL')
             ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','Watches')
-            ->select('products.*','categories.name as category')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
             ->take(5)->get();
 
-        $accessories=Product::select('products.*','categories.name as category')
+        $accessories=Product::select('products.*','categories.name as category','photos.URL')
             ->join('categories','categories.id','=','products.category_id')
             ->where('categories.name','Accessories')
-            ->select('products.*','categories.name as category')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
             ->take(5)->get();
 
 
