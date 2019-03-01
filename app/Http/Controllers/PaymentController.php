@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Cart;
 use App\paymentMethod;
 use App\Shipper;
 use App\ShippingAddress;
@@ -12,6 +13,14 @@ use Illuminate\Support\Facades\Validator;
 class PaymentController extends Controller
 {
     public function show(){
+        $id=Auth::user()->id;
+
+        $items = Cart::where('user_id', $id)
+            ->join('products', 'products.id', '=', 'carts.product_id')
+            ->select('carts.quantity', 'carts.id as cartid', 'carts.totalprice', 'products.*')
+            ->get();
+
+            session(['cartitems' => $items]);
 
         return view('front_end.paymentMethods');
     }
@@ -54,12 +63,17 @@ class PaymentController extends Controller
         $payment-> expire_month= $request->expiremonth;
         $payment-> expire_year= $request->expireyear;
         $payment-> ccOwner= $request->nome;
+        $payment-> number = $request->cardnumber;
         $payment-> user_id=Auth::user()->id;
 
         $payment->save();
 
         session(['paymentID' => $payment->id]);
 
+        return $this->delivery();
+    }
+
+    public function delivery(){
 
         //Costruisco la nuova vista dei deliverymethods.
 
@@ -88,8 +102,34 @@ class PaymentController extends Controller
         $delivery->save();
 
 
-        return view ('front_end.confirmation');
+        $items=session('cartitems');
+        $shipperID=session('shipperID');
+        $shipper=Shipper::find($shipperID);
+        $paymentID=session('paymentID');
+        $payment=paymentMethod::find($paymentID);
 
+        $id=Auth::user()->id;
+
+        $sum = Cart::where('user_id', $id)->sum('totalprice');
+        $totalsum=$sum + $shipper->price;
+
+        $data= array(
+            'items' => $items,
+            'shipper' => $shipper,
+            'payment' => $payment,
+            'delivery' => $delivery,
+            'sum' => $totalsum,
+        );
+
+        return view ('front_end.confirmation',compact('data'));
+
+    }
+
+    public function done(){
+        $id=Auth::user()->id;
+        Cart::where('user_id',$id)->delete();
+
+        return view('front_end.checkoutSuccessful');
     }
 
 }

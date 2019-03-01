@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Yajra\Datatables\Datatables;
 
@@ -47,7 +48,7 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('back_end.roleDetails',compact('id'));
     }
 
     /**
@@ -96,4 +97,25 @@ class RoleController extends Controller
             ->rawColumns(['intro'])
             ->toJson();
     }
+
+    public function rolePermissions($id)
+    {
+
+        $role = Role::findByName($id);
+        $role->load('permissions');
+
+        if ($role != null) {
+            $permissions = $role->getAllPermissions(); //trying to get permissions here throws error
+
+
+            return Datatables::of($permissions)
+                ->setRowId(function ($permission) {
+                    return $permission->id;
+                })
+                ->toJson();
+
+        }
+    }
+
+
 }

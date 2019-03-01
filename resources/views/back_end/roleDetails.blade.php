@@ -22,7 +22,7 @@
                             <div class="material-datatables">
                                 <div class="dataTables_wrapper dt-bootstrap4" id="tables_wrapper">
                                     <table class="table table-striped table-no-bordered table-hover"
-                                           id="users-table" cellspacing="0" width="100%" style="width:100%">
+                                           id="{{$id}}" cellspacing="0" width="100%" style="width:100%">
                                         <thead>
                                         <button class="btn btn-primary btn-sm" href="{{url('/admin/permission/create')}}">New<div class="ripple-container"></div></button>
                                         <tr>
@@ -50,15 +50,17 @@
 
             @push('scripts')
                 <script>
+
+                    var id = $('.table.table-striped.table-no-bordered.table-hover').attr('id');
                     $(function() {
-                        $('#users-table').DataTable({
+                        $(id).DataTable({
                             lengthMenu: [
                                 [10, 25, 50, 100, -1],
                                 [10, 25, 50, 100, "All"]
                             ],
                             processing: true,
                             serverSide: true,
-                            ajax: '{!! route('permissions.data') !!}',
+                            ajax: '/admin/rolesPermissions/pippo',
 
                             columns: [
                                 { data: 'id', name: 'id' },

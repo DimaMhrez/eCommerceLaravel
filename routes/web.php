@@ -14,16 +14,22 @@ Route::get('/', 'FrontEndController@index');
 Route::get('/about','FrontEndController@about');
 Route::get('/store','MessageController@store');
 Auth::routes();
+Route::get('/products','FrontEndController@allproducts');
 Route::resource('message','MessageController');
 Route::resource('review','ReviewController');
 Route::get('products/{id}', 'FrontEndController@show');
 Route::post('/addtocart', 'CartController@add');
 Route::post('/removefromcart', 'CartController@remove');
+
+Route::post('/filter','FrontEndController@filter');
+
 Route::group(['middleware'=>'auth'], function(){
     Route::get('/cart','CartController@show');
     Route::get('/payment', 'PaymentController@show');
-    Route::post('/delivery', 'PaymentController@store');
+    Route::post('/store', 'PaymentController@store');
+    Route::post('/delivery', 'PaymentController@delivery');
     Route::post('/confirmation','PaymentController@confirmation');
+    Route::get('/done','PaymentController@done');
 });
 /* BACKEND ROUTES */
 //backend home page
@@ -78,3 +84,4 @@ Route::get('/ordersDataPreparing','OrderController@preparing')->name('orderPrepa
 Route::get('/ordersDataShipped','OrderController@shipped')->name('orderShipped.data');
 Route::get('/permissions','PermissionController@permissions')->name('permissions.data');
 Route::get('/roles','RoleController@permissions')->name('roles.data');
+Route::get('/rolesPermissions/{id}','RoleController@rolePermissions')->name('rolePermissions.data');

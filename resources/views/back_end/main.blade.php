@@ -349,7 +349,7 @@
                             <li class="nav-item ">
                                 <a class="nav-link" id="newProduct" href="{{url('/admin/permission/')}}">
                                     <span class="sidebar-mini"> B </span>
-                                    <span class="sidebar-normal"> Permissions </span>
+                                    <span class="sidebar-normal"> Services </span>
                                 </a>
                             </li>
                             <li class="nav-item ">

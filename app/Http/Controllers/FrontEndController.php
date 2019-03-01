@@ -10,6 +10,8 @@ use App\Message;
 use App\ProductVariant;
 use App\Review;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Product;
@@ -208,6 +210,81 @@ class FrontEndController extends Controller
 
            return view('front_end.error404');
        }
+    }
+
+    public function allproducts(){
+
+        $categories=Category::all();
+        $products=DB::table('products')
+            ->join('categories','products.category_id','=','categories.id')
+            ->select('products.*','categories.name as category')
+            ->paginate(20);
+
+        $bullets=BulletDescription::all();
+
+        $brands=Brand::take(10)->get();
+
+        $productsnumber=Product::count();
+
+
+        $data=array(
+            'category' => $categories,
+            'products' => $products,
+            'brands' => $brands,
+            'productsnumber' => $productsnumber,
+            'bullets' => $bullets,
+        );
+
+
+        return view('front_end.ListProducts')->with('data',$data);
+    }
+
+    public function filter(Request $request){
+
+        $category=(array)$request->category;
+        $brand=(array)$request->brand;
+        $catfilter=array();
+        $brandfilter=array();
+
+        if(!empty($category))
+        {
+            for($i=0;$i<count($category);$i++)
+            {
+                $catfilter[$i]= Product::where('category_id',$category[$i])->get();
+
+            }
+        }
+
+        if(!empty($brand))
+        {
+            for($j=0;$j<count($brand);$j++)
+            {
+                $brandfilter[$j]= Product::where('brand_id',$brand[$j])->get();
+
+            }
+        }
+
+        $bullets=BulletDescription::all();
+        $total=new Collection();
+        for($i=0;$i<count($category);$i++)
+        {
+            $total=$total->merge($catfilter[$i]);
+        }
+
+        for($j=0;$j<count($brand);$j++)
+        {
+            $total=$total->merge($brandfilter[$j]);
+        }
+
+        $data=array(
+            'products' => $total,
+            'productsnumber' => count($total),
+            'bullets' => $bullets
+        );
+
+        return view('front_end.FilterList')->with('data',$data);
+
+
     }
 
 }

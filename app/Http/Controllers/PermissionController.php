@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Yajra\Datatables\Datatables;
 use View;
-
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class PermissionController extends Controller
 {
@@ -27,7 +29,7 @@ class PermissionController extends Controller
      */
     public function create()
     {
-        //
+        return view('back_end.createPermission');
     }
 
     /**
@@ -36,9 +38,32 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        $rules = array(
+            'name'       => 'required'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('/admin/permission/create')
+                ->withErrors($validator);
+        } else {
+
+            $permission = Permission::where('name',Input::get('name'))->select('name')->first();
+
+            if($permission == null){
+                Permission::create(['name'=>Input::get('name')]);
+                return Redirect::to('/admin/permission/');
+            }else{
+                return Redirect::to('/admin/permission/create')
+                    ->withErrors('Already Exist');
+            }
+
+
+
+        }
     }
 
     /**

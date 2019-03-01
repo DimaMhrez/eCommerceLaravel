@@ -13,7 +13,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="fa fa-check"></i> </div>
                         <div class="media-body"> <span>Step 1</span>
-                            <h6>Shopping Cart</h6>
+                            <h6>Carrello</h6>
                         </div>
                     </li>
 
@@ -21,7 +21,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="fa fa-check"></i> </div>
                         <div class="media-body"> <span>Step 2</span>
-                            <h6>Payment Methods</h6>
+                            <h6>Metodi di pagamento</h6>
                         </div>
                     </li>
 
@@ -29,7 +29,7 @@
                     <li class="col-sm-3">
                         <div class="media-left"> <i class="fa fa-check"></i> </div>
                         <div class="media-body"> <span>Step 3</span>
-                            <h6>Delivery Methods</h6>
+                            <h6>Spedizione</h6>
                         </div>
                     </li>
 
@@ -37,7 +37,7 @@
                     <li class="col-sm-3 current">
                         <div class="media-left"> <i class="fa fa-check"></i> </div>
                         <div class="media-body"> <span>Step 4</span>
-                            <h6>Confirmation</h6>
+                            <h6>Conferma</h6>
                         </div>
                     </li>
                 </ul>
@@ -52,125 +52,96 @@
 
                     <!-- Shopping Cart -->
                     <div class="heading">
-                        <h2>Shopping Cart</h2>
+                        <h2>Carrello</h2>
                         <hr>
                     </div>
 
                     <!-- Check Item List -->
+                    @foreach($data['items'] as $item)
                     <ul class="row check-item">
                         <li class="col-xs-6">
-                            <p>E-book Reader Lector De Libros Digitales 7''</p>
+                            <p> {{$item->name}}</p>
                         </li>
                         <li class="col-xs-2 text-center">
-                            <p>$200.00</p>
+                            <p>Quantità: {{$item->quantity}}</p>
                         </li>
                         <li class="col-xs-2 text-center">
-                            <p>02 Items</p>
-                        </li>
-                        <li class="col-xs-2 text-center">
-                            <p>$400.00</p>
+                            <p>€{{$item->totalprice}}</p>
                         </li>
                     </ul>
+                    @endforeach
 
-                    <!-- Check Item List -->
-                    <ul class="row check-item">
-                        <li class="col-xs-6">
-                            <p>Portero Visor Timbre Camara Ip Wifi lunax 2.7</p>
-                        </li>
-                        <li class="col-xs-2 text-center">
-                            <p>$100.00</p>
-                        </li>
-                        <li class="col-xs-2 text-center">
-                            <p>01 Items</p>
-                        </li>
-                        <li class="col-xs-2 text-center">
-                            <p>$100.00</p>
-                        </li>
-                    </ul>
 
                     <!-- Payment information -->
                     <div class="heading margin-top-50">
-                        <h2>Payment information</h2>
+                        <h2>Informazioni di pagamento</h2>
                         <hr>
                     </div>
 
                     <!-- Check Item List -->
                     <ul class="row check-item">
                         <li class="col-xs-6">
-                            <p><img class="margin-right-20" src="images/visa-card.jpg" alt=""> Visa Credit Card</p>
+                            <p><img class="margin-right-20" src="{{asset('front_end/images/'.$data['payment']->ccType.'.png')}}" alt="">{{$data['payment']->ccType}}</p>
                         </li>
                         <li class="col-xs-6 text-center">
-                            <p>Card number:   XXX-XXX-XXX-6886</p>
+                            <p>Numero Carta:  {{$data['payment']->number}}</p>
                         </li>
                     </ul>
 
                     <!-- Delivery infomation -->
                     <div class="heading margin-top-50">
-                        <h2>Delivery infomation</h2>
+                        <h2>Informazioni di spedizione</h2>
                         <hr>
                     </div>
 
                     <!-- Information -->
                     <ul class="row check-item infoma">
                         <li class="col-sm-3">
-                            <h6>Name</h6>
-                            <span>Alex Adkins</span> </li>
+                            <h6>Nome</h6>
+                            <span>{{$data['delivery']->name}}</span> </li>
                         <li class="col-sm-3">
-                            <h6>Phone</h6>
-                            <span>(+100) 987 654 3210</span> </li>
+                            <h6>Telefono</h6>
+                            <span>{{$data['delivery']->telephone}}</span> </li>
                         <li class="col-sm-3">
-                            <h6>Country</h6>
-                            <span>USA</span> </li>
+                            <h6>Nazione</h6>
+                            <span>Italia</span> </li>
                         <li class="col-sm-3">
                             <h6>Email</h6>
-                            <span>Alexadkins@gmail.com</span> </li>
+                            <span>{{$data['delivery']->email}}</span> </li>
                         <li class="col-sm-3">
-                            <h6>City</h6>
-                            <span>NewYork</span> </li>
+                            <h6>Città</h6>
+                            <span>{{$data['delivery']->city}}</span> </li>
                         <li class="col-sm-3">
                             <h6>State</h6>
                             <span>NewYork</span> </li>
                         <li class="col-sm-3">
-                            <h6>Zipcode</h6>
-                            <span>01234</span> </li>
+                            <h6>CAP</h6>
+                            <span>{{$data['delivery']->zipcode}}</span> </li>
                         <li class="col-sm-3">
-                            <h6>Address</h6>
-                            <span>569 Lexington Ave, New York, NY</span> </li>
+                            <h6>Indirizzo</h6>
+                            <span>{{$data['delivery']->street}}</span> </li>
                     </ul>
 
                     <!-- Information -->
                     <ul class="row check-item infoma exp">
-                        <li class="col-sm-6"> <span>Expert Delivery</span> </li>
+                        <li class="col-sm-6"> <span>{{$data['shipper']->name}}</span> </li>
                         <li class="col-sm-3">
-                            <h6>24 - 48 hours</h6>
+                            <h6>{{$data['shipper']->description}}</h6>
                         </li>
                         <li class="col-sm-3">
-                            <h5>+25</h5>
+                            <h5>+{{$data['shipper']->price}} €</h5>
                         </li>
                     </ul>
 
                     <!-- Totel Price -->
                     <div class="totel-price">
-                        <h4><small> Total Price: </small> $525.00</h4>
+                        <h4><small> Prezzo totale: </small>€{{$data['sum']}}</h4>
                     </div>
                 </div>
 
                 <!-- Button -->
-                <div class="pro-btn"> <a href="#." class="btn-round btn-light">Back to Delivery</a> <a href="#." class="btn-round">Proceed to Checkout</a> </div>
+                <div class="pro-btn"> <a href="/cart" class="btn-round btn-light">Torna al carrello</a> <a href="/done" class="btn-round">Conferma</a> </div>
             </div>
         </section>
-
-        <!-- Clients img -->
-        <section class="light-gry-bg clients-img">
-            <div class="container">
-                <ul>
-                    <li><img src="images/c-img-1.png" alt="" ></li>
-                    <li><img src="images/c-img-2.png" alt="" ></li>
-                    <li><img src="images/c-img-3.png" alt="" ></li>
-                    <li><img src="images/c-img-4.png" alt="" ></li>
-                    <li><img src="images/c-img-5.png" alt="" ></li>
-                </ul>
-            </div>
-        </section>
-
+    </div>
 @endsection
