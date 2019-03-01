@@ -2,16 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Order;
 use Illuminate\Foundation\Auth\User;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Yajra\Datatables\Datatables;
+use DB;
 
 
 class BackEndController extends Controller
 {
     public function main(){
-        return view('back_end.dashboard');
+
+        $thisWeekCompleteOrder = DB::table('orders')->select(DB::raw('count(id) as count'))->where('date','>=',DB::raw('date_sub(now(), INTERVAL 7 DAY)'))->where('status',2)->first();
+
+        $orderedToday = DB::table('orders')->select(DB::raw('count(id) as count'))->where('date','>',DB::raw('date_sub(now(),INTERVAL 1 DAY)'))->first();
+
+        $inPreparation = DB::table('orders')->select(DB::raw('count(id) as count'))->where('status',1);
+        return view('back_end.dashboard')->with('completed',$thisWeekCompleteOrder)->with('orderedToday',$orderedToday)->with('inPreparation',$inPreparation);;
     }
 
     public function users(){
