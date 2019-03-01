@@ -7,7 +7,7 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
-                        {{ Form::open(array('url' => 'admin/role/'.$idRole.'/writeRole','action' => ['enctype'=>'multipart/data','files'=>'true'])) }}
+                        {{ Form::open(array('url' => 'admin/permission','action' => ['enctype'=>'multipart/data','files'=>'true'])) }}
 
                         <div class="card-header text-center">
                             <h3 class="card-title">
@@ -40,7 +40,11 @@
                                                     <h5>{{ $error }}</h5>
                                                 @endforeach
                                                 <div class="form-group">
-                                                    {!! Form::select('permission', array_pluck($permissions, 'name'), old('permission') ,array('class'=>'selectpicker','data-style'=>'select-with-transition','title'=>'Service','required'=>'required')) !!}
+                                                    <select name="permission" id="permission" class="selectpicker" data-style="select-with-transition" title="Service" required="required">
+                                                        @foreach($permissions as $permission)
+                                                            <option value="{{$permission->id}}> {{$permission->name}} </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>

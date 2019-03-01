@@ -195,6 +195,8 @@ class ProductController extends Controller
                 $product->special = 0;
             }
 
+
+
             $category = Category::find(Input::get('category'));
 
             $product->category_id = $category->id;

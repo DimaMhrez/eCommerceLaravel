@@ -149,7 +149,14 @@ class RoleController extends Controller
         return view('back_end.grantPermissionToRole')->with('permissions',$permissions)->with('idRole',$id);
     }
 
-    public function writeRole(Request $request){
-        dd($request);
+    public function writeRole($idRole){
+        $role = Role::findById(intval($idRole));
+
+        if($role != null){
+            $perm = Permission::findByID(Input::get('permission'));
+            if($perm != null){
+                $role->givePermissionTo($perm);
+            }
+        }
     }
 }

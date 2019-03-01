@@ -69,21 +69,28 @@ Route::resource('/admin/order','OrderController');
 //crud permessi
 Route::resource('/admin/permission','PermissionController');
 //
-Route::get('admin/role/{idRole}/writeRole','RoleController@writeRole');
+Route::post('admin/role/{idRole}/writeRole','RoleController@writeRole');
 Route::get('/admin/role/{id}/grantPermission','RoleController@grantPermission');
 Route::get('/admin/permission/delete/{id}','PermissionController@destroy');
 Route::get('/admin/role/delete/{id}','RoleController@destroy');
-//crud ruoli
+/**
+ * Operazioni crud sui ruoli
+ */
 Route::resource('/admin/role','RoleController');
-//revoca un permesso ad un ruolo
+/**
+ * revoca un permesso ad un ruolo
+ */
 Route::get('/admin/role/revokePermission/{perm}/{role}','RoleController@revokePermission');
-//Metodo
+
 Route::post('/selectcategory','CategoryController@get');
-//calcola il live search dei brands
+/**
+ * Durante l'inserimento dell'input da parte dell'utente carica i brands che fanno match
+ */
 Route::get('/admin/liveSearchBrands', 'SearchController@searchBrands');
-//rotta di prova serve a stampare in JSON tutti gli utenti che sono nel DB
-// che riempiono poi la tabella del back_end
-//DA VIETARE L'UTILIZZO DA PARTE DEGLI UTENTI
+
+/**
+ * Recupero dati AJAX
+ */
 Route::get('/anyData','BackEndController@anyData')->name('datatables.data');
 Route::get('/productsData','ProductController@anyData')->name('products.data');
 Route::get('/categoriesData','CategoryController@anyData')->name('categories.data');
