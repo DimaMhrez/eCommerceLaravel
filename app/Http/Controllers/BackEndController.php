@@ -23,8 +23,12 @@ class BackEndController extends Controller
 
         $productFinishing = Product::where('setVisible',1)->where('availability','<=',5)->orderby('updated_at','desc')->limit(5)->get();
 
-        $countFinishing = count($productFinishing);
-        return view('back_end.dashboard')->with('productFinishing',$productFinishing)->with('countFinishing',$countFinishing)->with('completed',$thisWeekCompleteOrder)->with('orderedToday',$orderedToday)->with('inPreparation',$inPreparation);
+        $countFinishing = Product::where('setVisible',1)->where('availability','<=',5)->count();
+
+        $productCarousel = Product::where('showcase',1)->get();
+
+        $countCarousel = count($productCarousel);
+        return view('back_end.dashboard')->with('productCarousel',$productCarousel)->with('countCarousel',$countCarousel)->with('productFinishing',$productFinishing)->with('countFinishing',$countFinishing)->with('completed',$thisWeekCompleteOrder)->with('orderedToday',$orderedToday)->with('inPreparation',$inPreparation);
     }
 
     public function users(){
