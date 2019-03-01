@@ -7,7 +7,7 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
-                        {{ Form::open(array('url' => 'admin/permission','action' => ['enctype'=>'multipart/data','files'=>'true'])) }}
+                        {{ Form::open(array('url' => 'admin/role/'.$idRole.'/writeRole' ,'action' => ['enctype'=>'multipart/data','files'=>'true'])) }}
 
                         <div class="card-header text-center">
                             <h3 class="card-title">
