@@ -23,7 +23,53 @@ class FrontEndController extends Controller
 {
     //
     public function index()
-    {
+    {   //Algoritmo che prepara le preferenze. E' un po' costoso eseguirlo ad ogni caricamento della home.
+
+        if(!Auth::guest()) {
+
+            $preferences = UserPreferences::orderby('created_at', 'desc')
+                ->where('user_id',Auth::user()->id)
+                ->take(30)
+                ->get();
+
+            //Ora abbiamo le ultime 30 ricerche/click dell'utente loggato.
+
+            $categoriesp=UserPreferences::select(DB::raw('COUNT(*) as count, category_id'))
+                ->where('user_id',Auth::user()->id)
+                ->groupBy('category_id')
+                ->orderBy(DB::raw('COUNT(*)'),'desc')
+                ->take(3)
+                ->get();
+
+            $totalp=new Collection();
+           //Ora abbiamo le tre categorie più cercate dall'utente.
+            foreach($categoriesp as $cp) {
+                $cat = ($cp->count)/3;
+
+                $catproducts= Product::where('category_id',$cp->category_id)
+                    ->take($cat)
+                    ->get();
+
+                $totalp=$totalp->merge($catproducts);
+
+            }
+
+            //Sostanzialmente prendiamo una quantità di oggetti per ogni categoria preferita dall'utente.
+            //In particolare, ne prendiamo in relazione a quanto quella categorie è preponderante sulle altre.
+
+           /* while(count($totalp)<9)
+            {
+                $p=Product::inRandomOrder()->first();
+
+                $totalp->push($p);
+            } */
+
+            //Se così facendo non arriviamo a 9 oggetti, lo riempiamo con item random. Soluzione temporanea.
+
+        }
+
+
+
         //Prepara i prodotti da mostrare. Le query purtroppo si fanno complicate perché dobbiamo prendere anche le categorie.
         //Se non mostrassimo le categorie, per le query basterebbe la prima riga.
 
@@ -105,6 +151,7 @@ class FrontEndController extends Controller
             'games' => $games,
             'watches' => $watches,
             'accessories' => $accessories,
+            'preferences' => $totalp
         );
 
 
@@ -135,10 +182,12 @@ class FrontEndController extends Controller
 
             //Faccio la insert tra le preferenze dell'utente.
             if(!Auth::guest()) {
-                $insert = new UserPreferences();
-                $insert->user_id = Auth::user()->id;
-                $insert->product_id=
+                $preference = new UserPreferences();
+                $preference->user_id = Auth::user()->id;
+                $preference->product_id= $product->id;
+                $preference->category_id=$category->id;
 
+                $preference->save();
             }
 
             //Se possibile, sarebbe carino riscrivere queste query con Eloquent (ci ho provato ma sembra non funzionare)
@@ -300,6 +349,10 @@ class FrontEndController extends Controller
         $string=$request->researchstring;
         $category=$request->category;
 
+        $categorypreference=Category::where('name',$category)
+            ->select('id')
+            ->first();
+
         if($category=='All Categories')
         {
             $products=Product::where('products.name','like','%'.$string.'%')->get();
@@ -312,7 +365,19 @@ class FrontEndController extends Controller
                 ->get();
         }
 
+        //Faccio la insert nelle preferenze.
+        if(!Auth::guest() && !empty($string)) {
+            foreach($products as $product)
+            {
+                $preference=new UserPreferences();
+                $preference->user_id=Auth::user()->id;
+                $preference->product_id=$product->id;
+                $preference->category_id=$product->category_id;
 
+                $preference->save();
+            }
+
+        }
         $categories=Category::all();
         $bullets=BulletDescription::all();
 

@@ -396,6 +396,7 @@
             </div>
         </section>
 
+        @if(\Illuminate\Support\Facades\Auth::guest())
         <!-- Top Selling Week -->
         <section class="light-gry-bg padding-top-60 padding-bottom-30">
             <div class="container">
@@ -436,6 +437,48 @@
                 </div>
             </div>
         </section>
+            @else
+            <!-- Top Selling Week -->
+                <section class="light-gry-bg padding-top-60 padding-bottom-30">
+                    <div class="container">
+
+                        <!-- heading -->
+                        <div class="heading">
+                            <h2>Consigliati per te</h2>
+                            <hr>
+                        </div>
+
+                        <!-- Items -->
+                        <div class="item-col-5">
+
+                            <!-- Product -->
+                            <div class="product col-2x">
+                                <div class="like-bnr">
+                                    <div class="position-center-center">
+                                        <h5>Smart Watch 2.0</h5>
+                                        <p>Space Gray Aluminum Case
+                                            with Black/Volt Real Sport Band <span>38mm | 42mm</span> </p>
+                                        <a href="#." class="btn-round">View Detail</a> </div>
+                                </div>
+                            </div>
+                        @foreach($data['preferences'] as $preference)
+                            <!-- Product -->
+                                <div class="product">
+                                    <article> <img class="img-responsive" src="images/item-img-1-6.jpg" alt="" > <span class="sale-tag">-25%</span>
+
+                                        <!-- Content -->
+                                        <span class="tag">{{$preference->category}}</span> <a href="/products/{{$preference->id}}" class="tittle">{{$preference->name}}</a>
+                                        <!-- Reviews -->
+                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">{{$preference->reviewsnumber}} Recensioni</span></p>
+                                        <div class="price">{{$preference->normalPrice}} <span>{{$preference->normalPrice + 20}}</span></div>
+                                        <a href="/products/{{$preference->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                                </div>
+                            @endforeach
+
+                        </div>
+                    </div>
+                </section>
+        @endif
 
         <!-- Main Tabs Sec -->
         <section class="main-tabs-sec padding-top-60 padding-bottom-0">
@@ -515,7 +558,6 @@
                     </div>
                     <!-- Game Console -->
                     <div role="tabpanel" class="tab-pane fade" id="game-com">
-                        <p> prova</p>
                         <!-- Items -->
                         <div class="item-col-5">
                             <!-- Product -->
