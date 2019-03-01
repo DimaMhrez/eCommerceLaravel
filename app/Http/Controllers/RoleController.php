@@ -48,7 +48,14 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        return view('back_end.roleDetails',compact('id'));
+
+        $role = Role::findByID($id);
+        $permission = null;
+
+        if ($role != null) {
+            $permissions = $role->permissions()->get(); //trying to get permissions here throws error
+        }
+        return view('back_end.roleDetails')->with('perm',$permissions)->with('role',$role->id);
     }
 
     /**
@@ -87,35 +94,27 @@ class RoleController extends Controller
 
     public function permissions()
     {
+
         $roles = Role::all();
         return Datatables::of($roles)
             ->setRowId(function ($role){
                 return $role->id;})
             ->addColumn('intro', function(Role $role) {
-                return '<a href="'. url('/admin/order/'.$role->id) .'" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i><div class="ripple-container"></div></a>';
+                return '<a href="'. url('/admin/role/'.$role->id) .'" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i><div class="ripple-container"></div></a>';
             })
             ->rawColumns(['intro'])
             ->toJson();
     }
 
-    public function rolePermissions($id)
-    {
+    public function revokePermission($perm,$role){
 
-        $role = Role::findByName($id);
-        $role->load('permissions');
-
-        if ($role != null) {
-            $permissions = $role->getAllPermissions(); //trying to get permissions here throws error
-
-
-            return Datatables::of($permissions)
-                ->setRowId(function ($permission) {
-                    return $permission->id;
-                })
-                ->toJson();
-
+        $id = intval($role);
+        $role = Role::findById($id);
+        if($role != null) {
+            $role->revokePermissionTo(Permission::findById($perm));
         }
-    }
 
+        return back();
+    }
 
 }

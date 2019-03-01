@@ -70,6 +70,8 @@ Route::resource('/admin/order','OrderController');
 Route::resource('/admin/permission','PermissionController');
 //crud ruoli
 Route::resource('/admin/role','RoleController');
+//revoca un permesso ad un ruolo
+Route::get('/admin/role/revokePermission/{perm}/{role}','RoleController@revokePermission');
 //Metodo
 Route::post('/selectcategory','CategoryController@get');
 //calcola il live search dei brands
@@ -85,4 +87,3 @@ Route::get('/ordersDataPreparing','OrderController@preparing')->name('orderPrepa
 Route::get('/ordersDataShipped','OrderController@shipped')->name('orderShipped.data');
 Route::get('/permissions','PermissionController@permissions')->name('permissions.data');
 Route::get('/roles','RoleController@permissions')->name('roles.data');
-Route::get('/rolesPermissions/{id}','RoleController@rolePermissions')->name('rolePermissions.data');
