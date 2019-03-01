@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Validator;
 class PaymentController extends Controller
 {
     public function show(){
+
         $id=Auth::user()->id;
 
         $items = Cart::where('user_id', $id)
@@ -21,6 +22,11 @@ class PaymentController extends Controller
             ->get();
 
             session(['cartitems' => $items]);
+
+            if (!$items->first())
+            {
+                return view('front_end.error404');
+            }
 
         return view('front_end.paymentMethods');
     }
@@ -79,6 +85,11 @@ class PaymentController extends Controller
 
         $shippers=Shipper::where('availability','1')->orderBy('price','asc')->take(6)->get();
 
+        if(!session()->has('paymentID'))
+        {
+            return view('front_end.error404');
+        }
+
         return view('front_end.deliveryMethods')->with('shippers',$shippers);
     }
 
@@ -126,6 +137,13 @@ class PaymentController extends Controller
     }
 
     public function done(){
+
+        if(!session()->has('paymentID'))
+        {
+            return view('front_end.error404');
+        }
+
+
         $id=Auth::user()->id;
         Cart::where('user_id',$id)->delete();
 

@@ -149,6 +149,7 @@ class RoleController extends Controller
         return view('back_end.grantPermissionToRole')->with('permissions',$permissions)->with('idRole',$id);
     }
 
-    public function writeRole($idRole){
+    public function writeRole(Request $request){
+        dd($request);
     }
 }
