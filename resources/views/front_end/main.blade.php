@@ -78,14 +78,18 @@
     <div class="container">
       <div class="logo"> <a href="{{ url('/') }}"><img src="{{ asset('front_end/images/logo.png') }}" alt="" ></a> </div>
       <div class="search-cate">
-        <select class="selectpicker">
-          <option> All Categories</option>
-          @foreach ($categories as $category)
-            <option>{{$category->name}}</option>
-          @endforeach
-        </select>
-        <input type="search" placeholder="Search entire store here...">
-        <button class="submit" type="submit"><i class="icon-magnifier"></i></button>
+        <form id="researchform" action="search">
+            @csrf
+          <label for="category"></label>
+          <select name="category" id="category" class="selectpicker">
+                <option> All Categories</option>
+                @foreach ($categories as $category)
+                  <option>{{$category->name}}</option>
+                @endforeach
+              </select>
+          <input name="researchstring" id="researchstring" type="search" placeholder="Cerca tra i prodotti...">
+          <button class="submit" id="research" type="submit"><i class="icon-magnifier"></i></button>
+        </form>
       </div>
 
       <span id="cartpartcontainer">

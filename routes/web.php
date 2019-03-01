@@ -20,6 +20,7 @@ Route::resource('review','ReviewController');
 Route::get('products/{id}', 'FrontEndController@show');
 Route::post('/addtocart', 'CartController@add');
 Route::post('/removefromcart', 'CartController@remove');
+Route::get('/search','FrontEndController@search');
 
 Route::post('/filter','FrontEndController@filter');
 

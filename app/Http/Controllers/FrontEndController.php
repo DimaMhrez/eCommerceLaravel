@@ -287,4 +287,40 @@ class FrontEndController extends Controller
 
     }
 
+    public function search(Request $request){
+        $string=$request->researchstring;
+        $category=$request->category;
+
+        if($category=='All Categories')
+        {
+            $products=Product::where('products.name','like','%'.$string.'%')->get();
+        }
+        else {
+            $products = Product::where('products.name', 'like', '%' . $string . '%')
+                ->join('categories', 'categories.id', '=', 'products.category_id')
+                ->select('products.*')
+                ->where('categories.name', $category)
+                ->get();
+        }
+
+
+        $categories=Category::all();
+        $bullets=BulletDescription::all();
+
+        $brands=Brand::take(10)->get();
+
+        $productsnumber=count($products);
+
+
+
+        $data=array(
+            'category' => $categories,
+            'products' => $products,
+            'brands' => $brands,
+            'productsnumber' => $productsnumber,
+            'bullets' => $bullets,
+        );
+
+        return view('front_end.ListProducts')->with('data',$data);
+    }
 }
