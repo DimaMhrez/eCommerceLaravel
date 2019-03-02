@@ -258,4 +258,27 @@ class ProductController extends Controller
         //return Datatables::of(User::)
         //return Datatables::eloquent(User::query())->make(true);
     }
+    public function addStock($id){
+        return view ('back_end.addStock')->with('idProduct',$id);
+    }
+
+    public function saveStock($id){
+        $rules = array('quantity' => 'required');
+
+        $validator = Validator::make(Input::all(), $rules);
+        if ($validator->fails()) {
+            return Redirect::to('/admin/product/'.$id.'/addStock')
+                ->withErrors($validator);
+        } else {
+            $product = Product::find($id);
+
+            $product->availability = $product->availability + intval(Input::get('quantity'));
+
+            $product->save();
+
+            return Redirect('/admin/');
+        }
+
+
+    }
 }
