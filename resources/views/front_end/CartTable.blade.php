@@ -85,11 +85,15 @@
                     pcode: document.getElementById("code").value,
                 },
                 function(data) {
+
                     if(data==1){
                         document.getElementById("codesubmit").disabled = true;
                     document.getElementById("result").innerHTML = "Aggiunto!";}
-                    else{
+                    else if(data==0){
                     document.getElementById("result").innerHTML = "Errore. Riprova.";}
+                    else if(data==-1){
+                        document.getElementById("result").innerHTML= "Questo codice è già stato usato.";
+                    }
                 }
 
             ) });

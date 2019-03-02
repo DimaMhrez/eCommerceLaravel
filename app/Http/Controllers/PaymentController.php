@@ -9,6 +9,7 @@ use App\Shipper;
 use App\ShippingAddress;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
 class PaymentController extends Controller
@@ -148,9 +149,26 @@ class PaymentController extends Controller
 
     public function done(){
 
+        $user=Auth::user()->id;
+
         if(!session()->has('paymentID'))
         {
             return view('front_end.error404');
+        }
+
+
+        //Registro l'utilizzo del codice.
+        if(session()->has('code'))
+        {
+                $code=PromotionCode::where('code',session('code'))->first();
+
+                DB::table('user_has_promotion_code')->insert(
+                    array(
+                        'user_id'=>$user,
+                        'promotion_code_id'=>$code->id,
+                    )
+                );
+
         }
 
 
@@ -162,10 +180,15 @@ class PaymentController extends Controller
 
 
     public function code(Request $request){
+        if (PromotionCode::where('code', '=', $request->pcode)->exists()) {
+            $code=PromotionCode::where('code',session('code'))->first();
 
-        if (PromotionCode::where('code', '=', $request->code)->exists()) {
+            if($code->global==1)
+            {
+                //Gestire il caso in cui esista nella tabella.s
+            }
 
-            session(['code' => $request->code]);
+            session(['code' => $request->pcode]);
             return 1;
         }
 
