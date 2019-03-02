@@ -14,7 +14,7 @@
           <div class="card">
             <div class="card-header card-header-text card-header-warning">
               <div class="card-text">
-                <h4 class="card-title">Products Finishing</h4>
+                <h4 class="card-title">Few stocks remaining</h4>
                 <p class="card-category">Last 5 of {{ $countFinishing }} product with low availability</p>
               </div>
             </div>
@@ -23,6 +23,7 @@
                 <thead class="text-warning">
                 <tr><th>ID</th>
                   <th>Name</th>
+                  <th>Actions</th>
                 </tr></thead>
                 <tbody>
                   @foreach($productFinishing as $p)
@@ -49,6 +50,7 @@
                 <thead class="text-warning">
                 <tr><th>ID</th>
                   <th>Name</th>
+                  <th>Actions</th>
                 </tr></thead>
                 <tbody>
                 @foreach($productCarousel as $p)
