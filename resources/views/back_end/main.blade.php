@@ -39,11 +39,11 @@
           Tip 2: you can also add an image using data-image tag
       -->
         <div class="logo">
-            <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-                CT
+            <a href="{{url('/admin')}}" class="simple-text logo-mini">
+                ST
             </a>
-            <a href="http://www.creative-tim.com" class="simple-text logo-normal">
-                Creative Tim
+            <a href="{{url('/admin')}}" class="simple-text logo-normal">
+                Smart Tech
             </a>
         </div>
         <div class="sidebar-wrapper">
@@ -70,12 +70,6 @@
                                 <a class="nav-link" href="#">
                                     <span class="sidebar-mini"> EP </span>
                                     <span class="sidebar-normal"> Edit Profile </span>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <span class="sidebar-mini"> S </span>
-                                    <span class="sidebar-normal"> Settings </span>
                                 </a>
                             </li>
                         </ul>
@@ -187,13 +181,13 @@
 
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" id="catalog" href="#ordersComponent" data-toggle="collapse">
+                    <a class="nav-link" id="catalog" href="#codesComponent" data-toggle="collapse">
                         <i class="material-icons">apps</i>
                         <p> Orders
                             <b class="caret"></b>
                         </p>
                     </a>
-                    <div class="collapse" id="ordersComponent">
+                    <div class="collapse" id="codesComponent">
                         <ul class="nav">
                             <li class="nav-item ">
                                 <a class="nav-link" id="newProduct" href="{{url('/admin/order/')}}">
@@ -211,6 +205,31 @@
                                 <a class="nav-link" href="{{url('/admin/order/shipped')}}">
                                     <span class="sidebar-mini"> P </span>
                                     <span class="sidebar-normal"> Shipped Orders </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" id="catalog" href="#ordersComponent" data-toggle="collapse">
+                        <i class="material-icons">apps</i>
+                        <p> Promotional Codes
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse" id="ordersComponent">
+                        <ul class="nav">
+                            <li class="nav-item ">
+                                <a class="nav-link" id="newProduct" href="{{url('/admin/globalPromotionalCodes/')}}">
+                                    <span class="sidebar-mini"> B </span>
+                                    <span class="sidebar-normal"> Global Codes Active </span>
+                                </a>
+                            </li>
+                            <li class="nav-item ">
+                                <a class="nav-link" id="products" href="{{url('')}}">
+                                    <span class="sidebar-mini"> GS </span>
+                                    <span class="sidebar-normal"> Users Codes </span>
                                 </a>
                             </li>
                         </ul>
@@ -442,6 +461,7 @@
 
         <!-- content -->
     @yield('content')
+
 
     <!-- End content -->
         <footer class="footer">

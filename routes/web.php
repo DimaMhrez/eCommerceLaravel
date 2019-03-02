@@ -53,6 +53,9 @@ Route::get('admin/userProfile/{id}','BackEndController@getUser');
 //rotte per inserimento immagini dopo che l'utente di backoffice ha creato un nuovo prodotto
 Route::get('image-view/{id}','ImageController@index');
 Route::post('image-view/{id}','ImageController@store');
+
+Route::get('/admin/product/{id}/addStock','ProductController@addStock');
+Route::post('/admin/product/{id}/saveStock','ProductController@saveStock');
 //funzioni crud sui prodotti nel back_end
 Route::resource('/admin/product','ProductController');
 //funzioni crud sulle categorie
@@ -67,6 +70,8 @@ Route::get('/admin/order/{id}/inprogress','OrderController@setInProgress');
 Route::get('/admin/order/{id}/shipped','OrderController@setShipped');
 //funzioni crud per gli ordini
 Route::resource('/admin/order','OrderController');
+//crud promotional global promotional codes
+Route::resource('/admin/globalPromotionalCodes','GlobalPromotionalCodesController');
 //crud permessi
 Route::resource('/admin/permission','PermissionController');
 //
@@ -100,3 +105,4 @@ Route::get('/ordersDataPreparing','OrderController@preparing')->name('orderPrepa
 Route::get('/ordersDataShipped','OrderController@shipped')->name('orderShipped.data');
 Route::get('/permissions','PermissionController@permissions')->name('permissions.data');
 Route::get('/roles','RoleController@permissions')->name('roles.data');
+Route::get('/globalPromotionalCodes','GlobalPromotionalCodesController@globalPromotionalCodes')->name('globalPromotionalCodes.data');
