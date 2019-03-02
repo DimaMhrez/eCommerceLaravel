@@ -180,12 +180,22 @@ class PaymentController extends Controller
 
 
     public function code(Request $request){
+        $user=Auth::user()->id;
         if (PromotionCode::where('code', '=', $request->pcode)->exists()) {
             $code=PromotionCode::where('code',session('code'))->first();
 
             if($code->global==1)
             {
-                //Gestire il caso in cui esista nella tabella.s
+                //Gestire il caso in cui esista nella tabella.
+                $count=DB::table('user_has_promotion_code')
+                    ->where('user_id','=',$user)
+                    ->where('promotion_code_id','=',$code->id)
+                    ->count();
+
+                if($count>0)
+                {
+                    return -1;
+                }
             }
 
             session(['code' => $request->pcode]);

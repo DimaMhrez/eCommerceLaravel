@@ -258,16 +258,6 @@
                 <!-- Items -->
                 <div class="item-col-5">
 
-                    <!-- Product -->
-                    <div class="product col-2x">
-                        <div class="like-bnr">
-                            <div class="position-center-center">
-                                <h5>Smart Watch 2.0</h5>
-                                <p>Space Gray Aluminum Case
-                                    with Black/Volt Real Sport Band <span>38mm | 42mm</span> </p>
-                                <a href="#." class="btn-round">View Detail</a> </div>
-                        </div>
-                    </div>
                     @foreach($data['Featured'] as $featured)
                     <!-- Product -->
                     <div class="product">
@@ -276,7 +266,12 @@
                             <!-- Content -->
                             <span class="tag">{{$featured->category}}</span> <a href="#." class="tittle">{{$featured->name}}</a>
                             <!-- Reviews -->
-                            <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">{{$featured->reviewsnumber}} Recensioni</span></p>
+                            <p class="rev">
+                            @if (!empty($featured->rate))
+                                <p class="rev">@for($i=0; $i<$featured->rate && $i<5; ++$i)<i class="fa fa-star"></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor
+                            @else <p class="rev"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></p>
+                            @endif
+                                <span class="margin-left-10">{{$featured->reviewsnumber}} Recensioni</span></p>
                             <div class="price">{{$featured->normalPrice}} <span>{{$featured->normalPrice + 20}}</span></div>
                             <a href="/products/{{$featured->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                     </div>
@@ -307,7 +302,13 @@
                                         <!-- Content -->
                                         <span class="tag">{{$preference->category}}</span> <a href="/products/{{$preference->id}}" class="tittle">{{$preference->name}}</a>
                                         <!-- Reviews -->
-                                        <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">{{$preference->reviewsnumber}} Recensioni</span></p>
+                                        <p class="rev">
+
+                                        @if (!empty($preference->rate))
+                                            <p class="rev">@for($i=0; $i<$preference->rate && $i<5; ++$i)<i class="fa fa-star"></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor
+                                        @else <p class="rev"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></p>
+                                        @endif
+                                            <span class="margin-left-10">{{$preference->reviewsnumber}} Recensioni</span>
                                         <div class="price">{{$preference->normalPrice}}</div>
                                         <a href="/products/{{$preference->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                                 </div>
