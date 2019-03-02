@@ -7,6 +7,7 @@ use App\Brand;
 use App\BulletDescription;
 use App\Category;
 use App\Message;
+use App\Photo;
 use App\ProductVariant;
 use App\Review;
 use App\User;
@@ -24,6 +25,7 @@ class FrontEndController extends Controller
     //
     public function index()
     {   //Algoritmo che prepara le preferenze. E' un po' costoso eseguirlo ad ogni caricamento della home.
+        $totalp=new Collection();
 
         if(!Auth::guest()) {
 
@@ -41,7 +43,6 @@ class FrontEndController extends Controller
                 ->take(3)
                 ->get();
 
-            $totalp=new Collection();
            //Ora abbiamo le tre categorie più cercate dall'utente.
             foreach($categoriesp as $cp) {
                 $cat = ($cp->count)/3;
@@ -78,9 +79,19 @@ class FrontEndController extends Controller
         $ShowcaseItems=Product::where('showcase','1')
             ->join('categories','categories.id','=','products.category_id')
             ->join('photos','photos.product_id','=','products.id')
-            ->select('categories.name as category','products.*','photos.URL')
             ->where('photos.main','1')
-            ->take(15)
+            ->select('categories.name as category','products.*','photos.URL')
+            ->orderBy('created_at','desc')
+            ->take(3)
+            ->get();
+
+        $ShowFeatured=Product::where('featured','1')
+            ->select('categories.name as category','products.*','photos.URL')
+            ->join('categories','categories.id','=','products.category_id')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
+            ->orderBy('created_at','desc')
+            ->take(2)
             ->get();
 
 
@@ -89,10 +100,9 @@ class FrontEndController extends Controller
             ->join('categories','categories.id','=','products.category_id')
             ->join('photos','photos.product_id','=','products.id')
             ->where('photos.main','1')
+            ->orderBy('created_at','desc')
             ->take(15)
             ->get();
-
-
 
         $SpecialItems=Product::where('special','1')->
             select('categories.name as category','products.*','photos.URL')
@@ -157,9 +167,11 @@ class FrontEndController extends Controller
             ->take(5)->get();
 
 
+
         $data=array(
             'Showcase' => $ShowcaseItems,
             'Featured' => $FeaturedItems,
+            'Showfeatured' => $ShowFeatured,
             'Special' => $SpecialItems,
             'Sale' => $onSaleItems,
             'tv' => $Tv,
@@ -168,7 +180,7 @@ class FrontEndController extends Controller
             'games' => $games,
             'watches' => $watches,
             'accessories' => $accessories,
-            'preferences' => $totalp
+            'preferences' => $totalp,
         );
 
 
@@ -197,6 +209,8 @@ class FrontEndController extends Controller
                 ->where('products.id',$id)
                 ->first();
 
+            $categories=Category::all();
+
             //Faccio la insert tra le preferenze dell'utente.
             if(!Auth::guest()) {
                 $preference = new UserPreferences();
@@ -212,11 +226,16 @@ class FrontEndController extends Controller
                 ->where('product_id',$id)
                 ->get();
 
+            $images=Photo::where('product_id',$id)
+                ->get();
 
             // $bulletpoints=DB::select('select bd.id, bd.description from bullet_descriptions bd where product_id='.$id);
 
             $relatedProducts=Product::join('categories','products.category_id','=','categories.id')
+                ->join('photos','photos.product_id','=','products.id')
+                ->where('photos.main','1')
                 ->where('categories.id',$category->id)
+                ->select('categories.name as category','products.*','photos.URL as URL')
                 ->take(15)
                 ->get();
 
@@ -261,7 +280,10 @@ class FrontEndController extends Controller
             else $usercanreview=false;
 
 
+
+
             $productsdata= array(
+                'categories' => $categories,
                 'brands' => $brands,
                 'product' => $product,
                 'category' => $category,
@@ -275,6 +297,7 @@ class FrontEndController extends Controller
                 'reviews' =>$reviews,
                 'shippers' => $shippers,
                 'usercanreview' => $usercanreview,
+                'images' => $images,
             );
 
             return view('front_end.productDetails')->with('productsdata',$productsdata);
@@ -325,7 +348,10 @@ class FrontEndController extends Controller
         {
             for($i=0;$i<count($category);$i++)
             {
-                $catfilter[$i]= Product::where('category_id',$category[$i])->get();
+                $catfilter[$i]= Product::where('category_id',$category[$i])
+                ->join('photos','photos.product_id','=','products.id')
+                ->where('photos.main','1')
+                ->get();
 
             }
         }
@@ -334,7 +360,10 @@ class FrontEndController extends Controller
         {
             for($j=0;$j<count($brand);$j++)
             {
-                $brandfilter[$j]= Product::where('brand_id',$brand[$j])->get();
+                $brandfilter[$j]= Product::where('brand_id',$brand[$j])
+                    ->join('photos','photos.product_id','=','products.id')
+                    ->where('photos.main','1')
+                    ->get();
 
             }
         }
@@ -372,12 +401,17 @@ class FrontEndController extends Controller
 
         if($category=='All Categories')
         {
-            $products=Product::where('products.name','like','%'.$string.'%')->get();
+            $products=Product::where('products.name','like','%'.$string.'%')
+            ->join('photos','photos.product_id','=','products.id')
+                ->where('photos.main','1')
+            ->get();
         }
         else {
             $products = Product::where('products.name', 'like', '%' . $string . '%')
                 ->join('categories', 'categories.id', '=', 'products.category_id')
-                ->select('products.*')
+                ->join('photos','photos.product_id','=','products.id')
+                ->where('photos.main','1')
+                ->select('products.*','photos.URL as URL')
                 ->where('categories.name', $category)
                 ->get();
         }

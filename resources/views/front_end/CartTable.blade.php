@@ -31,7 +31,7 @@
 @foreach ($data['items'] as $item)
     <tr>
         <td><div class="media">
-                <div class="media-left"> <a href="/products/{{$item->id}}"> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" > </a> </div>
+                <div class="media-left"> <a href="/products/{{$item->id}}"> <img class="img-responsive" src="{{asset('upload/'.$item->URL)}}" alt="Image missing" > </a> </div>
                 <div class="media-body">
                     <p>{{$item->name}}</p>
                 </div>

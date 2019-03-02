@@ -20,13 +20,13 @@
                 <article>
                     <!-- Product img -->
                     <div class="media-left">
-                        <div class="item-img"> <img class="img-responsive" src="" alt="" >  </div>
+                        <div class="item-img"> <img class="img-responsive" src="{{asset('upload/'.$product->URL) }}" alt="image missing" >  </div>
                     </div>
                     <!-- Content -->
                     <div class="media-body">
                         <div class="row">
                             <!-- Content Left -->
-                            <div class="col-sm-7"> <span class="tag">{{$product->category}}</span> <a href="/{{$product->id}}" class="tittle">{{$product->name}}</a>
+                            <div class="col-sm-7"> <span class="tag">{{$product->category}}</span> <a href="/products/{{$product->id}}" class="tittle">{{$product->name}}</a>
                                 <!-- Reviews -->
                                 @if (!empty($product->rate))
                                     <p class="rev">@for($i=0; $i<$product->rate && $i<5; ++$i)<i class="fa fa-star"></i></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor <span class="margin-left-10"></span></p>

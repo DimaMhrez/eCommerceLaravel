@@ -8,7 +8,7 @@
                 <ul class="dropdown-menu">
                     @foreach($cartitems as $item)
                         <li>
-                            <div class="media-left"> <a href="#." class="thumb"> <img src="{{ asset('front_end/images/item-img-1-1.jpg') }}" class="img-responsive" alt="" > </a> </div>
+                            <div class="media-left"> <a href="/products/{{$item->id}}" class="thumb"> <img src="{{ asset('upload/'.$item->URL) }}" class="img-responsive" alt="" > </a> </div>
                             <div class="media-body"> <a href="/products/{{$item->product}}" class="tittle">{{$item->productname}}</a>
                                 <span>Quantity: {{$item->quantity}} - €{{$item->totalprice}}</span>
                             </div>

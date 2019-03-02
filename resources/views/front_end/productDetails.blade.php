@@ -23,40 +23,35 @@
                     <!-- Shop Side Bar -->
                     <div class="col-md-3">
                         <div class="shop-side-bar">
+                            <form id="filter" action="/search" method="GET">
+                                @csrf
+                                <h6>Categorie</h6>
+                                <div class="checkbox checkbox-primary">
+                                    <ul>
+                                        @foreach($productsdata['categories'] as $category)
+                                            <li>
+                                                <input name="category[]" form="filter" id="cat-{{$category->id}}" value="{{$category->id}}" class="styled" type="checkbox" >
+                                                <label for="cat-{{$category->id}}"> {{$category->name}} </label>
+                                            </li>
+                                        @endforeach
+                                    </ul>
+                                </div>
 
-                            <!-- Categories -->
-                            <h6>Categorie</h6>
-                            <div class="checkbox checkbox-primary">
-                                <ul>
-                                    @foreach($categories as $category)
-                                    <li>
-                                        <input id="cate1" class="styled" type="checkbox" >
-                                        <label for="cate1">{{$category->name}}</label>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
+                                <!-- Featured Brands -->
+                                <h6>Brand in vetrina</h6>
+                                <div class="checkbox checkbox-primary">
+                                    <ul>
+                                        @foreach($productsdata['brands'] as $brand)
+                                            <li>
+                                                <input name="brand[]" form="filter" id="brand-{{$brand->id}}" value="{{$brand->id}}" class="styled" type="checkbox" >
+                                                <label for="brand-{{$brand->id}}"> {{$brand->name}} </label>
+                                            </li>
+                                        @endforeach
+                                        <input type="submit" form="filter" value="Filter" class="btn-round">
+                                    </ul>
+                                </div>
 
-                            <!-- Categories -->
-                            <h6>Prezzo</h6>
-                            <!-- PRICE -->
-                            <div class="cost-price-content">
-                                <div id="price-range" class="price-range"></div>
-                                <span id="price-min" class="price-min">20</span> <span id="price-max" class="price-max">80</span> <a href="#." class="btn-round" >Filtra</a> </div>
-
-                            <!-- Featured Brands -->
-                            <h6>Brands in vetrina</h6>
-                            <div class="checkbox checkbox-primary">
-                                <ul>
-                                    @foreach($productsdata['brands'] as $brand)
-                                    <li>
-                                        <input id="brand1" class="styled" type="checkbox" >
-                                        <label for="brand1"> {{$brand->name}}  </label>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-
+                            </form>
                             <!-- Rating -->
                             <h6>Valutazioni</h6>
                             <div class="rating">
@@ -81,9 +76,9 @@
                                         <article class="slider-item on-nav">
                                             <div class="thumb-slider">
                                                 <ul class="slides">
-                                                    <li data-thumb="images/item-img-1-1.jpg"> <img src="images/item-img-1-1.jpg" alt="" > </li>
-                                                    <li data-thumb="images/item-img-1-2.jpg"> <img src="images/item-img-1-2.jpg" alt="" > </li>
-                                                    <li data-thumb="images/item-img-1-3.jpg"> <img src="images/item-img-1-3.jpg" alt="" > </li>
+                                                    @foreach($productsdata['images'] as $image)
+                                                    <li data-thumb="{{asset('upload/'.$image->URL) }}"> <img src="{{asset('upload/'.$image->URL) }}" alt="missing image" > </li>
+                                                    @endforeach
                                                 </ul>
                                             </div>
                                         </article>
@@ -97,7 +92,7 @@
                                         <div class="row">
                                             <div class="col-sm-6"><span class="price">€{{$productsdata['product']->normalPrice}} </span></div>
                                             <div class="col-sm-6">
-                                                <p>Availability: <span class="in-stock">In stock (Da aggiustare)</span></p>
+                                                <p>Disponibilità: <span class="in-stock">In stock</span></p>
                                             </div>
                                         </div>
                                         <!-- List Details -->
@@ -151,59 +146,7 @@
                                         <ul class="bullet-round-list">
                                             {!!  $productsdata['product']->description !!}
                                         </ul>
-                                        <div class="table-responsive">
-                                            <table class="table">
-                                                <thead>
-                                                <tr>
-                                                    <th>Carrier</th>
-                                                    <th>Compatibility Rating </th>
-                                                    <th>Voice / Text </th>
-                                                    <th>Voice / Text </th>
-                                                    <th>2G Data </th>
-                                                    <th>3G Data </th>
-                                                    <th>4G LTE Data </th>
-                                                </tr>
-                                                </thead>
-                                                <tbody>
-                                                <tr>
-                                                    <td>AT&T </td>
-                                                    <td>Fully Compatible</td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Sprint </td>
-                                                    <td>No Voice/Text and Partial Data Connection</td>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Q-Mobile </td>
-                                                    <td>Partial Data Connection</td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Verizon Wireless </td>
-                                                    <td>No Votice/Text and Partial Data Connection</td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                    <td class="text-center"><i class="fa fa-check"></i></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
+
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="cus-rev">
                                         @if(!Auth::guest() && $productsdata['usercanreview']==true )
@@ -315,7 +258,7 @@
                     <!-- Product -->
                     @foreach($productsdata['related'] as $related)
                         <div class="product">
-                            <article> <img class="img-responsive" src="images/item-img-1-1.jpg" alt="" >
+                            <article> <img class="img-responsive" src="{{asset('upload/'.$related->URL) }}" alt="" >
                                 <!-- Content -->
                                 <span class="tag">{{$productsdata['category']->name}}</span> <a href="#." class="tittle">{{$related->name}}</a>
                                 <!-- Reviews -->

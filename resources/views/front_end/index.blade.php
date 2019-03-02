@@ -17,9 +17,10 @@
                                 <ul>
 
                                     <!-- SLIDE  -->
+                                    @foreach($data['Showcase'] as $showcase)
                                     <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
                                         <!-- MAIN IMAGE -->
-                                        <img src="{{asset('front_end/images/slider-img-1.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
+                                        <img src="{{asset('upload/'.$showcase->URL) }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
 
                                         <!-- LAYER NR. 1 -->
                                         <div class="tp-caption sfl tp-resizeme"
@@ -33,7 +34,7 @@
                                              data-elementdelay="0.03"
                                              data-endelementdelay="0.4"
                                              data-endspeed="300"
-                                             style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">High Quality VR Glasses </div>
+                                             style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">{{$showcase->category}} </div>
 
                                         <!-- LAYER NR. 2 -->
                                         <div class="tp-caption sfr tp-resizeme"
@@ -47,7 +48,7 @@
                                              data-elementdelay="0.03"
                                              data-endelementdelay="0.1"
                                              data-endspeed="300"
-                                             style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">3D Daydream View </div>
+                                             style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">{{$showcase->name}} </div>
 
                                         <!-- LAYER NR. 3 -->
                                         <div class="tp-caption sfl tp-resizeme"
@@ -61,7 +62,7 @@
                                              data-elementdelay="0.1"
                                              data-endelementdelay="0.1"
                                              data-endspeed="300"
-                                             style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Starting at </div>
+                                             style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">A partire da </div>
 
                                         <!-- LAYER NR. 1 -->
                                         <div class="tp-caption sfr tp-resizeme"
@@ -75,7 +76,7 @@
                                              data-elementdelay="0.03"
                                              data-endelementdelay="0.4"
                                              data-endspeed="300"
-                                             style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$49.99 </div>
+                                             style="z-index: 5; font-size:36px; font-weight:800;  color:#0088cc;  max-width: auto; max-height: auto; white-space: nowrap;">€{{$showcase->normalPrice}} </div>
 
                                         <!-- LAYER NR. 4 -->
                                         <div class="tp-caption lfb tp-resizeme scroll"
@@ -88,158 +89,10 @@
                                              data-endelementdelay="0.1"
                                              data-endspeed="300"
                                              data-scrolloffset="0"
-                                             style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a> </div>
+                                             style="z-index: 8;"><a href="/products/{{$showcase->id}}" class="btn-round big">Acquista ora!</a> </div>
                                     </li>
+                                    @endforeach
 
-                                    <!-- SLIDE  -->
-                                    <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
-                                        <!-- MAIN IMAGE -->
-                                        <img src="{{asset('front_end/images/slider-img-2.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
-
-                                        <!-- LAYER NR. 1 -->
-                                        <div class="tp-caption sfl tp-resizeme"
-                                             data-x="left" data-hoffset="60"
-                                             data-y="center" data-voffset="-110"
-                                             data-speed="800"
-                                             data-start="800"
-                                             data-easing="Power3.easeInOut"
-                                             data-splitin="chars"
-                                             data-splitout="none"
-                                             data-elementdelay="0.03"
-                                             data-endelementdelay="0.4"
-                                             data-endspeed="300"
-                                             style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">No restocking fee ($35 savings)</div>
-
-                                        <!-- LAYER NR. 2 -->
-                                        <div class="tp-caption sfr tp-resizeme"
-                                             data-x="left" data-hoffset="60"
-                                             data-y="center" data-voffset="-60"
-                                             data-speed="800"
-                                             data-start="1000"
-                                             data-easing="Power3.easeInOut"
-                                             data-splitin="chars"
-                                             data-splitout="none"
-                                             data-elementdelay="0.03"
-                                             data-endelementdelay="0.1"
-                                             data-endspeed="300"
-                                             style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">M75 Sport Watch </div>
-
-                                        <!-- LAYER NR. 3 -->
-                                        <div class="tp-caption sfl tp-resizeme"
-                                             data-x="left" data-hoffset="60"
-                                             data-y="center" data-voffset="10"
-                                             data-speed="800"
-                                             data-start="1200"
-                                             data-easing="Power3.easeInOut"
-                                             data-splitin="none"
-                                             data-splitout="none"
-                                             data-elementdelay="0.1"
-                                             data-endelementdelay="0.1"
-                                             data-endspeed="300"
-                                             style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Now Only </div>
-
-                                        <!-- LAYER NR. 1 -->
-                                        <div class="tp-caption sfr tp-resizeme"
-                                             data-x="left" data-hoffset="210"
-                                             data-y="center" data-voffset="5"
-                                             data-speed="800"
-                                             data-start="1300"
-                                             data-easing="Power3.easeInOut"
-                                             data-splitin="chars"
-                                             data-splitout="none"
-                                             data-elementdelay="0.03"
-                                             data-endelementdelay="0.4"
-                                             data-endspeed="300"
-                                             style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$320.99 </div>
-
-                                        <!-- LAYER NR. 4 -->
-                                        <div class="tp-caption lfb tp-resizeme scroll"
-                                             data-x="left" data-hoffset="60"
-                                             data-y="center" data-voffset="80"
-                                             data-speed="800"
-                                             data-start="1300"
-                                             data-easing="Power3.easeInOut"
-                                             data-elementdelay="0.1"
-                                             data-endelementdelay="0.1"
-                                             data-endspeed="300"
-                                             data-scrolloffset="0"
-                                             style="z-index: 8;"><a href="#." class="btn-round big">Shop Now</a> </div>
-                                    </li>
-
-                                    <!-- SLIDE  -->
-                                    <li data-transition="random" data-slotamount="7" data-masterspeed="300"  data-saveperformance="off" >
-                                        <!-- MAIN IMAGE -->
-                                        <img src="{{asset('front_end/images/slider-img-3.jpg') }}"  alt="slider"  data-bgposition="center bottom" data-bgfit="cover" data-bgrepeat="no-repeat">
-
-                                        <!-- LAYER NR. 1 -->
-                                        <div class="tp-caption sfl tp-resizeme"
-                                             data-x="left" data-hoffset="60"
-                                             data-y="center" data-voffset="-110"
-                                             data-speed="800"
-                                             data-start="800"
-                                             data-easing="Power3.easeInOut"
-                                             data-splitin="chars"
-                                             data-splitout="none"
-                                             data-elementdelay="0.03"
-                                             data-endelementdelay="0.4"
-                                             data-endspeed="300"
-                                             style="z-index: 5; font-size:30px; font-weight:500; color:#888888;  max-width: auto; max-height: auto; white-space: nowrap;">Get Free Bluetooth when buy </div>
-
-                                        <!-- LAYER NR. 2 -->
-                                        <div class="tp-caption sfr tp-resizeme"
-                                             data-x="left" data-hoffset="60"
-                                             data-y="center" data-voffset="-60"
-                                             data-speed="800"
-                                             data-start="1000"
-                                             data-easing="Power3.easeInOut"
-                                             data-splitin="chars"
-                                             data-splitout="none"
-                                             data-elementdelay="0.03"
-                                             data-endelementdelay="0.1"
-                                             data-endspeed="300"
-                                             style="z-index: 6; font-size:50px; color:#0088cc; font-weight:800; white-space: nowrap;">Flat SmartWatch </div>
-
-                                        <!-- LAYER NR. 3 -->
-                                        <div class="tp-caption sfl tp-resizeme"
-                                             data-x="left" data-hoffset="60"
-                                             data-y="center" data-voffset="0"
-                                             data-speed="800"
-                                             data-start="1200"
-                                             data-easing="Power3.easeInOut"
-                                             data-splitin="none"
-                                             data-splitout="none"
-                                             data-elementdelay="0.1"
-                                             data-endelementdelay="0.1"
-                                             data-endspeed="300"
-                                             style="z-index: 7;  font-size:24px; color:#888888; font-weight:500; max-width: auto; max-height: auto; white-space: nowrap;">Combo Only:</div>
-
-                                        <!-- LAYER NR. 1 -->
-                                        <div class="tp-caption sfr tp-resizeme"
-                                             data-x="left" data-hoffset="240"
-                                             data-y="center" data-voffset=" -5"
-                                             data-speed="800"
-                                             data-start="1300"
-                                             data-easing="Power3.easeInOut"
-                                             data-splitin="chars"
-                                             data-splitout="none"
-                                             data-elementdelay="0.03"
-                                             data-endelementdelay="0.4"
-                                             data-endspeed="300"
-                                             style="z-index: 5; font-size:36px; font-weight:800; color:#000;  max-width: auto; max-height: auto; white-space: nowrap;">$590.00 </div>
-
-                                        <!-- LAYER NR. 4 -->
-                                        <div class="tp-caption lfb tp-resizeme scroll"
-                                             data-x="left" data-hoffset="60"
-                                             data-y="center" data-voffset="80"
-                                             data-speed="800"
-                                             data-start="1300"
-                                             data-easing="Power3.easeInOut"
-                                             data-elementdelay="0.1"
-                                             data-endelementdelay="0.1"
-                                             data-endspeed="300"
-                                             data-scrolloffset="0"
-                                             style="z-index: 8;"><a href="/products/1" class="btn-round big">Shop Now</a> </div>
-                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -247,23 +100,18 @@
 
                     <!-- Main Slider  -->
                     <div class="col-md-3 no-padding">
-
-                        <!-- New line required  -->
+                        @foreach($data['Showfeatured'] as $sf)
                         <div class="product">
                             <div class="like-bnr">
                                 <div class="position-center-center">
-                                    <h5>New line required</h5>
-                                    <h4>Smartphone s7</h4>
-                                    <span class="price">$259.99</span> </div>
+                                    <h5>{{$sf->category}}</h5>
+                                    <h4>{{$sf->name}}</h4>
+                                    <span class="price">{{$sf->price}}</span>
+                                    <a href="/products/{{$sf->id}}" class="btn-round">Acquista ora!</a>
+                                </div>
                             </div>
                         </div>
-
-                        <!-- Weekly Slaes  -->
-                        <div class="week-sale-bnr">
-                            <h4>Weekly <span>Sale!</span></h4>
-                            <p>Saving up to 50% off all online
-                                store items this week.</p>
-                            <a href="#." class="btn-round">Shop now</a> </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -451,26 +299,16 @@
                         <!-- Items -->
                         <div class="item-col-5">
 
-                            <!-- Product -->
-                            <div class="product col-2x">
-                                <div class="like-bnr">
-                                    <div class="position-center-center">
-                                        <h5>Smart Watch 2.0</h5>
-                                        <p>Space Gray Aluminum Case
-                                            with Black/Volt Real Sport Band <span>38mm | 42mm</span> </p>
-                                        <a href="#." class="btn-round">View Detail</a> </div>
-                                </div>
-                            </div>
                         @foreach($data['preferences'] as $preference)
                             <!-- Product -->
                                 <div class="product">
-                                    <article> <img class="img-responsive" src="{{asset('upload/'.$preference->URL) }}" alt="" > <span class="sale-tag">-25%</span>
+                                    <article> <img class="img-responsive" src="{{asset('upload/'.$preference->URL) }}" alt="" >
 
                                         <!-- Content -->
                                         <span class="tag">{{$preference->category}}</span> <a href="/products/{{$preference->id}}" class="tittle">{{$preference->name}}</a>
                                         <!-- Reviews -->
                                         <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star"></i> <span class="margin-left-10">{{$preference->reviewsnumber}} Recensioni</span></p>
-                                        <div class="price">{{$preference->normalPrice}} <span>{{$preference->normalPrice + 20}}</span></div>
+                                        <div class="price">{{$preference->normalPrice}}</div>
                                         <a href="/products/{{$preference->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                                 </div>
                             @endforeach

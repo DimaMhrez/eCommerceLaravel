@@ -24,7 +24,9 @@ class CartComposer
 
         $temp=Cart::where('user_id',$user)
             ->join('products','carts.product_id','=','products.id')
-            ->select('carts.*','products.id as product','products.name as productname')
+            ->join('photos','photos.product_id','=','carts.product_id')
+            ->where('photos.main','1')
+            ->select('carts.*','products.id as product','products.name as productname','photos.URL as URL')
             ->get();
 
         $number=Cart::where('user_id',$user)->sum('quantity');
