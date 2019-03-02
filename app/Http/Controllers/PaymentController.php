@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use App\paymentMethod;
+use App\PromotionCode;
 use App\Shipper;
 use App\ShippingAddress;
 use Illuminate\Http\Request;
@@ -122,7 +123,16 @@ class PaymentController extends Controller
         $id=Auth::user()->id;
 
         $sum = Cart::where('user_id', $id)->sum('totalprice');
-        $totalsum=$sum + $shipper->price;
+
+        if(session()->has('code')) {
+            $code = session('code');
+            $pcode = PromotionCode::where('code', $code)->first();
+
+            $totalsum = $sum + $shipper->price - $pcode->discount;
+        }
+        else{
+            $totalsum= $sum + $shipper->price;
+        }
 
         $data= array(
             'items' => $items,
@@ -150,4 +160,15 @@ class PaymentController extends Controller
         return view('front_end.checkoutSuccessful');
     }
 
+
+    public function code(Request $request){
+
+        if (PromotionCode::where('code', '=', $request->code)->exists()) {
+
+            session(['code' => $request->code]);
+            return 1;
+        }
+
+       return 0;
+    }
 }

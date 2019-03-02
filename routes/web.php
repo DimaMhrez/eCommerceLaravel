@@ -21,6 +21,7 @@ Route::get('products/{id}', 'FrontEndController@show');
 Route::post('/addtocart', 'CartController@add');
 Route::post('/removefromcart', 'CartController@remove');
 Route::get('/search','FrontEndController@search');
+Route::post('/code','PaymentController@code');
 
 Route::post('/filter','FrontEndController@filter');
 

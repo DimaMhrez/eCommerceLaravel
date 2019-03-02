@@ -315,7 +315,9 @@ class FrontEndController extends Controller
         $categories=Category::all();
         $products=DB::table('products')
             ->join('categories','products.category_id','=','categories.id')
-            ->select('products.*','categories.name as category')
+            ->join('photos','photos.product_id','=','products.id')
+            ->where('photos.main','1')
+            ->select('products.*','categories.name as category','photos.URL as URL')
             ->paginate(20);
 
         $bullets=BulletDescription::all();

@@ -50,12 +50,13 @@
     </tbody>
     </table>
     @if($data['items']->count() != 0)
+
     <!-- Promotion -->
     <div class="promo">
         <div class="coupen">
-            <label> Promotion Code
-                <input type="text" placeholder="Your code here">
-                <button type="submit"><i class="fa fa-arrow-circle-right"></i></button>
+            <label> Codice promozionale
+                <input form="code" id="code" name="code" type="text" placeholder="Il tuo codice...">
+                <button id="codesubmit" type="submit"><i class="fa fa-arrow-circle-right"></i></button>   <b id="result"></b>
             </label>
         </div>
 
@@ -74,5 +75,27 @@
         @endif
     </div>
     </div>
+
+    <script>
+
+
+        $('#codesubmit').click(function(){
+            $.post("/code",
+                {
+                    pcode: document.getElementById("code").value,
+                },
+                function(data) {
+                    if(data==1){
+                        document.getElementById("codesubmit").disabled = true;
+                    document.getElementById("result").innerHTML = "Aggiunto!";}
+                    else{
+                    document.getElementById("result").innerHTML = "Errore. Riprova.";}
+                }
+
+            ) });
+
+
+
+    </script>
 </section>
 @show
