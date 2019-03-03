@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\PromotionCode;
+use App\User;
 use Illuminate\Http\Request;
+use App\PromotionCode;
+use View;
 use DB;
 use Yajra\DataTables\DataTables;
-use View;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
 
-class GlobalPromotionalCodesController extends Controller
+class PrivatePromotionalCodesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +21,7 @@ class GlobalPromotionalCodesController extends Controller
      */
     public function index()
     {
-        return view('back_end.globalPromotionalCodes');
+        return view('back_end.privatePromotionalCodes');
     }
 
     /**
@@ -28,9 +29,11 @@ class GlobalPromotionalCodesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('back_end.createGlobalPromotionalCodes');
+        $user = User::find($id);
+        return view('back_end.createPrivatePromotionalCodes')->with('user',$user);
+
     }
 
     /**
@@ -39,7 +42,7 @@ class GlobalPromotionalCodesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function save($id)
     {
         $rules = array(
             'code'         => 'required',
@@ -51,7 +54,7 @@ class GlobalPromotionalCodesController extends Controller
 
         $validator = Validator::make(Input::all(), $rules);
         if ($validator->fails()) {
-            return Redirect::to('/admin/globalPromotionalCodes/create')
+            return Redirect::to('/admin/privatePromotionalCodes/create/'.$id)
                 ->withErrors($validator);
         } else {
 
@@ -72,10 +75,13 @@ class GlobalPromotionalCodesController extends Controller
             $code->code = Input::get('code');
             $code->description = Input::get('description');
             $code->discount = Input::get('discount');
-            $code->global = 1;
+            $user = User::find($id);
+            $code->user_id = $user->id;
+            $code->used = 0;
+            $code->global = 0;
             $code->save();
 
-            return Redirect::to('/admin/globalPromotionalCodes');
+            return Redirect::to('/admin/privatePromotionalCodes');
         }
     }
 
@@ -124,14 +130,14 @@ class GlobalPromotionalCodesController extends Controller
         //
     }
 
-    public function globalPromotionalCodes(){
-        $globalCodes = PromotionCode::where('global',1)->where('to_date','>=',DB::raw('NOW()'))->orderBy('to_date','desc')->get();
+    public function privatePromotionalCodes(){
+        $privateCodes = PromotionCode::where('global',0)->where('to_date','>=',DB::raw('NOW()'))->orderBy('to_date','desc')->get();
 
-        return DataTables::of($globalCodes)
-            ->setRowId(function ($globalCode){
-                return $globalCode->id;})
-            ->addColumn('intro', function(PromotionCode $globalCode) {
-                return '<a href="'. url('/admin/globalPromotionalCodes/'.$globalCode->id.'/edit') .'" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i><div class="ripple-container"></div></a>';
+        return DataTables::of($privateCodes)
+            ->setRowId(function ($privateCode){
+                return $privateCode->id;})
+            ->addColumn('intro', function(PromotionCode $privateCode) {
+                return '<a href="'. url('/admin/privatePromotionalCodes/'.$privateCode->id.'/edit') .'" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">dvr</i><div class="ripple-container"></div></a>';
             })
             ->addColumn('from_date', function(PromotionCode $globalCode) {
                 return date('d/m/Y H:i:s',strtotime($globalCode->from_date));
@@ -142,4 +148,8 @@ class GlobalPromotionalCodesController extends Controller
             ->rawColumns(['intro','from_date','to_date'])
             ->toJson();
     }
+
+
+
+
 }

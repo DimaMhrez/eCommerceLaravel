@@ -227,7 +227,7 @@
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" id="products" href="{{url('')}}">
+                                <a class="nav-link" id="products" href="{{url('/admin/privatePromotionalCodes/')}}">
                                     <span class="sidebar-mini"> GS </span>
                                     <span class="sidebar-normal"> Users Codes </span>
                                 </a>

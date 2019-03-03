@@ -12,11 +12,10 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h4 class="card-title">Global Promotional Codes</h4>
+                            <h4 class="card-title">Private Promotional Codes</h4>
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
-                                <a href="{{url('/admin/globalPromotionalCodes/create')}}"><button class="btn btn-primary btn-sm">New<div class="ripple-container"></div></button></a>
                             </div>
                             <div class="material-datatables">
                                 <div class="dataTables_wrapper dt-bootstrap4" id="tables_wrapper">
@@ -26,6 +25,7 @@
                                         <tr>
                                             <th>Id num</th>
                                             <th>Code</th>
+                                            <th>User</th>
                                             <th>Description</th>
                                             <th>FROM</th>
                                             <th>TO</th>
@@ -60,16 +60,18 @@
                             ],
                             processing: true,
                             serverSide: true,
-                            ajax: '{!! route('globalPromotionalCodes.data') !!}',
+                            ajax: '{!! route('privatePromotionalCodes.data') !!}',
 
                             columns: [
                                 { data: 'id', name: 'id' },
                                 { data: 'code', name: 'code' },
+                                { data: 'user_id', name:'user_id'},
                                 { data: 'description', name: 'description'},
                                 { data: 'from_date', name: 'from_date'},
                                 { data: 'to_date', name: 'to_date'},
                                 { data: 'discount', name: 'discount'},
                                 { data: 'intro', name: 'intro'},
+
 
 
 

@@ -70,8 +70,12 @@ Route::get('/admin/order/{id}/inprogress','OrderController@setInProgress');
 Route::get('/admin/order/{id}/shipped','OrderController@setShipped');
 //funzioni crud per gli ordini
 Route::resource('/admin/order','OrderController');
-//crud promotional global promotional codes
+//crud global promotional codes
 Route::resource('/admin/globalPromotionalCodes','GlobalPromotionalCodesController');
+Route::post('/admin/privatePromotionalCodes/save/{id}','PrivatePromotionalCodesController@save');
+//crud private promotional codes
+Route::get('/admin/privatePromotionalCodes/create/{id}','PrivatePromotionalCodesController@create');
+Route::resource('/admin/privatePromotionalCodes','PrivatePromotionalCodesController');
 //crud permessi
 Route::resource('/admin/permission','PermissionController');
 //
@@ -106,3 +110,4 @@ Route::get('/ordersDataShipped','OrderController@shipped')->name('orderShipped.d
 Route::get('/permissions','PermissionController@permissions')->name('permissions.data');
 Route::get('/roles','RoleController@permissions')->name('roles.data');
 Route::get('/globalPromotionalCodes','GlobalPromotionalCodesController@globalPromotionalCodes')->name('globalPromotionalCodes.data');
+Route::get('/privatePromotionalCodes','PrivatePromotionalCodesController@privatePromotionalCodes')->name('privatePromotionalCodes.data');
