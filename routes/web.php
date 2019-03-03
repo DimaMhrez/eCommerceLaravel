@@ -53,7 +53,7 @@ Route::get('admin/userProfile/{id}','BackEndController@getUser');
 //rotte per inserimento immagini dopo che l'utente di backoffice ha creato un nuovo prodotto
 Route::get('image-view/{id}','ImageController@index');
 Route::post('image-view/{id}','ImageController@store');
-
+Route::get('/admin/product/{id}/removeShowcase','ProductController@removeShowcase');
 Route::get('/admin/product/{id}/addStock','ProductController@addStock');
 Route::post('/admin/product/{id}/saveStock','ProductController@saveStock');
 //funzioni crud sui prodotti nel back_end

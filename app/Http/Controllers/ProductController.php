@@ -262,6 +262,16 @@ class ProductController extends Controller
         return view ('back_end.addStock')->with('idProduct',$id);
     }
 
+    public function removeShowcase($id){
+        $product = Product::find($id);
+
+        $product->showcase = 0;
+
+        $product->save();
+
+        return Redirect::back();
+    }
+
     public function saveStock($id){
         $rules = array('quantity' => 'required');
 

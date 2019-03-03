@@ -1,5 +1,6 @@
 @extends('back_end.main')
 
+@section('title','Global Promotional Codes');
 
 @section('content')
 

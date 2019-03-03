@@ -1,5 +1,6 @@
 @extends('back_end.main')
 
+@section('title','Role details');
 
 @section('content')
     <div class="content">

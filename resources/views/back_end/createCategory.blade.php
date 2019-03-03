@@ -1,6 +1,8 @@
 @extends('back_end.main')
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
+@section('title','New Category');
+
 @section('content')
     <div class="content">
         <div class="container-fluid">

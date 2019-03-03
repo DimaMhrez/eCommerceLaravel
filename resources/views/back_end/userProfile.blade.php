@@ -1,5 +1,6 @@
 @extends('back_end.main')
 
+@section('title','User\'s profile');
 @section('content')
     <div class="content">
         <div class="container-fluid">

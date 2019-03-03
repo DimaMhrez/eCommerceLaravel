@@ -1,6 +1,8 @@
 
 @extends('back_end.main')
 
+@section('title','Administration Dashboard');
+
 @section('content')
 
   <div class="content">
@@ -109,7 +111,7 @@
                   <tr id="{{$p->id}}">
                     <td><a href="{{url('/admin/product/'.$p->id.'/edit')}}">{{$p->id}}</a></td>
                     <td>{{$p->name}}</td>
-                    <td><a href="' . url('/admin/role/delete/' . $role->id) .'" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i><div class="ripple-container"></div></a></td>
+                    <td><a href="{{url('/admin/product/'.$p->id.'/removeShowcase')}}" class="btn btn-link btn-danger btn-just-icon remove"><i class="material-icons">close</i><div class="ripple-container"></div></a></td>
                   </tr>
                 @endforeach
                 </tbody>
