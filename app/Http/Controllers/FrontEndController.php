@@ -353,6 +353,7 @@ class FrontEndController extends Controller
                 $catfilter[$i]= Product::where('category_id',$category[$i])
                 ->join('photos','photos.product_id','=','products.id')
                 ->where('photos.main','1')
+                    ->select('products.*','photos.URL as URL')
                 ->get();
 
             }
@@ -365,6 +366,7 @@ class FrontEndController extends Controller
                 $brandfilter[$j]= Product::where('brand_id',$brand[$j])
                     ->join('photos','photos.product_id','=','products.id')
                     ->where('photos.main','1')
+                    ->select('products.*','photos.URL as URL')
                     ->get();
 
             }
@@ -406,6 +408,7 @@ class FrontEndController extends Controller
             $products=Product::where('products.name','like','%'.$string.'%')
             ->join('photos','photos.product_id','=','products.id')
                 ->where('photos.main','1')
+                ->select('products.*','photos.URL as URL')
             ->get();
         }
         else {

@@ -261,19 +261,20 @@
                     @foreach($data['Featured'] as $featured)
                     <!-- Product -->
                     <div class="product">
-                        <article> <img class="img-responsive" src="{{asset('upload/'.$featured->URL) }}" alt="" > <span class="sale-tag">-25%</span>
+                        <article> <img class="img-responsive" src="{{asset('upload/'.$featured->URL) }}" alt="" >
 
                             <!-- Content -->
-                            <span class="tag">{{$featured->category}}</span> <a href="#." class="tittle">{{$featured->name}}</a>
+                            <span class="tag">{{$featured->category}}</span> <a href="/products/{{$featured->id}}" class="tittle">{{$featured->name}}</a>
                             <!-- Reviews -->
                             <p class="rev">
                             @if (!empty($featured->rate))
                                 <p class="rev">@for($i=0; $i<$featured->rate && $i<5; ++$i)<i class="fa fa-star"></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor
-                            @else <p class="rev"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></p>
+                            @else <p class="rev"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
                             @endif
                                 <span class="margin-left-10">{{$featured->reviewsnumber}} Recensioni</span></p>
                             <div class="price">{{$featured->normalPrice}} <span>{{$featured->normalPrice + 20}}</span></div>
-                            <a href="/products/{{$featured->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
+                            <a href="/products/{{$featured->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a>
+                        </article>
                     </div>
                     @endforeach
 
@@ -297,7 +298,7 @@
                         @foreach($data['preferences'] as $preference)
                             <!-- Product -->
                                 <div class="product">
-                                    <article> <img class="img-responsive" src="{{asset('upload/'.$preference->URL) }}" alt="" >
+                                    <article> <img class="img-responsive" src="{{asset('upload/'.$preference->URL)}}" alt="" >
 
                                         <!-- Content -->
                                         <span class="tag">{{$preference->category}}</span> <a href="/products/{{$preference->id}}" class="tittle">{{$preference->name}}</a>
@@ -306,9 +307,9 @@
 
                                         @if (!empty($preference->rate))
                                             <p class="rev">@for($i=0; $i<$preference->rate && $i<5; ++$i)<i class="fa fa-star"></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor
-                                        @else <p class="rev"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></p>
+                                        @else <p class="rev"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
                                         @endif
-                                            <span class="margin-left-10">{{$preference->reviewsnumber}} Recensioni</span>
+                                            <span class="margin-left-10">{{$preference->reviewsnumber}} Recensioni</span></p>
                                         <div class="price">{{$preference->normalPrice}}</div>
                                         <a href="/products/{{$preference->id}}" class="cart-btn"><i class="icon-basket-loaded"></i></a> </article>
                                 </div>
