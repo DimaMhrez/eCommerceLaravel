@@ -1,6 +1,6 @@
 @extends('back_end.main')
 
-@section('title','Global Prootional Code');
+@section('title','New Private Promotional Code');
 
 @section('content')
     <div class="content">
@@ -9,13 +9,13 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
-                        {{ Form::open(array('url' => 'admin/globalPromotionalCodes','action' => ['enctype'=>'multipart/data','files'=>'true'])) }}
+                        {{ Form::open(array('url' => '/admin/privatePromotionalCodes/save/'.$user->id,'action' => ['enctype'=>'multipart/data','files'=>'true'])) }}
 
                         <div class="card-header text-center">
                             <h3 class="card-title">
-                                New Product
+                                New Promotional Code
                             </h3>
-                            <h5 class="card-description">Wizard for insert a Permission</h5>
+                            <h5 class="card-description">Wizard for insert a Promotional Code</h5>
                         </div>
                         <div class="wizard-navigation">
                             <ul class="nav nav-pills">
@@ -29,7 +29,7 @@
                         <div class="card-body">
                             <div class="tab-content">
                                 <div class="tab-pane active" id="basicinfo">
-                                    <h5 class="info-text"> Basic informations</h5>
+                                    <h5 class="info-text"> Promotional Codes for user: {{$user->name}}</h5>
                                     <div class="row justify-content-center">
                                         <div class="col-md-6">
                                             <div class="card ">
@@ -95,36 +95,36 @@
 
 
                                     <div class="row justify-content-center">
-                                            <div class="col-md-6">
-                                                <div class="card ">
-                                                    <div class="card-header card-header-rose card-header-text">
-                                                        <div class="card-icon">
-                                                            <i class="material-icons">today</i>
-                                                        </div>
-                                                        <h4 class="card-title">Valid From</h4>
+                                        <div class="col-md-6">
+                                            <div class="card ">
+                                                <div class="card-header card-header-rose card-header-text">
+                                                    <div class="card-icon">
+                                                        <i class="material-icons">today</i>
                                                     </div>
-                                                    <div class="card-body ">
-                                                        <div class="form-group bmd-form-group is-filled">
-                                                            {{ Form::text('from', old('from'),['value'=> date("m/d/Y"),'class' => 'form-control datetimepicker','required' => 'required']) }}
-                                                        </div>
+                                                    <h4 class="card-title">Valid From</h4>
+                                                </div>
+                                                <div class="card-body ">
+                                                    <div class="form-group bmd-form-group is-filled">
+                                                        {{ Form::text('from', old('from'),['value'=> date("m/d/Y"),'class' => 'form-control datetimepicker','required' => 'required']) }}
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="card ">
-                                                    <div class="card-header card-header-rose card-header-text">
-                                                        <div class="card-icon">
-                                                            <i class="material-icons">today</i>
-                                                        </div>
-                                                        <h4 class="card-title">Valid To</h4>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="card ">
+                                                <div class="card-header card-header-rose card-header-text">
+                                                    <div class="card-icon">
+                                                        <i class="material-icons">today</i>
                                                     </div>
-                                                    <div class="card-body ">
-                                                        <div class="form-group bmd-form-group is-filled">
-                                                            {{ Form::text('to', old('to'),['value'=> date("m/d/Y"),'class' => 'form-control datetimepicker','required' => 'required']) }}
-                                                        </div>
+                                                    <h4 class="card-title">Valid To</h4>
+                                                </div>
+                                                <div class="card-body ">
+                                                    <div class="form-group bmd-form-group is-filled">
+                                                        {{ Form::text('to', old('to'),['value'=> date("m/d/Y"),'class' => 'form-control datetimepicker','required' => 'required']) }}
                                                     </div>
                                                 </div>
                                             </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

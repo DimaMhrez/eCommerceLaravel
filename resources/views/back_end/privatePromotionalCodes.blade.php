@@ -1,6 +1,6 @@
 @extends('back_end.main')
 
-@section('title','Services');
+@section('title','Private promotional codes');
 
 @section('content')
 
@@ -13,12 +13,10 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h4 class="card-title">Services </h4>
-
+                            <h4 class="card-title">Private Promotional Codes</h4>
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
-                                <a href="{{url('/admin/permission/create')}}"><button class="btn btn-primary btn-sm" >New<div class="ripple-container"></div></button></a>
                             </div>
                             <div class="material-datatables">
                                 <div class="dataTables_wrapper dt-bootstrap4" id="tables_wrapper">
@@ -27,7 +25,12 @@
                                         <thead>
                                         <tr>
                                             <th>Id num</th>
-                                            <th>Name</th>
+                                            <th>Code</th>
+                                            <th>User</th>
+                                            <th>Description</th>
+                                            <th>FROM</th>
+                                            <th>TO</th>
+                                            <th>Discount</th>
                                             <th>Actions</th>
                                             <!-- <th>Actions</th> -->
                                             <!-- <th>Created At</th>
@@ -58,12 +61,19 @@
                             ],
                             processing: true,
                             serverSide: true,
-                            ajax: '{!! route('permissions.data') !!}',
+                            ajax: '{!! route('privatePromotionalCodes.data') !!}',
 
                             columns: [
                                 { data: 'id', name: 'id' },
-                                { data: 'name', name: 'name' },
-                                { data:'intro', name:'intro'}
+                                { data: 'code', name: 'code' },
+                                { data: 'user_id', name:'user_id'},
+                                { data: 'description', name: 'description'},
+                                { data: 'from_date', name: 'from_date'},
+                                { data: 'to_date', name: 'to_date'},
+                                { data: 'discount', name: 'discount'},
+                                { data: 'intro', name: 'intro'},
+
+
 
 
 
@@ -101,5 +111,12 @@
                              //  alert( 'Clicked row id '+id );
                          });
                      });*/
+                    $(document).ready(function(){
+                        $(".nav-item, .active").removeClass("active");
+                        $("#catalog").attr("aria-expanded","true");
+                        $("#catalogComponent").addClass("show");
+                        $("#products").parent().addClass("active");
+                    });
+
                 </script>
     @endpush

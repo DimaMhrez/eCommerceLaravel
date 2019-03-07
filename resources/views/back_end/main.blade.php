@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="{{asset('back_end/img/favicon.png') }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Material Dashboard PRO by Creative Tim
+        @yield('title')
     </title>
 
     <!--     Fonts and icons     -->
@@ -143,7 +143,7 @@
                         </ul>
                     </div>
                 </li>-->
-                <li class="nav-item ">
+                <li  id="mainMenu" class="nav-item ">
                     <a class="nav-link" id="catalog" href="#catalogComponent" data-toggle="collapse">
                         <i class="material-icons">apps</i>
                         <p> Catalog
@@ -165,13 +165,13 @@
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="components/panels.html">
+                                <a class="nav-link" href="{{url('/admin/category/create')}}">
                                     <span class="sidebar-mini"> P </span>
                                     <span class="sidebar-normal"> New Category </span>
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" href="/admin/category">
+                                <a class="nav-link" href="{{url('/admin/category')}}">
                                     <span class="sidebar-mini"> SA </span>
                                     <span class="sidebar-normal"> Categories </span>
                                 </a>
@@ -227,7 +227,7 @@
                                 </a>
                             </li>
                             <li class="nav-item ">
-                                <a class="nav-link" id="products" href="{{url('')}}">
+                                <a class="nav-link" id="products" href="{{url('/admin/privatePromotionalCodes/')}}">
                                     <span class="sidebar-mini"> GS </span>
                                     <span class="sidebar-normal"> Users Codes </span>
                                 </a>

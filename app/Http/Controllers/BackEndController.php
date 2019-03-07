@@ -72,7 +72,8 @@ class BackEndController extends Controller
             //->addColumn('intro', '<a href="{{ url(\'admin/userProfile/'.id.'\') }}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>')
 
             ->addColumn('intro', function(User $user) {
-                return '<a href="'. url('/admin/userProfile/'.$user->id) .'" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>';
+                return '<a href="'. url('/admin/userProfile/'.$user->id) .'" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">favorite</i></a>
+                        <a href="'. url('/admin/privatePromotionalCodes/create/'.$user->id) .'" class="btn btn-link btn-danger btn-just-icon like"><i class="material-icons">card_giftcard</i></a>';
             })
             ->rawColumns(['intro'])
             ->toJson();

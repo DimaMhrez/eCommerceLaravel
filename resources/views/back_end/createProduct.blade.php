@@ -6,6 +6,8 @@
     <script>tinymce.init({ selector:'textarea' });</script>
 @endpush
 
+@section('title','New Product');
+
 @section('content')
     <div class="content">
         <div class="container-fluid">
@@ -301,4 +303,5 @@
             });
         });
     </script>
+    
 @endpush

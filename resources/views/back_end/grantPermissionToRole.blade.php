@@ -1,5 +1,7 @@
 @extends('back_end.main')
 
+@section('title','Add Service to Role');
+
 @section('content')
     <div class="content">
         <div class="container-fluid">

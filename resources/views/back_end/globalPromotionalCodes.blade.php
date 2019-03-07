@@ -1,5 +1,6 @@
 @extends('back_end.main')
 
+@section('title','Global Promotional Codes');
 
 @section('content')
 
@@ -12,7 +13,7 @@
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
                             </div>
-                            <h4 class="card-title">Products</h4>
+                            <h4 class="card-title">Global Promotional Codes</h4>
                         </div>
                         <div class="card-body">
                             <div class="toolbar">
