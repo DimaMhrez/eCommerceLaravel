@@ -15,4 +15,9 @@ class Product extends Model
     }
 
 
+    public function bullets()
+    {
+        return $this->hasMany('App\BulletDescription');
+    }
+
 }

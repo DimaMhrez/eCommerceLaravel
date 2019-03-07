@@ -96,8 +96,6 @@
       @include('front_end.CartPart')
 
       </span>
-        </li>
-      </ul>
     </div>
 
     <!-- Nav -->
@@ -110,16 +108,8 @@
             <div id="cater" class="collapse">
               <ul>
                 @foreach($categories as $category)
-                  <li><a href="{{$category->href}}">{{$category->name}}</a></li>
+                  <li><a href="/" name="{{$category->name}}" class="catform">{{$category->name}}</a></li>
               @endforeach
-
-              <!-- Qui ci sono i sottomenu -->
-                <!-- <li class="sub-menu"><a href="#."> Cell Phones & Accessories</a>
-                  <ul>
-                    <li><a href="#."> TV & Video</a></li>
-                    <li><a href="#."> Camera, Photo & Video</a></li>
-                    <li><a href="#."> Cell Phones & Accessories</a>
-                  </ul>-->
               </ul>
             </div>
           </div>
@@ -328,6 +318,28 @@
 @yield('otherScript')
 
 <!-- invocazione logout -->
+
+<script>
+
+
+
+
+  $('.catform').click(function( event ){
+    event.preventDefault();
+
+    $.get("/search",
+            {
+              category: this.name,
+            },
+            function(data) {
+              $('#wrap').empty().append( data );
+            }
+
+    ) });
+
+
+
+</script>
 
 <script>
   $.ajaxSetup({

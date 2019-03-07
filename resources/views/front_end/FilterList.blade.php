@@ -34,11 +34,11 @@
                                 @endif
 
                                 <ul class="bullet-round-list">
-                                    @foreach($data['bullets'] as $bullet)
-                                        @if($bullet->product_id == $product->id)
+
+                                        @foreach($product->bullets as $bullet)
                                             <li>{{$bullet->description}}</li>
-                                        @endif
-                                    @endforeach
+                                        @endforeach
+
                                 </ul>
                             </div>
                             <!-- Content Right -->

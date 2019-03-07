@@ -372,7 +372,6 @@ class FrontEndController extends Controller
             }
         }
 
-        $bullets=BulletDescription::all();
         $total=new Collection();
         for($i=0;$i<count($category);$i++)
         {
@@ -384,10 +383,10 @@ class FrontEndController extends Controller
             $total=$total->merge($brandfilter[$j]);
         }
 
+
         $data=array(
             'products' => $total,
             'productsnumber' => count($total),
-            'bullets' => $bullets
         );
 
         return view('front_end.FilterList')->with('data',$data);
@@ -414,11 +413,12 @@ class FrontEndController extends Controller
         else {
             $products = Product::where('products.name', 'like', '%' . $string . '%')
                 ->join('categories', 'categories.id', '=', 'products.category_id')
-                ->join('photos','photos.product_id','=','products.id')
-                ->where('photos.main','1')
-                ->select('products.*','photos.URL as URL')
+                ->join('photos', 'photos.product_id', '=', 'products.id')
+                ->where('photos.main', '1')
+                ->select('products.*', 'photos.URL as URL')
                 ->where('categories.name', $category)
                 ->get();
+
         }
 
         //Faccio la insert nelle preferenze.
@@ -451,6 +451,8 @@ class FrontEndController extends Controller
             'bullets' => $bullets,
         );
 
+
         return view('front_end.ListProducts')->with('data',$data);
     }
+
 }
