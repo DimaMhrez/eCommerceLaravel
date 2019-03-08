@@ -103,7 +103,7 @@
       <div class="container">
 
         <!-- Categories -->
-        <div class="cate-lst"> <a  data-toggle="collapse" class="cate-style" href="#cater"><i class="fa fa-list-ul"></i> Le nostre categorie </a>
+        <div class="cate-lst"> <a  data-toggle="collapse" class="cate-style" href="#cater"><i class="fa fa-list-ul"></i> Categorie </a>
           <div class="cate-bar-in">
             <div id="cater" class="collapse">
               <ul>

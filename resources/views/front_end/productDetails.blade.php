@@ -178,7 +178,7 @@
                                         {!! Form::close() !!}
 
                                         <div class="table-responsive">
-                                            @foreach($productsdata['reviews'] as $review)
+                                            @foreach($productsdata['product']->reviews as $review)
                                             <table class="table">
                                                 <thead>
                                                 <tr>
@@ -189,7 +189,7 @@
                                                 </thead>
                                                 <tbody>
                                                 <tr>
-                                                    <td><bold>{{$review->title}} - da {{$review->user}} </bold></td>
+                                                    <td><strong>{{$review->title}} - da {{$review->user->name}} </strong></td>
 
                                                 </tr>
 

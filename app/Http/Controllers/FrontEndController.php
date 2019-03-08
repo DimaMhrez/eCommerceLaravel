@@ -254,10 +254,10 @@ class FrontEndController extends Controller
             $onestar=Review::where('product_id',$id)
                 ->where('rate',1)->take(5)->get();
 
-            $reviews=Review::join('users','users.id','=','reviews.user_id')
+            /* $reviews=Review::join('users','users.id','=','reviews.user_id')
                 ->where('reviews.product_id',$id)
                 ->select('reviews.*','users.name as user')
-                ->get();
+                ->get(); */
 
 
            // $reviews=DB::select('select *,u.name as user from reviews,users u where reviews.user_id=u.id AND product_id='.$id);
@@ -294,7 +294,6 @@ class FrontEndController extends Controller
                 'threestars' => $threestars,
                 'twostars' => $twostars,
                 'onestar' => $onestar,
-                'reviews' =>$reviews,
                 'shippers' => $shippers,
                 'usercanreview' => $usercanreview,
                 'images' => $images,
