@@ -88,6 +88,7 @@ Route::get('/admin/permission/delete/{id}','PermissionController@destroy');
 Route::get('/admin/role/delete/{id}','RoleController@destroy');
 Route::get('/admin/role/revokeRole/{id}/{user}','RoleController@revokeRole');
 Route::get('/admin/role/grantRole/{user}','RoleController@grantRole');
+Route::post('/admin/role/{user}/assignRole','RoleController@assignRole');
 /**
  * Operazioni crud sui ruoli
  */

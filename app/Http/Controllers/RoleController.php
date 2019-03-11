@@ -191,4 +191,29 @@ class RoleController extends Controller
         return view('back_end.grantRoleToUSer')->with('roles',$roles)->with('idUser',$user);
     }
 
+    public function assignRole($user){
+        $rules = array(
+            'permission'       => 'required'
+        );
+
+        $validator = Validator::make(Input::all(), $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('/admin/role/grantRole/'.$user)
+                ->withErrors($validator);
+        } else {
+            $role = Role::findById(Input::get('permission'));
+
+            if($role != null){
+                $user = User::find($user);
+
+                $user->assignRole($role->name);
+
+            }
+
+            return Redirect::to('/admin/userProfile/'.$user->id.'/roles');
+        }
+    }
+
+
 }

@@ -9,13 +9,13 @@
                 <!--      Wizard container        -->
                 <div class="wizard-container">
                     <div class="card card-wizard" data-color="blue" id="wizardProfile">
-                        {{ Form::open(array('url' => 'admin/role/'.$idUser.'/writeRole' ,'action' => ['enctype'=>'multipart/data','files'=>'true'])) }}
+                        {{ Form::open(array('url' => 'admin/role/'.$idUser.'/assignRole' ,'action' => ['enctype'=>'multipart/data','files'=>'true'])) }}
 
                         <div class="card-header text-center">
                             <h3 class="card-title">
                                 New Product
                             </h3>
-                            <h5 class="card-description">Wizard for assign Service</h5>
+                            <h5 class="card-description">Wizard for assign a Role</h5>
                         </div>
                         <div class="wizard-navigation">
                             <ul class="nav nav-pills">
@@ -42,7 +42,7 @@
                                                     <h5>{{ $error }}</h5>
                                                 @endforeach
                                                 <div class="form-group">
-                                                    <select name="permission" id="permission" class="selectpicker" data-style="select-with-transition" title="Service" required="required">
+                                                    <select name="permission" id="permission" class="selectpicker" data-style="select-with-transition" title="Role" required="required">
                                                         @foreach($roles as $role)
                                                             <option value="{{$role->id}}"}> {{$role->name}} </option>
                                                         @endforeach
