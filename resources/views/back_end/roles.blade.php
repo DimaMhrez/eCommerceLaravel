@@ -58,11 +58,13 @@
                             processing: true,
                             serverSide: true,
                             ajax: '{!! route('roles.data') !!}',
+                            className: 'dt-body-center',
 
                             columns: [
                                 { data: 'id', name: 'id' },
                                 { data: 'name', name: 'name' },
-                                { data:'intro', name:'intro'}
+                                { data:'intro', name:'intro'},
+
 
 
 

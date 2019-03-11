@@ -1,7 +1,7 @@
 
 @extends('back_end.main')
 
-@section('title','Administration Dashboard');
+@section('title','Administration Dashboard')
 
 @section('content')
 

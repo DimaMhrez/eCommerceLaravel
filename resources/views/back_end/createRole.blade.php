@@ -1,6 +1,6 @@
 @extends('back_end.main')
 
-@section('title','New Role');
+@section('title','New Role')
 
 @section('content')
     <div class="content">

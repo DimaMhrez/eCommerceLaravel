@@ -1,6 +1,6 @@
 @extends('back_end.main')
 
-@section('title','New Private Promotional Code');
+@section('title','New Private Promotional Code')
 
 @section('content')
     <div class="content">

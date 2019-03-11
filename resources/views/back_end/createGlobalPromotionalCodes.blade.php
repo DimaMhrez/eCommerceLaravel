@@ -1,6 +1,6 @@
 @extends('back_end.main')
 
-@section('title','Global Prootional Code');
+@section('title','Global Prootional Code')
 
 @section('content')
     <div class="content">

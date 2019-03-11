@@ -51,6 +51,8 @@ Route::get('admin/userProfile', function (){
 });
 //dovrebbe essere la giusta pagina utente
 Route::get('admin/userProfile/{id}','BackEndController@getUser');
+//
+Route::get('/admin/userProfile/{id}/roles','RoleController@userRoles');
 //rotte per inserimento immagini dopo che l'utente di backoffice ha creato un nuovo prodotto
 Route::get('image-view/{id}','ImageController@index');
 Route::post('image-view/{id}','ImageController@store');
@@ -84,6 +86,7 @@ Route::post('admin/role/{idRole}/writeRole','RoleController@writeRole');
 Route::get('/admin/role/{id}/grantPermission','RoleController@grantPermission');
 Route::get('/admin/permission/delete/{id}','PermissionController@destroy');
 Route::get('/admin/role/delete/{id}','RoleController@destroy');
+Route::get('/admin/role/revokeRole/{id}/{user}','RoleController@revokeRole');
 /**
  * Operazioni crud sui ruoli
  */
@@ -112,3 +115,5 @@ Route::get('/permissions','PermissionController@permissions')->name('permissions
 Route::get('/roles','RoleController@permissions')->name('roles.data');
 Route::get('/globalPromotionalCodes','GlobalPromotionalCodesController@globalPromotionalCodes')->name('globalPromotionalCodes.data');
 Route::get('/privatePromotionalCodes','PrivatePromotionalCodesController@privatePromotionalCodes')->name('privatePromotionalCodes.data');
+Route::get('/userRoles/{id}','RoleController@getUserRoles')->name('userRoles.data');
+

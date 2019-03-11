@@ -1,6 +1,6 @@
 @extends('back_end.main')
 
-@section('title','Add Stock Quantity');
+@section('title','Add Stock Quantity')
 
 @section('content')
     <div class="content">

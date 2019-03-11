@@ -6,7 +6,7 @@
     <script>tinymce.init({ selector:'textarea' });</script>
 @endpush
 
-@section('title','New Product');
+@section('title','New Product')
 
 @section('content')
     <div class="content">

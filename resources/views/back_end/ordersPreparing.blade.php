@@ -1,5 +1,5 @@
 @extends('back_end.main')
-@section('title','Orders in Preparation');
+@section('title','Orders in Preparation')
 
 @section('content')
 

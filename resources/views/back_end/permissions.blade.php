@@ -1,6 +1,6 @@
 @extends('back_end.main')
 
-@section('title','Services');
+@section('title','Services')
 
 @section('content')
 

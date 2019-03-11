@@ -13,36 +13,36 @@
                                 <div class="card-icon">
                                     <i class="material-icons">assignment</i>
                                 </div>
-                                <h4 class="card-title ">Role: {{$role->name}}</h4>
+                                <h4 class="card-title ">User's Roles</h4>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class=" text-primary">
-                                        <a href="{{url('/admin/role/'.$role->id.'/grantPermission')}}"><button class="btn btn-primary btn-sm" >New<div class="ripple-container"></div></button></a>
-                                            <tr>
-                                                 <th>
-                                                      ID
-                                                </th>
-                                                <th>
-                                                    Name
-                                                </th>
-                                                <th>
-                                                    Actions
-                                                </th>
-                                             </tr>
+                                        <a href="{{url('/admin/role/grantRole')}}"><button class="btn btn-primary btn-sm" >New<div class="ripple-container"></div></button></a>
+                                        <tr>
+                                            <th>
+                                                ID
+                                            </th>
+                                            <th>
+                                                Name
+                                            </th>
+                                            <th>
+                                                Actions
+                                            </th>
+                                        </tr>
                                         </thead>
                                         <tbody>
-                                        @foreach ($perm as $p)
+                                        @foreach ($roles as $r)
                                             <tr>
                                                 <td>
-                                                    {{ $p->id }}
+                                                    {{ $r->id }}
                                                 </td>
                                                 <td>
-                                                    {{ $p->name }}
+                                                    {{ $r->name }}
                                                 </td>
                                                 <td>
-                                                    <a href="{{url('/admin/role/revokePermission/'.$p->id.'/'.$role->id)}}" class="btn btn-link btn-danger btn-just-icon remove">
+                                                    <a href="{{url('/admin/role/revokeRole/'.$r->id.'/'.$id)}}" class="btn btn-link btn-danger btn-just-icon remove">
                                                         <i class="material-icons">close</i>
                                                         <div class="ripple-container"></div>
                                                     </a>

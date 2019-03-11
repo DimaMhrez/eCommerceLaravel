@@ -158,4 +158,29 @@ class RoleController extends Controller
             }
         }
     }
+
+    public function getUserRoles($id){
+        $roles = Role::select('id','name')
+                 ->join('model_has_roles','model_has_roles.role_id','=','roles.id')
+                 ->where('model_has_roles.model_id',$id)
+                 ->get();
+
+        return $roles;
+    }
+
+    public function userRoles($id){
+        $roles = $this->getUserRoles($id);
+        return view('back_end.userRoles')->with('id',$id)->with('roles',$roles);
+    }
+
+    public function revokeRole($id,$user){
+        $role = Role::findById($id);
+
+        $user->removeRole(Role::findById($id));
+
+        $this->userRoles($user);
+
+
+    }
+
 }

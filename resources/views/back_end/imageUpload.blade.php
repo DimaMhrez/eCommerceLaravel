@@ -5,7 +5,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" media="all" rel="stylesheet" type="text/css"/>
 @endpush
 
-@section('title','Product\'s Images');
+@section('title','Product\'s Images')
 
 @section('content')
    <div class="content">
