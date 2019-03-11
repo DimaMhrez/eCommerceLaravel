@@ -182,6 +182,7 @@ class PaymentController extends Controller
     public function code(Request $request){
         $user=Auth::user()->id;
         if (PromotionCode::where('code', '=', $request->pcode)->exists()) {
+            session(['code' => $request->pcode]);
             $code=PromotionCode::where('code',session('code'))->first();
 
             if($code->global==1)
@@ -198,7 +199,6 @@ class PaymentController extends Controller
                 }
             }
 
-            session(['code' => $request->pcode]);
             return 1;
         }
 

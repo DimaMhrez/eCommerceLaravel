@@ -55,7 +55,7 @@
     <div class="promo">
         <div class="coupen">
             <label> Codice promozionale
-                <input form="code" id="code" name="code" type="text" placeholder="Il tuo codice...">
+                <input id="code" name="code" type="text" placeholder="Il tuo codice...">
                 <button id="codesubmit" type="submit"><i class="fa fa-arrow-circle-right"></i></button>   <b id="result"></b>
             </label>
         </div>

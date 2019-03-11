@@ -312,14 +312,13 @@ class FrontEndController extends Controller
     public function allproducts(){
 
         $categories=Category::all();
-        $products=DB::table('products')
+        $products=Product::take(100)
             ->join('categories','products.category_id','=','categories.id')
             ->join('photos','photos.product_id','=','products.id')
             ->where('photos.main','1')
             ->select('products.*','categories.name as category','photos.URL as URL')
             ->paginate(20);
 
-        $bullets=BulletDescription::all();
 
         $brands=Brand::take(10)->get();
 
@@ -331,7 +330,6 @@ class FrontEndController extends Controller
             'products' => $products,
             'brands' => $brands,
             'productsnumber' => $productsnumber,
-            'bullets' => $bullets,
         );
 
 
@@ -384,7 +382,7 @@ class FrontEndController extends Controller
 
 
         $data=array(
-            'products' => $total,
+            'product' => $total,
             'productsnumber' => count($total),
         );
 
@@ -434,7 +432,6 @@ class FrontEndController extends Controller
 
         }
         $categories=Category::all();
-        $bullets=BulletDescription::all();
 
         $brands=Brand::take(10)->get();
 
@@ -447,7 +444,6 @@ class FrontEndController extends Controller
             'products' => $products,
             'brands' => $brands,
             'productsnumber' => $productsnumber,
-            'bullets' => $bullets,
         );
 
 
