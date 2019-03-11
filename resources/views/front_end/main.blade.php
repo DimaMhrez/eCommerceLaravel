@@ -108,7 +108,7 @@
             <div id="cater" class="collapse">
               <ul>
                 @foreach($categories as $category)
-                  <li><a href="/" name="{{$category->name}}" class="catform">{{$category->name}}</a></li>
+                  <li><a href="/search?category={{urlencode($category->name)}}&researchstring=" name="{{$category->name}}" class="catform">{{$category->name}}</a></li>
               @endforeach
               </ul>
             </div>
@@ -319,27 +319,7 @@
 
 <!-- invocazione logout -->
 
-<script>
 
-
-
-
-  $('.catform').click(function( event ){
-    event.preventDefault();
-
-    $.get("/search",
-            {
-              category: this.name,
-            },
-            function(data) {
-              $('#wrap').empty().append( data );
-            }
-
-    ) });
-
-
-
-</script>
 
 <script>
   $.ajaxSetup({
