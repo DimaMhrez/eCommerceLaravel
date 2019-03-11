@@ -19,7 +19,7 @@
                                 <div class="table-responsive">
                                     <table class="table">
                                         <thead class=" text-primary">
-                                        <a href="{{url('/admin/role/grantRole')}}"><button class="btn btn-primary btn-sm" >New<div class="ripple-container"></div></button></a>
+                                        <a href="{{url('/admin/role/grantRole/'.$id)}}"><button class="btn btn-primary btn-sm" >New<div class="ripple-container"></div></button></a>
                                         <tr>
                                             <th>
                                                 ID

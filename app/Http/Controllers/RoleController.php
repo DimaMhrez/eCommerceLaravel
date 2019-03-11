@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -174,13 +175,20 @@ class RoleController extends Controller
     }
 
     public function revokeRole($id,$user){
+
         $role = Role::findById($id);
 
-        $user->removeRole(Role::findById($id));
+        $user = User::find($user);
 
-        $this->userRoles($user);
+        $user->removeRole($role->name);
 
+        return view('back_end.users');
 
+    }
+
+    public function grantRole($user){
+        $roles = Role::all();
+        return view('back_end.grantRoleToUSer')->with('roles',$roles)->with('idUser',$user);
     }
 
 }
