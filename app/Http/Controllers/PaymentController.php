@@ -174,6 +174,7 @@ class PaymentController extends Controller
 
         $id=Auth::user()->id;
         Cart::where('user_id',$id)->delete();
+        session()->forget('code');
 
         return view('front_end.checkoutSuccessful');
     }
@@ -198,8 +199,12 @@ class PaymentController extends Controller
                     return -1;
                 }
             }
+            $uid=Auth::user()->id;
 
-            return 1;
+            $sum = Cart::where('user_id',$uid)->sum('totalprice');
+            $newsum = $sum - $code->discount;
+
+            return $newsum;
         }
 
        return 0;

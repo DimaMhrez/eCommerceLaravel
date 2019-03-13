@@ -62,7 +62,7 @@
 
         <!-- Grand total -->
         <div class="g-totel">
-            <h5>Importo complessivo: <span>€{{$data['sum']}}</span></h5>
+            <h5>Importo complessivo: <span id="totalprice">€{{$data['sum']}}</span></h5>
         </div>
     </div>
     @endif
@@ -86,9 +86,13 @@
                 },
                 function(data) {
 
-                    if(data==1){
+                    if(data>0){
+                        document.getElementById("code").disabled=true;
+                        document.getElementById("codesubmit").style.display = 'none';
                         document.getElementById("codesubmit").disabled = true;
-                    document.getElementById("result").innerHTML = "Aggiunto!";}
+                    document.getElementById("result").innerHTML = "Aggiunto!";
+                    document.getElementById("totalprice").innerHTML ="€"+data;
+                    }
                     else if(data==0){
                     document.getElementById("result").innerHTML = "Errore. Riprova.";}
                     else if(data==-1){
