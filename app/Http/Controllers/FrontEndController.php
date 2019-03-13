@@ -327,7 +327,7 @@ class FrontEndController extends Controller
 
         $data=array(
             'category' => $categories,
-            'products' => $products,
+            'product' => $products,
             'brands' => $brands,
             'productsnumber' => $productsnumber,
         );
@@ -337,6 +337,7 @@ class FrontEndController extends Controller
     }
 
     public function filter(Request $request){
+
 
         $category=(array)$request->category;
         $brand=(array)$request->brand;
@@ -355,6 +356,8 @@ class FrontEndController extends Controller
 
             }
         }
+
+
 
         if(!empty($brand))
         {
@@ -386,18 +389,17 @@ class FrontEndController extends Controller
             'productsnumber' => count($total),
         );
 
+
         return view('front_end.FilterList')->with('data',$data);
 
 
     }
 
     public function search(Request $request){
+
         $string=$request->researchstring;
         $category=$request->category;
 
-        $categorypreference=Category::where('name',$category)
-            ->select('id')
-            ->first();
 
         if($category=='All Categories')
         {
@@ -441,7 +443,7 @@ class FrontEndController extends Controller
 
         $data=array(
             'category' => $categories,
-            'products' => $products,
+            'product' => $products,
             'brands' => $brands,
             'productsnumber' => $productsnumber,
         );

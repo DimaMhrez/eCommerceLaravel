@@ -30,26 +30,17 @@
                                     <ul>
                                         @foreach($productsdata['categories'] as $category)
                                             <li>
-                                                <input name="category[]" form="filter" id="cat-{{$category->id}}" value="{{$category->id}}" class="styled" type="checkbox" >
+                                                <input type="hidden" value="" id="researchstring" name="researchstring">
+                                                <input name="category[]" form="filter" id="cat-{{$category->id}}" value="{{$category->name}}" class="styled" type="checkbox" >
                                                 <label for="cat-{{$category->id}}"> {{$category->name}} </label>
                                             </li>
                                         @endforeach
+                                            <input type="submit" form="filter" value="Filter" class="btn-round">
                                     </ul>
                                 </div>
 
-                                <!-- Featured Brands -->
-                                <h6>Brand in vetrina</h6>
-                                <div class="checkbox checkbox-primary">
-                                    <ul>
-                                        @foreach($productsdata['brands'] as $brand)
-                                            <li>
-                                                <input name="brand[]" form="filter" id="brand-{{$brand->id}}" value="{{$brand->id}}" class="styled" type="checkbox" >
-                                                <label for="brand-{{$brand->id}}"> {{$brand->name}} </label>
-                                            </li>
-                                        @endforeach
-                                        <input type="submit" form="filter" value="Filter" class="btn-round">
-                                    </ul>
-                                </div>
+
+
 
                             </form>
                             <!-- Rating -->
@@ -112,11 +103,6 @@
                                             </div>
                                         </div> -->
 
-                                        <!-- Compare Wishlist -->
-                                        <ul class="cmp-list">
-                                            <li><a href="#."><i class="fa fa-heart"></i>Aggiungi alla Lista Desideri</a></li>
-                                            <li><a href="#."><i class="fa fa-envelope"></i>Suggerisci ad un amico</a></li>
-                                        </ul>
 
                                         <!-- Quinty -->
                                         <div class="quinty">

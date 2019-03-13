@@ -14,7 +14,7 @@
     <!-- Items -->
     <div class="col-list">
 
-    @foreach($data['products'] as $product)
+    @foreach($data['product'] as $product)
         <!-- Product -->
             <div class="product">
                 <article>
@@ -29,7 +29,7 @@
                             <div class="col-sm-7"> <span class="tag">{{$product->category}}</span> <a href="/products/{{$product->id}}" class="tittle">{{$product->name}}</a>
                                 <!-- Reviews -->
                                 @if (!empty($product->rate))
-                                    <p class="rev">@for($i=0; $i<$product->rate && $i<5; ++$i)<i class="fa fa-star"></i></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor <span class="margin-left-10"></span></p>
+                                    <p class="rev">@for($i=0; $i<$product->rate && $i<5; ++$i)<i class="fa fa-star"></i>@endfor @for(;$i<5;++$i)<i class="fa fa-star-o"></i> @endfor <span class="margin-left-10"></span></p>
                                 @else <p class="rev"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></p>
                                 @endif
 
@@ -62,6 +62,5 @@
                 <li><a href="#">3</a></li>
                 <li> <a href="#" aria-label="Next"> <i class="fa fa-angle-right"></i> </a> </li>
                 -->
-        </ul>
     </div>
 </div>
