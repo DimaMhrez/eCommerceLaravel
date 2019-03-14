@@ -296,34 +296,6 @@
 
             </script>
 
-<!-- My scripts -->
-            <script>
-            $("#formButton").click(function(){
-            $("#form1").toggle();
-            });
-            </script>
-
-            <script>
-
-
-                $('#cart').click(function(){
-                    $.post("/addtocart",
-                        {
-                            number: document.getElementById("number").value,
-                            itemid: $('#hiddenID').text(),
-                        },
-                        function(data) {
-
-                            $('#cartpartcontainer').empty().append( data );
-                            document.getElementById("cart").innerHTML = "Aggiunto!";
-                            document.getElementById("cart").disabled = true;
-                    }
-
-                    ) });
-
-
-
-            </script>
 
 
 @endsection

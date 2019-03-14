@@ -299,7 +299,7 @@
 <!-- GO TO TOP  -->
 <a href="#" class="cd-top" id="pippo"><i class="fa fa-angle-up"></i></a>
 <!-- GO TO TOP End -->
-</div>
+
 <!-- End Page Wrapper -->
 
 <!-- JavaScripts -->
@@ -309,6 +309,7 @@
 <script src="{{asset('front_end/js/vendors/own-menu.js') }}"></script>
 <script src="{{asset('front_end/js/vendors/jquery.sticky.js') }}"></script>
 <script src="{{asset('front_end/js/vendors/owl.carousel.min.js') }}"></script>
+<script src="{{asset('front_end/js/vendors/myscripts.js')}}"></script>
 
 <!-- SLIDER REVOLUTION 4.x SCRIPTS  -->
 <script type="text/javascript" src="{{asset('front_end/rs-plugin/js/jquery.tp.t.min.js') }}"></script>
