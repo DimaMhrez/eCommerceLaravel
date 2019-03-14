@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Cart;
+use App\Order;
+use App\OrderDetail;
 use App\paymentMethod;
 use App\PromotionCode;
 use App\Shipper;
@@ -114,6 +116,7 @@ class PaymentController extends Controller
 
         $delivery->save();
 
+        session(['shippingID'=>$delivery->id]);
 
         $items=session('cartitems');
         $shipperID=session('shipperID');
@@ -171,10 +174,35 @@ class PaymentController extends Controller
 
         }
 
+        $sum = Cart::where('user_id', Auth::user()->id)->sum('totalprice');
+        $quantity = Cart::where('user_id',Auth::user()->id)->count();
+        $items=Cart::where('user_id',Auth::user()->id)->get();
+
+        $order= new Order();
+        $order->status=1;
+        $order->date=date("Y/m/d");
+        $order->user_id=Auth::user()->id;
+        $order->note="";
+        $order->totalprice=$sum;
+        $order->payment_method_id=session('paymentID');
+        $order->shipper_id=session('shipperID');
+        $order->shipping_address_id=session('shippingID');
+
+        $order->save();
+
+        foreach($items as $product){
+        $orderdetail= new OrderDetail();
+        $orderdetail->totalPrice=$sum;
+        $orderdetail->quantity=$product->quantity;
+        $orderdetail->order_id=$order->id;
+        $orderdetail->product_id=$product->product_id;
+        $orderdetail->save();}
+
 
         $id=Auth::user()->id;
         Cart::where('user_id',$id)->delete();
         session()->forget('code');
+        session()->forget('paymentID');
 
         return view('front_end.checkoutSuccessful');
     }
