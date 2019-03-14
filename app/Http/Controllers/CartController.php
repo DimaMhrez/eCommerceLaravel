@@ -15,11 +15,8 @@ class CartController extends Controller
 
     public function add(Request $request){
 
-        if(Auth::guest()){
-            return "login first!";
-        }
-       else {
            $userID=Auth::user()->id;
+
            $itemID=$request->itemid;
            $item=Product::find($itemID);
 
@@ -34,7 +31,8 @@ class CartController extends Controller
            }
 
            if($already){
-               $toupdate=Cart::where('product_id',$item->id)->first();
+               $toupdate=Cart::where('product_id',$item->id)
+               ->where('user_id',$userID)->first();
                $toupdate->quantity=$toupdate->quantity+$request->number;
                $toupdate->totalprice=$toupdate->totalprice+($item->normalPrice*$request->number);
 
@@ -62,8 +60,9 @@ class CartController extends Controller
 
            $view = View::make('front_end.CartPart');
            $sections = $view->renderSections();
+
            return $sections['cartpart'];
-       }
+
     }
 
 

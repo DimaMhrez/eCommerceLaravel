@@ -103,14 +103,14 @@
                                             </div>
                                         </div> -->
 
-
+                                        @if (!Auth::guest())
                                         <!-- Quinty -->
                                         <div class="quinty">
                                             <input id="number" type="number" value="01">
                                         </div>
 
                                         <button id="cart" class="btn-round"><i class="icon-basket-loaded margin-right-5"></i>Aggiungi al carrello </button>
-
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -246,7 +246,7 @@
                         <div class="product">
                             <article> <img class="img-responsive" src="{{asset('upload/'.$related->URL) }}" alt="" >
                                 <!-- Content -->
-                                <span class="tag">{{$productsdata['category']->name}}</span> <a href="#." class="tittle">{{$related->name}}</a>
+                                <span class="tag">{{$productsdata['category']->name}}</span> <a href="/{{$related->id}}" class="tittle">{{$related->name}}</a>
                                 <!-- Reviews -->
                                 <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$related->reviewsnumber}} Recensioni</span></p>
                                 <div class="price">{{$related->normalPrice}} </div>
@@ -313,6 +313,7 @@
                             itemid: $('#hiddenID').text(),
                         },
                         function(data) {
+
                             $('#cartpartcontainer').empty().append( data );
                             document.getElementById("cart").innerHTML = "Aggiunto!";
                             document.getElementById("cart").disabled = true;
