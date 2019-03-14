@@ -23,7 +23,7 @@
                     <!-- Shop Side Bar -->
                     <div class="col-md-3">
                         <div class="shop-side-bar">
-                            <form id="filter" action="/search" method="GET">
+                            <form id="filtergo" action="/search" method="GET">
                                 @csrf
                                 <h6>Categorie</h6>
                                 <div class="checkbox checkbox-primary">
@@ -31,11 +31,11 @@
                                         @foreach($productsdata['categories'] as $category)
                                             <li>
                                                 <input type="hidden" value="" id="researchstring" name="researchstring">
-                                                <input name="category[]" form="filter" id="cat-{{$category->id}}" value="{{$category->name}}" class="styled" type="checkbox" >
+                                                <input name="category[]" form="filtergo" id="cat-{{$category->id}}" value="{{$category->name}}" class="styled" type="checkbox" >
                                                 <label for="cat-{{$category->id}}"> {{$category->name}} </label>
                                             </li>
                                         @endforeach
-                                            <input type="submit" form="filter" value="Filter" class="btn-round">
+                                            <input type="submit" form="filtergo" value="Filter" class="btn-round">
                                     </ul>
                                 </div>
 
