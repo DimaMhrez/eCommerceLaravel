@@ -238,7 +238,6 @@ class FrontEndController extends Controller
                 ->select('categories.name as category','products.*','photos.URL as URL')
                 ->take(15)
                 ->get();
-
            //  $relatedProducts=DB::select('select p.* from products p INNER JOIN category_has_products pv where p.id=pv.product_id AND pv.category_id='.$category->id);
 
 

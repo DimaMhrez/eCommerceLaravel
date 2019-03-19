@@ -246,7 +246,7 @@
                         <div class="product">
                             <article> <img class="img-responsive" src="{{asset('upload/'.$related->URL) }}" alt="" >
                                 <!-- Content -->
-                                <span class="tag">{{$productsdata['category']->name}}</span> <a href="/{{$related->id}}" class="tittle">{{$related->name}}</a>
+                                <span class="tag">{{$productsdata['category']->name}}</span> <a href="/products/{{$related->id}}" class="tittle">{{$related->name}}</a>
                                 <!-- Reviews -->
                                 <p class="rev"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i> <i class="fa fa-star-o"></i> <span class="margin-left-10">{{$related->reviewsnumber}} Recensioni</span></p>
                                 <div class="price">{{$related->normalPrice}} </div>
